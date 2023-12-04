@@ -7,7 +7,7 @@ output:
 ---
 
 
-# About the Data 
+# About the Ddata
 
 The PRAM dataset stands for the Pregnancy Risk Assessment Monitoring System. It collects state-specific data on maternal behaviors/experiences before, during, and after birth.
 
@@ -17,14 +17,14 @@ library(dplyr)
 library(ggplot2)
 ```
 
-# Reading in Data for the 2007 PRAM dataset for those who consumed alcohol, tobacco, and used contraception
+# 2007 Data-set: Substance Abuse & No Contraception
 
 ```{r}
 alcohol_data_2007 = read_csv("./data/PRAM_2007_alcohol.csv")
 
 tobacco_data_2007 = read_csv("./data/PRAM_2007_tobacco.csv")
 
-contraception_data_2007 = read_csv("./data/PRAM_2007_contraception.csv")
+no_contraception_data_2007 = read_csv("./data/PRAM_2007_no_contraception.csv")
 ```
 
 Cleaning Alcohol data 
@@ -53,12 +53,12 @@ view(cleaned_tobac_2007)
 Cleaning Contraception Data
 
 ```{r}
-cleaned_contra_2007 <- contraception_data_2007 %>%
+cleaned_no_contra_2007 <- no_contraception_data_2007 %>%
   janitor::clean_names() %>%
   select(-geolocation, -data_value_type) %>%
   drop_na(response)
 
-view(cleaned_contra_2007)
+view(cleaned_no_contra_2007)
 ```
 
 ### Alcohol
@@ -82,7 +82,7 @@ view(cleaned_contra_2007)
 - `break_out_category_id`
 - `response_id`
 
-# Reading in Data for the 2007 PRAM dataset for those who did not consume alcohol, tobacco, and used contraception
+## 2007 Data-set: No Substance Abuse & Contraception
 
 
 ```{r}
@@ -90,7 +90,7 @@ no_alcohol_data_2007 = read_csv("./data/PRAM_2007_no_alcohol.csv")
 
 no_tobacco_data_2007 = read_csv("./data/PRAM_2007_no_tobacco.csv")
 
-no_contraception_data_2007 = read_csv("./data/PRAM_2007_no_contraception.csv")
+contraception_data_2007 = read_csv("./data/PRAM_2007_contraception.csv")
 ```
 
 Cleaning the No Alcohol Data
@@ -116,12 +116,12 @@ view(cleaned_no_tobacco_2007)
 
 Cleaning the No Contraception Use Data
 ```{r}
-cleaned_no_contraception_2007 <- no_contraception_data_2007 |>
+cleaned_contraception_2007 <- contraception_data_2007 |>
   janitor::clean_names() |>
   select(-data_value_std_err, -geolocation, -data_value_type) |>
   drop_na(response)
 
-view(cleaned_no_contraception_2007)
+view(cleaned_contraception_2007)
 ```
 
 ## visualization and Analysis

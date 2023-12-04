@@ -94,6 +94,7 @@ no_contraception_data_2007 = read_csv("./data/PRAM_2007_no_contraception.csv")
 ```
 
 Cleaning the No Alcohol Data
+
 ```{r}
 cleaned_no_alc_2007 <- no_alcohol_data_2007 |>
   janitor::clean_names() |>
@@ -103,5 +104,23 @@ cleaned_no_alc_2007 <- no_alcohol_data_2007 |>
 view(cleaned_no_alc_2007)
 ```
 
+Cleaning the No Tobacco Data
+```{r}
+cleaned_no_tobacco_2007 <- no_tobacco_data_2007 |>
+  janitor::clean_names() |>
+  select(-data_value_std_err, -geolocation, -data_value_type) |>
+  drop_na(response)
 
+view(cleaned_no_tobacco_2007)
+```
+
+Cleaning the No Contraception Use Data
+```{r}
+cleaned_no_contraception_2007 <- no_contraception_data_2007 |>
+  janitor::clean_names() |>
+  select(-data_value_std_err, -geolocation, -data_value_type) |>
+  drop_na(response)
+
+view(cleaned_no_contraception_2007)
+```
 

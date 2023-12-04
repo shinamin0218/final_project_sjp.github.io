@@ -489,6 +489,20 @@ consume alcohol, tobacco, and used contraception</h1>
   drop_na(response)
 
 view(cleaned_no_alc_2007)</code></pre>
+<p>Cleaning the No Tobacco Data</p>
+<pre class="r"><code>cleaned_no_tobacco_2007 &lt;- no_tobacco_data_2007 |&gt;
+  janitor::clean_names() |&gt;
+  select(-data_value_std_err, -geolocation, -data_value_type) |&gt;
+  drop_na(response)
+
+view(cleaned_no_tobacco_2007)</code></pre>
+<p>Cleaning the No Contraception Use Data</p>
+<pre class="r"><code>cleaned_no_contraception_2007 &lt;- no_contraception_data_2007 |&gt;
+  janitor::clean_names() |&gt;
+  select(-data_value_std_err, -geolocation, -data_value_type) |&gt;
+  drop_na(response)
+
+view(cleaned_no_contraception_2007)</code></pre>
 </div>
 
 

@@ -46,7 +46,7 @@ cleaned_tobac_2007 <- tobacco_data_2007 |>
   select(-data_value_type) |>
   filter(response != "SMOKER WHO QUIT") |>
   filter(response != "NONSMOKER") |>
-  filter(response != "None (0 cig)")|>
+  filter(response != "None (0 cig)") |>
   filter( response != "NO") |>
   drop_na(response)
 

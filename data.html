@@ -375,38 +375,48 @@ class="section level1">
 <h1>2007 Data-set: Substance Abuse &amp; No Contraception</h1>
 <pre class="r"><code>alcohol_data_2007 = read_csv(&quot;./data/PRAM_2007_alcohol.csv&quot;)</code></pre>
 <pre><code>## Rows: 5515 Columns: 23
-## ── Column specification ──────────────────────────────────────────────────
+## -- Column specification --------------------------------------------------------
 ## Delimiter: &quot;,&quot;
 ## chr (16): LocationAbbr, Class, Topic, Question, DataSource, Response, Data_V...
 ## dbl  (6): Year, Data_Value, Low_Confidence_Limit, High_Confidence_Limit, Sam...
 ## lgl  (1): Data_Value_Std_Err
 ## 
-## ℹ Use `spec()` to retrieve the full column specification for this data.
-## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
+## i Use `spec()` to retrieve the full column specification for this data.
+## i Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
 <pre class="r"><code>tobacco_data_2007 = read_csv(&quot;./data/PRAM_2007_tobacco.csv&quot;)</code></pre>
-<pre><code>## Warning: One or more parsing issues, call `problems()` on your data frame for
-## details, e.g.:
+<pre><code>## Warning: One or more parsing issues, call `problems()` on your data frame for details,
+## e.g.:
 ##   dat &lt;- vroom(...)
 ##   problems(dat)</code></pre>
 <pre><code>## Rows: 42838 Columns: 23
-## ── Column specification ──────────────────────────────────────────────────
+## -- Column specification --------------------------------------------------------
 ## Delimiter: &quot;,&quot;
 ## chr (16): LocationAbbr, Class, Topic, Question, DataSource, Response, Data_V...
 ## dbl  (6): Year, Data_Value, Low_Confidence_Limit, High_Confidence_Limit, Sam...
 ## lgl  (1): Data_Value_Std_Err
 ## 
-## ℹ Use `spec()` to retrieve the full column specification for this data.
-## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
+## i Use `spec()` to retrieve the full column specification for this data.
+## i Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
 <pre class="r"><code>no_contraception_data_2007 = read_csv(&quot;./data/PRAM_2007_no_contraception.csv&quot;)</code></pre>
 <pre><code>## Rows: 6015 Columns: 27
-## ── Column specification ──────────────────────────────────────────────────
+## -- Column specification --------------------------------------------------------
 ## Delimiter: &quot;,&quot;
 ## chr (19): LocationAbbr, LocationDesc, Class, Topic, Question, DataSource, Re...
 ## dbl  (6): Year, Data_Value, Low_Confidence_Limit, High_Confidence_Limit, Sam...
 ## lgl  (2): Data_Value_Footnote_Symbol, Data_Value_Std_Err
 ## 
-## ℹ Use `spec()` to retrieve the full column specification for this data.
-## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
+## i Use `spec()` to retrieve the full column specification for this data.
+## i Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
+<pre class="r"><code>infant_mortality_df = read_csv(&quot;./data/PRAM_2007_infantmortality.csv&quot;)</code></pre>
+<pre><code>## Rows: 1386 Columns: 27
+## -- Column specification --------------------------------------------------------
+## Delimiter: &quot;,&quot;
+## chr (19): LocationAbbr, LocationDesc, Class, Topic, Question, DataSource, Re...
+## dbl  (6): Year, Data_Value, Low_Confidence_Limit, High_Confidence_Limit, Sam...
+## lgl  (2): Data_Value_Footnote_Symbol, Data_Value_Std_Err
+## 
+## i Use `spec()` to retrieve the full column specification for this data.
+## i Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
 <p>Cleaning Alcohol data</p>
 <pre class="r"><code>cleaned_alc_2007 &lt;- alcohol_data_2007 |&gt;
   janitor::clean_names() |&gt;
@@ -465,34 +475,34 @@ class="section level2">
 <h2>2007 Data-set: No Substance Abuse &amp; Contraception</h2>
 <pre class="r"><code>no_alcohol_data_2007 = read_csv(&quot;./data/PRAM_2007_no_alcohol.csv&quot;)</code></pre>
 <pre><code>## Rows: 54 Columns: 27
-## ── Column specification ──────────────────────────────────────────────────
+## -- Column specification --------------------------------------------------------
 ## Delimiter: &quot;,&quot;
 ## chr (18): LocationAbbr, LocationDesc, Class, Topic, Question, DataSource, Re...
 ## dbl  (6): Year, Data_Value, Low_Confidence_Limit, High_Confidence_Limit, Sam...
 ## lgl  (3): Data_Value_Footnote_Symbol, Data_Value_Footnote, Data_Value_Std_Err
 ## 
-## ℹ Use `spec()` to retrieve the full column specification for this data.
-## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
+## i Use `spec()` to retrieve the full column specification for this data.
+## i Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
 <pre class="r"><code>no_tobacco_data_2007 = read_csv(&quot;./data/PRAM_2007_no_tobacco.csv&quot;)</code></pre>
 <pre><code>## Rows: 54 Columns: 27
-## ── Column specification ──────────────────────────────────────────────────
+## -- Column specification --------------------------------------------------------
 ## Delimiter: &quot;,&quot;
 ## chr (18): LocationAbbr, LocationDesc, Class, Topic, Question, DataSource, Re...
 ## dbl  (6): Year, Data_Value, Low_Confidence_Limit, High_Confidence_Limit, Sam...
 ## lgl  (3): Data_Value_Footnote_Symbol, Data_Value_Footnote, Data_Value_Std_Err
 ## 
-## ℹ Use `spec()` to retrieve the full column specification for this data.
-## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
+## i Use `spec()` to retrieve the full column specification for this data.
+## i Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
 <pre class="r"><code>contraception_data_2007 = read_csv(&quot;./data/PRAM_2007_contraception.csv&quot;)</code></pre>
 <pre><code>## Rows: 12030 Columns: 23
-## ── Column specification ──────────────────────────────────────────────────
+## -- Column specification --------------------------------------------------------
 ## Delimiter: &quot;,&quot;
 ## chr (16): LocationAbbr, Class, Topic, Question, DataSource, Response, Data_V...
 ## dbl  (6): Year, Data_Value, Low_Confidence_Limit, High_Confidence_Limit, Sam...
 ## lgl  (1): Data_Value_Std_Err
 ## 
-## ℹ Use `spec()` to retrieve the full column specification for this data.
-## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
+## i Use `spec()` to retrieve the full column specification for this data.
+## i Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
 <p>Cleaning the No Alcohol Data</p>
 <pre class="r"><code>cleaned_no_alc_2007 &lt;- no_alcohol_data_2007 |&gt;
   janitor::clean_names() |&gt;
@@ -517,6 +527,15 @@ view(cleaned_no_tobacco_2007)</code></pre>
 
 view(cleaned_contraception_2007)</code></pre>
 </div>
+</div>
+<div id="cleaning-mortality-rate" class="section level1">
+<h1>Cleaning Mortality Rate</h1>
+<pre class="r"><code>cleaned_infant_mortality &lt;- infant_mortality_df |&gt;
+  janitor::clean_names() |&gt;
+  select(-data_value_std_err, -data_value_type, -data_value_unit, -data_value_footnote_symbol, -data_value_footnote) |&gt;
+  drop_na(response)
+
+view(cleaned_infant_mortality)</code></pre>
 <div id="visualization-and-analysis" class="section level2">
 <h2>visualization and Analysis</h2>
 </div>

@@ -25,6 +25,8 @@ alcohol_data_2007 = read_csv("./data/PRAM_2007_alcohol.csv")
 tobacco_data_2007 = read_csv("./data/PRAM_2007_tobacco.csv")
 
 no_contraception_data_2007 = read_csv("./data/PRAM_2007_no_contraception.csv")
+
+infant_mortality_df = read_csv("./data/PRAM_2007_infantmortality.csv")
 ```
 
 Cleaning Alcohol data 
@@ -132,6 +134,20 @@ cleaned_contraception_2007 <- contraception_data_2007 |>
 
 view(cleaned_contraception_2007)
 ```
+
+# Cleaning Mortality Rate 
+
+```{r}
+
+cleaned_infant_mortality <- infant_mortality_df |>
+  janitor::clean_names() |>
+  select(-data_value_std_err, -data_value_type, -data_value_unit, -data_value_footnote_symbol, -data_value_footnote) |>
+  drop_na(response)
+
+view(cleaned_infant_mortality)
+
+```
+
 
 ## visualization and Analysis
 

@@ -13,7 +13,7 @@
 
 <title>Data</title>
 
-<script src="site_libs/header-attrs-2.25/header-attrs.js"></script>
+<script src="site_libs/header-attrs-2.24/header-attrs.js"></script>
 <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.5/css/cerulean.min.css" rel="stylesheet" />
@@ -361,8 +361,11 @@ behaviors/experiences before, during, and after birth.</p>
 library(dplyr)
 library(ggplot2)</code></pre>
 </div>
-<div id="reading-in-data" class="section level1">
-<h1>Reading in Data</h1>
+<div
+id="reading-in-data-for-the-2007-pram-dataset-for-those-who-consumed-alcohol-tobacco-and-used-contraception"
+class="section level1">
+<h1>Reading in Data for the 2007 PRAM dataset for those who consumed
+alcohol, tobacco, and used contraception</h1>
 <pre class="r"><code>alcohol_data_2007 = read_csv(&quot;./data/PRAM_2007_alcohol.csv&quot;)</code></pre>
 <pre><code>## Rows: 5515 Columns: 23
 ## ── Column specification ────────────────────────────────────────────────────────
@@ -400,14 +403,18 @@ library(ggplot2)</code></pre>
 <p>Cleaning Alcohol data</p>
 <pre class="r"><code>cleaned_alc_2007 &lt;- alcohol_data_2007 |&gt;
   janitor::clean_names() |&gt;
-  select(-data_value_std_err, -geolocation, -data_value_type)|&gt;
+  select(-data_value_std_err, -geolocation, -data_value_type) |&gt;
   drop_na(response)
 
 view(cleaned_alc_2007)</code></pre>
 <p>Cleaning Tobacco Data</p>
-<pre class="r"><code>cleaned_tobac_2007 &lt;- tobacco_data_2007|&gt;
+<pre class="r"><code>cleaned_tobac_2007 &lt;- tobacco_data_2007 |&gt;
   janitor::clean_names() |&gt;
+<<<<<<< HEAD
   select(-data_value_type)|&gt;
+=======
+  select(-data_value_type) |&gt;
+>>>>>>> refs/remotes/origin/main
   drop_na(response)
 
 view(cleaned_tobac_2007)</code></pre>
@@ -443,6 +450,49 @@ interval</li>
 <li><code>response_id</code></li>
 </ul>
 </div>
+</div>
+<div
+id="reading-in-data-for-the-2007-pram-dataset-for-those-who-did-not-consume-alcohol-tobacco-and-used-contraception"
+class="section level1">
+<h1>Reading in Data for the 2007 PRAM dataset for those who did not
+consume alcohol, tobacco, and used contraception</h1>
+<pre class="r"><code>no_alcohol_data_2007 = read_csv(&quot;./data/PRAM_2007_no_alcohol.csv&quot;)</code></pre>
+<pre><code>## Rows: 54 Columns: 27
+## ── Column specification ────────────────────────────────────────────────────────
+## Delimiter: &quot;,&quot;
+## chr (18): LocationAbbr, LocationDesc, Class, Topic, Question, DataSource, Re...
+## dbl  (6): Year, Data_Value, Low_Confidence_Limit, High_Confidence_Limit, Sam...
+## lgl  (3): Data_Value_Footnote_Symbol, Data_Value_Footnote, Data_Value_Std_Err
+## 
+## ℹ Use `spec()` to retrieve the full column specification for this data.
+## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
+<pre class="r"><code>no_tobacco_data_2007 = read_csv(&quot;./data/PRAM_2007_no_tobacco.csv&quot;)</code></pre>
+<pre><code>## Rows: 54 Columns: 27
+## ── Column specification ────────────────────────────────────────────────────────
+## Delimiter: &quot;,&quot;
+## chr (18): LocationAbbr, LocationDesc, Class, Topic, Question, DataSource, Re...
+## dbl  (6): Year, Data_Value, Low_Confidence_Limit, High_Confidence_Limit, Sam...
+## lgl  (3): Data_Value_Footnote_Symbol, Data_Value_Footnote, Data_Value_Std_Err
+## 
+## ℹ Use `spec()` to retrieve the full column specification for this data.
+## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
+<pre class="r"><code>no_contraception_data_2007 = read_csv(&quot;./data/PRAM_2007_no_contraception.csv&quot;)</code></pre>
+<pre><code>## Rows: 6015 Columns: 27
+## ── Column specification ────────────────────────────────────────────────────────
+## Delimiter: &quot;,&quot;
+## chr (19): LocationAbbr, LocationDesc, Class, Topic, Question, DataSource, Re...
+## dbl  (6): Year, Data_Value, Low_Confidence_Limit, High_Confidence_Limit, Sam...
+## lgl  (2): Data_Value_Footnote_Symbol, Data_Value_Std_Err
+## 
+## ℹ Use `spec()` to retrieve the full column specification for this data.
+## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
+<p>Cleaning the No Alcohol Data</p>
+<pre class="r"><code>cleaned_no_alc_2007 &lt;- no_alcohol_data_2007 |&gt;
+  janitor::clean_names() |&gt;
+  select(-data_value_std_err, -geolocation, -data_value_type) |&gt;
+  drop_na(response)
+
+view(cleaned_no_alc_2007)</code></pre>
 </div>
 
 

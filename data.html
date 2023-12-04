@@ -410,7 +410,11 @@ view(cleaned_alc_2007)</code></pre>
 <p>Cleaning Tobacco Data</p>
 <pre class="r"><code>cleaned_tobac_2007 &lt;- tobacco_data_2007 |&gt;
   janitor::clean_names() |&gt;
+<<<<<<< HEAD
+  select(-data_value_type)|&gt;
+=======
   select(-data_value_type) |&gt;
+>>>>>>> refs/remotes/origin/main
   drop_na(response)
 
 view(cleaned_tobac_2007)</code></pre>

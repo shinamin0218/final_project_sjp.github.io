@@ -412,7 +412,7 @@ view(cleaned_alc_2007)</code></pre>
   drop_na(response)
 
 view(cleaned_tobac_2007)</code></pre>
-<p>Cleaning Contraception Data</p>
+<p>Cleaning No Contraception Data</p>
 <pre class="r"><code>cleaned_no_contra_2007 &lt;- no_contraception_data_2007 %&gt;%
   janitor::clean_names() %&gt;%
   select(-geolocation, -data_value_type) %&gt;%
@@ -491,7 +491,7 @@ view(cleaned_no_alc_2007)</code></pre>
   drop_na(response)
 
 view(cleaned_no_tobacco_2007)</code></pre>
-<p>Cleaning the No Contraception Use Data</p>
+<p>Cleaning Contraception Use Data</p>
 <pre class="r"><code>cleaned_contraception_2007 &lt;- contraception_data_2007 |&gt;
   janitor::clean_names() |&gt;
   select(-data_value_std_err, -geolocation, -data_value_type) |&gt;

@@ -3,10 +3,12 @@ output_dir: "."
 navbar:
   title: "Home"
   right:
+    - text: "Introduction"
+      href: introduction.html
     - text: "Data"
       href: data.html
-    - text: "About"
-      href: about.html
+    - text: "Proposal"
+      href: proposal.html
     - text: "Visualization and Analysis"
       href: visualization.html
     - icon: fa-envelope fa-lg

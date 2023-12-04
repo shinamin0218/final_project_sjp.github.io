@@ -33,6 +33,9 @@ Cleaning Alcohol data
 cleaned_alc_2007 <- alcohol_data_2007 |>
   janitor::clean_names() |>
   select(-data_value_std_err, -geolocation, -data_value_type) |>
+  filter(response != "DRINKER WHO QUIT") |>
+  filter(response != "NONDRINKER") |>
+  filter( response != "NO") |>
   drop_na(response)
 
 view(cleaned_alc_2007)
@@ -123,6 +126,8 @@ Cleaning Contraception Use Data
 cleaned_contraception_2007 <- contraception_data_2007 |>
   janitor::clean_names() |>
   select(-data_value_std_err, -geolocation, -data_value_type) |>
+  filter(response != "YES (CHECKED)") |>
+  filter(response != "YES") |>
   drop_na(response)
 
 view(cleaned_contraception_2007)

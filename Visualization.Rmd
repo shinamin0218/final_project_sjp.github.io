@@ -7,3 +7,13 @@ output:
 ---
 
 
+Testing plot 
+```{r}
+library(ggplot2)
+```
+
+```{r}
+cleaned_alc_2007|>
+  ggplot( aes( x = question, y = response))
+```
+

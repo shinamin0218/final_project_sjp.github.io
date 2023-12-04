@@ -1,14 +1,22 @@
 ---
-title: "Our Project"
+title: "Data Science Final Project"
 output: 
   html_document:
     toc: true
     toc_float: true
 ---
 
-## Looking at NYC Pregnancy Outcomes in relation to Substance Abuse from Conception to Child Birth in 2007
 
-* Interested in looking at how pregnancy outcomes changes among mothers who drank or smoked cigarettes 3 months before conception, and during pregnancy and comparing it to mothers who did not abuse any substances. As a group, we were collectively interested in both Maternal Child Health and Substance Abuse and this was an ideal way to combine those two interests. The demographics, social dynamics, and healthcare system in NYC provide a unique perspective on the outcomes of maternal health and substance abuse. We are interested in learning more about the relationship between substance abuse and pregnancy as it is rampant and detrimental to health outcomes.
+### Group Members: Shina, Pavithra and Jenna
+
+<
+![](images/grouppic.jpeg)
+
+
+
+## Our Project Interest 
+
+We are interested in looking the prevalence of alcohol consumption, tobacco consumption and contraception use in the United States, in comparison to those who do not substance abuse and practice safe sexual behaviors.  The demographics, social dynamics, and healthcare system in the U.S provide a unique perspective on the outcomes of maternal health and alcohol/tobacco consumption. We are interested in unpacking this 2007 CDC PRAMS data and understanding different relationships. 
 
 
 

@@ -373,8 +373,12 @@ library(ggplot2)</code></pre>
 ## 
 ## ℹ Use `spec()` to retrieve the full column specification for this data.
 ## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
-<pre class="r"><code>tobacco_data_2007 = read_csv(&quot;./data/PRAM_2007_alcohol.csv&quot;)</code></pre>
-<pre><code>## Rows: 5515 Columns: 23
+<pre class="r"><code>tobacco_data_2007 = read_csv(&quot;./data/PRAM_2007_tobacco.csv&quot;)</code></pre>
+<pre><code>## Warning: One or more parsing issues, call `problems()` on your data frame for details,
+## e.g.:
+##   dat &lt;- vroom(...)
+##   problems(dat)</code></pre>
+<pre><code>## Rows: 42838 Columns: 23
 ## ── Column specification ────────────────────────────────────────────────────────
 ## Delimiter: &quot;,&quot;
 ## chr (16): LocationAbbr, Class, Topic, Question, DataSource, Response, Data_V...
@@ -403,7 +407,7 @@ view(cleaned_alc_2007)</code></pre>
 <p>Cleaning Tobacco Data</p>
 <pre class="r"><code>cleaned_tobac_2007 &lt;- tobacco_data_2007|&gt;
   janitor::clean_names() |&gt;
-  select(-data_value_std_err, -geolocation, -data_value_type)|&gt;
+  select(-data_value_type)|&gt;
   drop_na(response)
 
 view(cleaned_tobac_2007)</code></pre>

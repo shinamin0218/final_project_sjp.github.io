@@ -10,10 +10,19 @@ output:
 Testing plot 
 ```{r}
 library(ggplot2)
+library(plotly)
+library(flexdashboard)
 ```
 
+Plot 1: Alcohol Consumption in relation to Infant Mortality
 ```{r}
 cleaned_alc_2007|>
   ggplot( aes( x = question, y = response))
 ```
+
+Plot 2: Tobacco Consumption in relation to Infant Mortality
+
+
+Plot 3: No Consumption in relation to Infant Mortality
+
 

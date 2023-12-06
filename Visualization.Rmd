@@ -5,17 +5,46 @@ output:
     toc: true
     toc_float: true
 ---
-Loading pakcages for the plots
 
+
+Testing plot 
 ```{r}
 library(ggplot2)
 library(plotly)
 library(flexdashboard)
+library(dplyr)
+library(tidyverse)
 ```
 
 Plot 1: Alcohol Consumption in relation to Infant Mortality
 ```{r}
+
+# Reading in the data
+
+alcohol_data_2007 = read_csv("./data/PRAM_2007_alcohol.csv")
+
+cleaned_alc_2007 <- alcohol_data_2007 |>
+  janitor::clean_names() |>
+  select(-data_value_std_err, -geolocation, -data_value_type) |>
+  filter(response != "DRINKER WHO QUIT") |>
+  filter(response != "NONDRINKER") |>
+  filter( response != "NO") |>
+  drop_na(response)
+# Plot of question and responses for alcohol
+
 cleaned_alc_2007 |>
+  ggplot(aes(x = question, fill = response)) +
+  geom_bar(position = "dodge") +
+  labs(title = "Questions and Responses", x = "Questions", y = "Count") +
+  theme_minimal() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))+
+  labs(
+    x = "Question",
+    y = "Response",
+    title =  "Questions vs Response of Alcohol Consumption"
+  )
+
+cleaned_alc_2007|>
   ggplot( aes( x = question, y = response))
 ```
 

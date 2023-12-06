@@ -2,12 +2,13 @@
 title: "Visualization and Analysis"
 output: 
   html_document:
+    code_folding: hide
     toc: true
     toc_float: true
 ---
 Loading packages for the plots
 
-```{r}
+```{r message=FALSE}
 library(ggplot2)
 library(plotly)
 library(flexdashboard)
@@ -18,7 +19,7 @@ library(leaflet)
 
 Reading in Cleaned Data 
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 alcohol_data_2007 = read_csv("./data/PRAM_2007_alcohol.csv")
 
 tobacco_data_2007 = read_csv("./data/PRAM_2007_tobacco.csv")
@@ -110,7 +111,7 @@ cleaned_no_contra_2007 <- no_contraception_data_2007 %>%
 
 
 Plot 1: Alcohol Consumption in relation to Infant Mortality
-```{r}
+```{r message=FALSE}
 
 
 cleaned_infant_mortality <- infant_mortality_df |>
@@ -153,7 +154,7 @@ Plot 3: No Consumption in relation to Infant Mortality
 
 ### Map of Maternal Alcohol Use
 
-```{r}
+```{r message=FALSE}
 leaflet() |> 
   addTiles() |> 
   addCircleMarkers(data = cleaned_alc_2007,
@@ -169,7 +170,7 @@ leaflet() |>
 
 ### Map of Maternal Tobacco use
 
-```{r}
+```{r, message=FALSE, warning=FALSE}
 leaflet() |> 
   addTiles() |> 
   addCircleMarkers(data = cleaned_tobac_2007,

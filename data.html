@@ -13,7 +13,7 @@
 
 <title>Data</title>
 
-<script src="site_libs/header-attrs-2.24/header-attrs.js"></script>
+<script src="site_libs/header-attrs-2.25/header-attrs.js"></script>
 <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.5/css/cerulean.min.css" rel="stylesheet" />
@@ -324,11 +324,7 @@ div.tocify {
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li>
-<<<<<<< HEAD
   <a href="project-report.html">Project Report</a>
-=======
-  <a href="project-Report.html">Project Report</a>
->>>>>>> 54d1773dcbde399992209328d9c1cdca32680049
 </li>
 <li>
   <a href="data.html">Data</a>
@@ -378,7 +374,7 @@ class="section level4">
 Contraception</h4>
 <pre class="r"><code>alcohol_data_2007 = read_csv(&quot;./data/PRAM_2007_alcohol.csv&quot;)</code></pre>
 <pre><code>## Rows: 5515 Columns: 23
-## ── Column specification ──────────────────────────────────────────────────
+## ── Column specification ───────────────────────────────────────
 ## Delimiter: &quot;,&quot;
 ## chr (16): LocationAbbr, Class, Topic, Question, DataSource, Response, Data_V...
 ## dbl  (6): Year, Data_Value, Low_Confidence_Limit, High_Confidence_Limit, Sam...
@@ -387,12 +383,12 @@ Contraception</h4>
 ## ℹ Use `spec()` to retrieve the full column specification for this data.
 ## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
 <pre class="r"><code>tobacco_data_2007 = read_csv(&quot;./data/PRAM_2007_tobacco.csv&quot;)</code></pre>
-<pre><code>## Warning: One or more parsing issues, call `problems()` on your data frame for
-## details, e.g.:
+<pre><code>## Warning: One or more parsing issues, call `problems()` on your data
+## frame for details, e.g.:
 ##   dat &lt;- vroom(...)
 ##   problems(dat)</code></pre>
 <pre><code>## Rows: 42838 Columns: 23
-## ── Column specification ──────────────────────────────────────────────────
+## ── Column specification ───────────────────────────────────────
 ## Delimiter: &quot;,&quot;
 ## chr (16): LocationAbbr, Class, Topic, Question, DataSource, Response, Data_V...
 ## dbl  (6): Year, Data_Value, Low_Confidence_Limit, High_Confidence_Limit, Sam...
@@ -402,7 +398,7 @@ Contraception</h4>
 ## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
 <pre class="r"><code>no_contraception_data_2007 = read_csv(&quot;./data/PRAM_2007_no_contraception.csv&quot;)</code></pre>
 <pre><code>## Rows: 6015 Columns: 27
-## ── Column specification ──────────────────────────────────────────────────
+## ── Column specification ───────────────────────────────────────
 ## Delimiter: &quot;,&quot;
 ## chr (19): LocationAbbr, LocationDesc, Class, Topic, Question, DataSource, Re...
 ## dbl  (6): Year, Data_Value, Low_Confidence_Limit, High_Confidence_Limit, Sam...
@@ -412,7 +408,7 @@ Contraception</h4>
 ## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
 <pre class="r"><code>infant_mortality_df = read_csv(&quot;./data/PRAM_2007_infantmortality.csv&quot;)</code></pre>
 <pre><code>## Rows: 1386 Columns: 27
-## ── Column specification ──────────────────────────────────────────────────
+## ── Column specification ───────────────────────────────────────
 ## Delimiter: &quot;,&quot;
 ## chr (19): LocationAbbr, LocationDesc, Class, Topic, Question, DataSource, Re...
 ## dbl  (6): Year, Data_Value, Low_Confidence_Limit, High_Confidence_Limit, Sam...
@@ -442,23 +438,17 @@ view(cleaned_alc_2007)</code></pre>
   filter(response != &quot;NONSMOKER&quot;) |&gt;
   filter(response != &quot;None (0 cig)&quot;) |&gt;
   filter( response != &quot;NO&quot;) |&gt;
-<<<<<<< HEAD
-  drop_na(response) |&gt;
-  separate(geolocation, into = c(&quot;latitude&quot;, &quot;longitude&quot;), sep = &quot;, &quot;, convert = TRUE)</code></pre>
-<pre><code>## Warning: Expected 2 pieces. Missing pieces filled with `NA` in 1 rows [13248].</code></pre>
-=======
   drop_na(response, geolocation) |&gt;
   separate(geolocation, into = c(&quot;latitude&quot;, &quot;longitude&quot;), sep = &quot;, &quot;, convert = TRUE) |&gt;
    mutate(latitude = as.numeric(str_replace_all(latitude, &quot;\\(|\\)&quot;, &quot;&quot;)),  # Convert to numeric and remove parentheses
          longitude = as.numeric(str_replace_all(longitude, &quot;\\(|\\)&quot;, &quot;&quot;)))  # Convert to numeric and remove parentheses</code></pre>
-<pre><code>## Warning: Expected 2 pieces. Missing pieces filled with `NA` in 1
-## rows [13248].</code></pre>
+<pre><code>## Warning: Expected 2 pieces. Missing pieces filled with `NA` in 1 rows
+## [13248].</code></pre>
 <pre><code>## Warning: There was 1 warning in `mutate()`.
-## i In argument: `latitude =
+## ℹ In argument: `latitude =
 ##   as.numeric(str_replace_all(latitude, &quot;\\(|\\)&quot;, &quot;&quot;))`.
 ## Caused by warning:
 ## ! NAs introduced by coercion</code></pre>
->>>>>>> 54d1773dcbde399992209328d9c1cdca32680049
 <pre class="r"><code>view(cleaned_tobac_2007)</code></pre>
 </div>
 <div id="alcohol" class="section level4">
@@ -492,7 +482,7 @@ class="section level4">
 Contraception</h4>
 <pre class="r"><code>no_alcohol_data_2007 = read_csv(&quot;./data/PRAM_2007_no_alcohol.csv&quot;)</code></pre>
 <pre><code>## Rows: 54 Columns: 27
-## ── Column specification ──────────────────────────────────────────────────
+## ── Column specification ───────────────────────────────────────
 ## Delimiter: &quot;,&quot;
 ## chr (18): LocationAbbr, LocationDesc, Class, Topic, Question, DataSource, Re...
 ## dbl  (6): Year, Data_Value, Low_Confidence_Limit, High_Confidence_Limit, Sam...
@@ -502,7 +492,7 @@ Contraception</h4>
 ## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
 <pre class="r"><code>no_tobacco_data_2007 = read_csv(&quot;./data/PRAM_2007_no_tobacco.csv&quot;)</code></pre>
 <pre><code>## Rows: 54 Columns: 27
-## ── Column specification ──────────────────────────────────────────────────
+## ── Column specification ───────────────────────────────────────
 ## Delimiter: &quot;,&quot;
 ## chr (18): LocationAbbr, LocationDesc, Class, Topic, Question, DataSource, Re...
 ## dbl  (6): Year, Data_Value, Low_Confidence_Limit, High_Confidence_Limit, Sam...
@@ -512,7 +502,7 @@ Contraception</h4>
 ## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
 <pre class="r"><code>contraception_data_2007 = read_csv(&quot;./data/PRAM_2007_contraception.csv&quot;)</code></pre>
 <pre><code>## Rows: 12030 Columns: 23
-## ── Column specification ──────────────────────────────────────────────────
+## ── Column specification ───────────────────────────────────────
 ## Delimiter: &quot;,&quot;
 ## chr (16): LocationAbbr, Class, Topic, Question, DataSource, Response, Data_V...
 ## dbl  (6): Year, Data_Value, Low_Confidence_Limit, High_Confidence_Limit, Sam...

@@ -37,8 +37,9 @@ cleaned_alc_2007 <- alcohol_data_2007 |>
   filter( response != "NO") |>
   drop_na(response,geolocation) |>
   separate(geolocation, into = c("latitude", "longitude"), sep = ", ", convert = TRUE) |>
-   mutate(latitude = gsub("\\(|\\)", "", latitude))|>
-   mutate(longitude = gsub("\\(|\\)", "", longitude))
+   mutate(latitude = as.numeric(str_replace_all(latitude, "\\(|\\)", "")),  # Convert to numeric and remove parentheses
+         longitude = as.numeric(str_replace_all(longitude, "\\(|\\)", "")))  # Convert to numeric and remove parentheses
+
 
 view(cleaned_alc_2007)
 ```

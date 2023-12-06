@@ -13,6 +13,7 @@ library(plotly)
 library(flexdashboard)
 library(dplyr)
 library(tidyverse)
+library(leaflet)
 ```
 
 Plot 1: Alcohol Consumption in relation to Infant Mortality
@@ -27,7 +28,7 @@ cleaned_alc_2007 <- alcohol_data_2007 |>
   filter(response != "DRINKER WHO QUIT") |>
   filter(response != "NONDRINKER") |>
   filter( response != "NO") |>
-  drop_na(response)
+  drop_na(response) 
 
 infant_mortality_df = read_csv("./data/PRAM_2007_infantmortality.csv")
 
@@ -61,6 +62,13 @@ ggplot() +
        x = "X-axis Label",
        y = "Y-axis Label") +
   theme_minimal()
+
+ggplot() +
+  geom_point(aes(x = cleaned_alc_2007$question, y = cleaned_infant_mortality$response), color = "blue", size = 3) +
+  labs(title = "Scatter Plot of Two Variables from Different Datasets",
+       x = "X-axis Label",
+       y = "Y-axis Label") +
+  theme_minimal()
 ```
 
 Plot 2: Tobacco Consumption in relation to Infant Mortality
@@ -68,4 +76,19 @@ Plot 2: Tobacco Consumption in relation to Infant Mortality
 
 Plot 3: No Consumption in relation to Infant Mortality
 
+Map Data 
+
+```{r}
+leaflet() %>% 
+  addTiles() %>% 
+  addCircleMarkers(data = cleaned_alc_2007,
+                   lng = ~ longitude,  # Adjust column name if needed
+                   lat = ~ latitude,   # Adjust column name if needed
+                   label = ~Group.1,
+                   radius = 7,
+                   color = "orange",
+                   stroke = TRUE,
+                   fillOpacity = 0.75,
+                   popup = ~paste("Yes:", response))  # Adjust column name
+```
 

@@ -35,8 +35,10 @@ cleaned_alc_2007 <- alcohol_data_2007 |>
   filter(response != "DRINKER WHO QUIT") |>
   filter(response != "NONDRINKER") |>
   filter( response != "NO") |>
-  drop_na(response) |>
-  separate(geolocation, into = c("latitude", "longitude"), sep = ", ", convert = TRUE)
+  drop_na(response,geolocation) |>
+  separate(geolocation, into = c("latitude", "longitude"), sep = ", ", convert = TRUE) |>
+   mutate(latitude = gsub("\\(|\\)", "", latitude))|>
+   mutate(longitude = gsub("\\(|\\)", "", longitude))
 
 view(cleaned_alc_2007)
 ```

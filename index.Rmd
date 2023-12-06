@@ -9,8 +9,8 @@ output:
 
 ### Group Members: Shina, Pavithra and Jenna
 
-<
-![](images/grouppic.jpeg)
+<img src="images/grouppic.jpeg" style="width:75%">
+
 
 
 

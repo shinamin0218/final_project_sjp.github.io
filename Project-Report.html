@@ -11,7 +11,7 @@
 
 
 
-<title>Visualization and Analysis</title>
+<title>Introduction</title>
 
 <script src="site_libs/header-attrs-2.24/header-attrs.js"></script>
 <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
@@ -356,33 +356,54 @@ div.tocify {
 
 
 
-<h1 class="title toc-ignore">Visualization and Analysis</h1>
+<h1 class="title toc-ignore">Introduction</h1>
 
 </div>
 
 
-<p>Loading packages for the plots</p>
-<pre class="r"><code>library(ggplot2)
-library(plotly)</code></pre>
-<pre><code>## Warning: package &#39;plotly&#39; was built under R version 4.3.2</code></pre>
-<pre><code>## 
-## Attaching package: &#39;plotly&#39;</code></pre>
-<pre><code>## The following object is masked from &#39;package:ggplot2&#39;:
-## 
-##     last_plot</code></pre>
-<pre><code>## The following object is masked from &#39;package:stats&#39;:
-## 
-##     filter</code></pre>
-<pre><code>## The following object is masked from &#39;package:graphics&#39;:
-## 
-##     layout</code></pre>
-<pre class="r"><code>library(flexdashboard)</code></pre>
-<p>Plot 1: Alcohol Consumption in relation to Infant Mortality</p>
-<pre class="r"><code>cleaned_alc_2007 |&gt;
-  ggplot( aes( x = question, y = response))</code></pre>
-<p><img src="Visualization_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
-<p>Plot 2: Tobacco Consumption in relation to Infant Mortality</p>
-<p>Plot 3: No Consumption in relation to Infant Mortality</p>
+<p>Both substance abuse and maternal/infant mortality run rampant in the
+United States, and with the the use of the CDC 2007 PRAM Data set, we
+are interested in looking at the relationships between these
+variables.</p>
+<div id="initial-questions" class="section level2">
+<h2>Initial questions</h2>
+<div id="our-initial-research-question" class="section level5">
+<h5>Our initial research question</h5>
+<p>Is there a significant relationship between infant mortality rate and
+the consumption of Alcohol and Tobacco consumption?</p>
+</div>
+<div id="how-did-these-questions-evolve-over-the-course-of-the-project"
+class="section level5">
+<h5>How did these questions evolve over the course of the project?</h5>
+<p>Upon reviewing reviewing the 2007 CDC PRAM data set, and thoroughly
+understanding the data, we picked our variables of interest that we
+wanted to test. The data provides robust information on several
+important factors related to maternal and infant health outcomes.</p>
+</div>
+<div
+id="what-new-questions-did-you-consider-in-the-course-of-your-analysis"
+class="section level5">
+<h5>What new questions did you consider in the course of your
+analysis?</h5>
+<p>Other parts of the data that interested us was also the use of
+contraception in the sample demographic.</p>
+</div>
+</div>
+<div id="motivation-for-this-project" class="section level2">
+<h2>Motivation for this Project</h2>
+<p>We are interested in looking at how pregnancy outcomes changes among
+mothers who drank or smoked cigarettes before conception, and comparing
+it to mothers who did not abuse any substances. As a group, we were
+collectively interested in both Maternal Child Health and Substance
+Abuse and this was an ideal way to combine those two interests. The
+demographics, social dynamics, and healthcare system in the United
+States provide a unique perspective on the outcomes of maternal health
+and substance abuse. We are interested in learning more about the
+relationship between substance abuse and infant mortality rates.</p>
+</div>
+<div id="related-work" class="section level2">
+<h2>Related Work</h2>
+</div>
 
 
 

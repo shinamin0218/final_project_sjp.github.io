@@ -54,8 +54,10 @@ cleaned_tobac_2007 <- tobacco_data_2007 |>
   filter(response != "NONSMOKER") |>
   filter(response != "None (0 cig)") |>
   filter( response != "NO") |>
-  drop_na(response) |>
-  separate(geolocation, into = c("latitude", "longitude"), sep = ", ", convert = TRUE)
+  drop_na(response, geolocation) |>
+  separate(geolocation, into = c("latitude", "longitude"), sep = ", ", convert = TRUE) |>
+   mutate(latitude = as.numeric(str_replace_all(latitude, "\\(|\\)", "")),  # Convert to numeric and remove parentheses
+         longitude = as.numeric(str_replace_all(longitude, "\\(|\\)", "")))  # Convert to numeric and remove parentheses
 
 view(cleaned_tobac_2007)
 ```
@@ -122,7 +124,9 @@ cleaned_infant_mortality <- infant_mortality_df |>
   janitor::clean_names() |>
   select(-data_value_std_err, -data_value_type, -data_value_unit, -data_value_footnote_symbol, -data_value_footnote) |>
   drop_na(response) |>
-  separate(geolocation, into = c("latitude", "longitude"), sep = ", ", convert = TRUE)
+  separate(geolocation, into = c("latitude", "longitude"), sep = ", ", convert = TRUE) |>
+   mutate(latitude = as.numeric(str_replace_all(latitude, "\\(|\\)", "")),  # Convert to numeric and remove parentheses
+         longitude = as.numeric(str_replace_all(longitude, "\\(|\\)", "")))  # Convert to numeric and remove parentheses
 
 view(cleaned_infant_mortality)
 
@@ -148,8 +152,11 @@ No Contraception Use
 ```{r}
 cleaned_no_contra_2007 <- no_contraception_data_2007 %>%
   janitor::clean_names() %>%
-  select(-geolocation, -data_value_type) %>%
-  drop_na(response)
+  select(-data_value_type) %>%
+  drop_na(response) |>
+  separate(geolocation, into = c("latitude", "longitude"), sep = ", ", convert = TRUE) |>
+   mutate(latitude = as.numeric(str_replace_all(latitude, "\\(|\\)", "")),  # Convert to numeric and remove parentheses
+         longitude = as.numeric(str_replace_all(longitude, "\\(|\\)", "")))  # Convert to numeric and remove parentheses
 
 view(cleaned_no_contra_2007)
 ```

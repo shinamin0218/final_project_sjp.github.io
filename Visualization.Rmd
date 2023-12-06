@@ -24,11 +24,15 @@ alcohol_data_2007 = read_csv("./data/PRAM_2007_alcohol.csv")
 
 cleaned_alc_2007 <- alcohol_data_2007 |>
   janitor::clean_names() |>
-  select(-data_value_std_err, -geolocation, -data_value_type) |>
+  select(-data_value_std_err, -data_value_type) |>
   filter(response != "DRINKER WHO QUIT") |>
   filter(response != "NONDRINKER") |>
   filter( response != "NO") |>
-  drop_na(response) 
+  drop_na(response,geolocation) |>
+  separate(geolocation, into = c("latitude", "longitude"), sep = ", ", convert = TRUE) |>
+   mutate(latitude = as.numeric(str_replace_all(latitude, "\\(|\\)", "")),  # Convert to numeric and remove parentheses
+         longitude = as.numeric(str_replace_all(longitude, "\\(|\\)", "")))  # Convert to numeric and remove parentheses
+ 
 
 infant_mortality_df = read_csv("./data/PRAM_2007_infantmortality.csv")
 
@@ -73,16 +77,20 @@ Plot 3: No Consumption in relation to Infant Mortality
 Map Data 
 
 ```{r}
-#leaflet() %>% 
- # addTiles() %>% 
-  #addCircleMarkers(data = cleaned_alc_2007,
-   #                lng = ~ longitude,  # Adjust column name if needed
-    #               lat = ~ latitude,   # Adjust column name if needed
-     #              label = ~Group.1,
-      #             radius = 7,
-      #             color = "orange",
-       #            stroke = TRUE,
-        #           fillOpacity = 0.75,
-         #          popup = ~paste("Yes:", response))  # Adjust column name
+
+leaflet() %>% 
+  addTiles() %>% 
+  addCircleMarkers(data = cleaned_alc_2007,
+                   lng = ~longitude,  # Adjust column name if needed
+                   lat = ~latitude,   # Adjust column name if needed
+                   label = ~location_abbr,   # Assuming 'Group.1' is a column in your data
+                   radius = 7,
+                   color = "orange",
+                   stroke = TRUE,
+                   fillOpacity = 0.75,
+                   popup = ~paste("Yes:", response)) 
+
+
+
 ```
 

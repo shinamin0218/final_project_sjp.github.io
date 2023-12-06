@@ -22,8 +22,6 @@ knitr::kable(group_members, format = "markdown", col.names = c("Names", "Emails"
 ## Project Title
 * Looking at Infant Mortality Outcomes in relation to Alcohol and Tobacco Consumption
 
-## Motivation for this Project
-* Interested in looking at how pregnancy outcomes changes among mothers who drank or smoked cigarettes 3 months before conception, and during pregnancy and comparing it to mothers who did not abuse any substances. As a group, we were collectively interested in both Maternal Child Health and Substance Abuse and this was an ideal way to combine those two interests. The demographics, social dynamics, and healthcare system in NYC provide a unique perspective on the outcomes of maternal health and substance abuse. We are interested in learning more about the relationship between substance abuse and pregnancy as it is rampant and detrimental to health outcomes. 
 
 ## Intended Final Products
 Creating a website:
@@ -37,23 +35,21 @@ Creating a website:
 * Github repo
 
 ## The anticipated data sources
-* Data from NYC Health
-  - 2007 data Women who drank any alcohol three months prior to conception
-  - 2007 data Women who drank any alcohol during the last three months of pregnancy
-  - 2007 data Women who stopped drinking alcohol during pregnancy
-  - 2007 data Women who smoked any cigarettes three months prior to conception
-  - 2007 data Women who smoked any cigarettes during the last three months of pregnancy
-  - 2007 data Women who stopped smoking during pregnancy
 * CDC PRAMStat Data for 2007
+* Peer-reviewed journal for related work literature
 
 ## The planned analyses / visualizations / coding challenges
 * Data Manipulation: To compare and contrast the different data sets
-  - Compare the ages of pregnant women with the highest and lowest substance usage
-  - Compare maternal use of substances in different boroughs
-  - Compare outcomes of birth defects with mothers who stopped smoking/drinking to those who continued smoking/drinking during pregnancy
-* Visualization: ggplots (histograms, bar graph, scatter plot, density plot, and line graphs)
-* Coding challenges: Hypothesis testing, linear and logistic regression, using patchwork to combine data sets, creating a website, and formatting for aesthetics. 
-
+  - Compare infant mortality rate in relation to alcohol consumption
+  - Compare infant mortality rate in relation to tobacco consumption
+  - Compare infant mortality rate in relation to no alcohol consumption
+  - Compare infant mortality rate in relation to tobacco consumption
+  
+* Other data points of interest
+  - Look at contraception use 
+  
+* Visualization: ggplots (histograms, bar graph, scatter plot, density plot) and Maps.
+* Coding challenges: Plots, using patchwork to combine data sets, creating a website, and formatting for aesthetics. 
 
 ## The planned timeline
 * Planning (1st week)

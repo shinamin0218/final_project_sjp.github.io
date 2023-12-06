@@ -11,12 +11,56 @@ Loading packages for the plots
 library(ggplot2)
 library(plotly)
 library(flexdashboard)
+library(dplyr)
+library(tidyverse)
 ```
 
 Plot 1: Alcohol Consumption in relation to Infant Mortality
 ```{r}
+# Reading in the data
+
+alcohol_data_2007 = read_csv("./data/PRAM_2007_alcohol.csv")
+
+cleaned_alc_2007 <- alcohol_data_2007 |>
+  janitor::clean_names() |>
+  select(-data_value_std_err, -geolocation, -data_value_type) |>
+  filter(response != "DRINKER WHO QUIT") |>
+  filter(response != "NONDRINKER") |>
+  filter( response != "NO") |>
+  drop_na(response)
+
+infant_mortality_df = read_csv("./data/PRAM_2007_infantmortality.csv")
+
+cleaned_infant_mortality <- infant_mortality_df |>
+  janitor::clean_names() |>
+  select(-data_value_std_err, -data_value_type, -data_value_unit, -data_value_footnote_symbol, -data_value_footnote) |>
+  drop_na(response)
+
+# Plot of question and responses for alcohol
+
 cleaned_alc_2007 |>
-  ggplot( aes( x = question, y = response))
+  ggplot(aes(x = question, fill = response)) +
+  geom_bar(position = "dodge") +
+  labs(title = "Questions and Responses", x = "Questions", y = "Count") +
+  theme_minimal() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))+
+  labs(
+    x = "Question",
+    y = "Response",
+    title =  "Questions vs Response of Alcohol Consumption"
+  )
+
+# creating "yes" variable 
+
+
+# plot showing infant mortality rate vs alcohol consumption
+ggplot() +
+  geom_point(data = cleaned_alc_2007, aes(x = question, y = response), color = "blue", size = 3) +
+  geom_point(data = cleaned_infant_mortality, aes(x = question, y = response), color = "red", size = 3) +
+  labs(title = "Scatter Plot of Two Variables from Different Datasets",
+       x = "X-axis Label",
+       y = "Y-axis Label") +
+  theme_minimal()
 ```
 
 Plot 2: Tobacco Consumption in relation to Infant Mortality

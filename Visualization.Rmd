@@ -77,7 +77,6 @@ Plot 3: No Consumption in relation to Infant Mortality
 Map Data 
 
 ```{r}
-
 leaflet() |> 
   addTiles() |> 
   addCircleMarkers(data = cleaned_alc_2007,
@@ -89,7 +88,6 @@ leaflet() |>
                    stroke = TRUE,
                    fillOpacity = 0.75,
                    popup = ~paste("Response:", response)) 
-
 ```
 
 

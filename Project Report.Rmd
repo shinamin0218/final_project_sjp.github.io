@@ -35,7 +35,7 @@ Alcohol use during pregnancy
 
 Tobacco use during pregnancy
   * The consumption of alcohol during pregnancy has been correlated with a spectrum of adverse birth outcomes. This includes heightened risks of miscarriage, stillbirth, infant mortality, congenital anomalies, low birthweight, reduced gestational age, preterm delivery, and infants being born small for their gestational age. (https://pubmed.ncbi.nlm.nih.gov/19797967/)
-* While specific data on infant mortality rates was not explicitly provided, it is noteworthy that maternal smoking during pregnancy constitutes a well-established risk factor for sudden unexpected infant death (SUID). The risk of SUID more than doubled (adjusted odds ratio [aOR] = 2.44; 95% confidence interval [CI] 2.31–2.57) in the presence of any maternal smoking during pregnancy. Furthermore, a twofold increase in SUID risk was observed when comparing no smoking to smoking just 1 cigarette daily throughout pregnancy. (https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6564075/)
+  * While specific data on infant mortality rates was not explicitly provided, it is noteworthy that maternal smoking during pregnancy constitutes a well-established risk factor for sudden unexpected infant death (SUID). The risk of SUID more than doubled (adjusted odds ratio [aOR] = 2.44; 95% confidence interval [CI] 2.31–2.57) in the presence of any maternal smoking during pregnancy. Furthermore, a twofold increase in SUID risk was observed when comparing no smoking to smoking just 1 cigarette daily throughout pregnancy. (https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6564075/)
 
 
 

@@ -364,6 +364,7 @@ div.tocify {
 <p>Loading packages for the plots</p>
 <pre class="r"><code>library(ggplot2)
 library(plotly)</code></pre>
+<pre><code>## Warning: package &#39;plotly&#39; was built under R version 4.3.2</code></pre>
 <pre><code>## 
 ## Attaching package: &#39;plotly&#39;</code></pre>
 <pre><code>## The following object is masked from &#39;package:ggplot2&#39;:
@@ -376,48 +377,22 @@ library(plotly)</code></pre>
 ## 
 ##     layout</code></pre>
 <pre class="r"><code>library(flexdashboard)
-library(dplyr)</code></pre>
-<pre><code>## Warning: package &#39;dplyr&#39; was built under R version 4.1.3</code></pre>
-<pre><code>## 
-## Attaching package: &#39;dplyr&#39;</code></pre>
-<pre><code>## The following objects are masked from &#39;package:stats&#39;:
-## 
-##     filter, lag</code></pre>
-<pre><code>## The following objects are masked from &#39;package:base&#39;:
-## 
-##     intersect, setdiff, setequal, union</code></pre>
-<pre class="r"><code>library(tidyverse)</code></pre>
-<pre><code>## Warning: package &#39;tidyverse&#39; was built under R version 4.1.3</code></pre>
-<pre><code>## Warning: package &#39;tibble&#39; was built under R version 4.1.3</code></pre>
-<pre><code>## Warning: package &#39;tidyr&#39; was built under R version 4.1.3</code></pre>
-<pre><code>## Warning: package &#39;readr&#39; was built under R version 4.1.3</code></pre>
-<pre><code>## Warning: package &#39;purrr&#39; was built under R version 4.1.3</code></pre>
-<pre><code>## Warning: package &#39;stringr&#39; was built under R version 4.1.3</code></pre>
-<pre><code>## Warning: package &#39;forcats&#39; was built under R version 4.1.3</code></pre>
-<pre><code>## Warning: package &#39;lubridate&#39; was built under R version 4.1.3</code></pre>
-<pre><code>## -- Attaching core tidyverse packages ------------------------ tidyverse 2.0.0 --
-## v forcats   1.0.0     v stringr   1.5.0
-## v lubridate 1.9.2     v tibble    3.2.1
-## v purrr     1.0.1     v tidyr     1.3.0
-## v readr     2.1.4</code></pre>
-<pre><code>## -- Conflicts ------------------------------------------ tidyverse_conflicts() --
-## x dplyr::filter() masks plotly::filter(), stats::filter()
-## x dplyr::lag()    masks stats::lag()
-## i Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors</code></pre>
-<pre class="r"><code>library(leaflet)</code></pre>
+library(dplyr)
+library(tidyverse)
+library(leaflet)</code></pre>
 <p>Plot 1: Alcohol Consumption in relation to Infant Mortality</p>
 <pre class="r"><code># Reading in the data
 
 alcohol_data_2007 = read_csv(&quot;./data/PRAM_2007_alcohol.csv&quot;)</code></pre>
 <pre><code>## Rows: 5515 Columns: 23
-## -- Column specification --------------------------------------------------------
+## ── Column specification ──────────────────────────────────────────────────
 ## Delimiter: &quot;,&quot;
 ## chr (16): LocationAbbr, Class, Topic, Question, DataSource, Response, Data_V...
 ## dbl  (6): Year, Data_Value, Low_Confidence_Limit, High_Confidence_Limit, Sam...
 ## lgl  (1): Data_Value_Std_Err
 ## 
-## i Use `spec()` to retrieve the full column specification for this data.
-## i Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
+## ℹ Use `spec()` to retrieve the full column specification for this data.
+## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
 <pre class="r"><code>cleaned_alc_2007 &lt;- alcohol_data_2007 |&gt;
   janitor::clean_names() |&gt;
   select(-data_value_std_err, -geolocation, -data_value_type) |&gt;
@@ -428,14 +403,14 @@ alcohol_data_2007 = read_csv(&quot;./data/PRAM_2007_alcohol.csv&quot;)</code></p
 
 infant_mortality_df = read_csv(&quot;./data/PRAM_2007_infantmortality.csv&quot;)</code></pre>
 <pre><code>## Rows: 1386 Columns: 27
-## -- Column specification --------------------------------------------------------
+## ── Column specification ──────────────────────────────────────────────────
 ## Delimiter: &quot;,&quot;
 ## chr (19): LocationAbbr, LocationDesc, Class, Topic, Question, DataSource, Re...
 ## dbl  (6): Year, Data_Value, Low_Confidence_Limit, High_Confidence_Limit, Sam...
 ## lgl  (2): Data_Value_Footnote_Symbol, Data_Value_Std_Err
 ## 
-## i Use `spec()` to retrieve the full column specification for this data.
-## i Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
+## ℹ Use `spec()` to retrieve the full column specification for this data.
+## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
 <pre class="r"><code>cleaned_infant_mortality &lt;- infant_mortality_df |&gt;
   janitor::clean_names() |&gt;
   select(-data_value_std_err, -data_value_type, -data_value_unit, -data_value_footnote_symbol, -data_value_footnote) |&gt;

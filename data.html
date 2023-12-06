@@ -361,62 +361,61 @@ div.tocify {
 </div>
 
 
-<div id="about-the-data" class="section level1">
-<h1>About the Data</h1>
 <p>The PRAM dataset stands for the Pregnancy Risk Assessment Monitoring
 System. It collects state-specific data on maternal
 behaviors/experiences before, during, and after birth.</p>
 <pre class="r"><code>library(tidyverse)
 library(dplyr)
 library(ggplot2)</code></pre>
-</div>
-<div id="data-set-substance-abuse-no-contraception"
-class="section level1">
-<h1>2007 Data-set: Substance Abuse &amp; No Contraception</h1>
+<div
+id="indicator-2007-data-set-reading-in-substance-abuse-no-contraception"
+class="section level4">
+<h4>Indicator: 2007 Data-set, Reading in Substance Abuse &amp; No
+Contraception</h4>
 <pre class="r"><code>alcohol_data_2007 = read_csv(&quot;./data/PRAM_2007_alcohol.csv&quot;)</code></pre>
 <pre><code>## Rows: 5515 Columns: 23
-## -- Column specification --------------------------------------------------------
+## ── Column specification ──────────────────────────────────────────────────
 ## Delimiter: &quot;,&quot;
 ## chr (16): LocationAbbr, Class, Topic, Question, DataSource, Response, Data_V...
 ## dbl  (6): Year, Data_Value, Low_Confidence_Limit, High_Confidence_Limit, Sam...
 ## lgl  (1): Data_Value_Std_Err
 ## 
-## i Use `spec()` to retrieve the full column specification for this data.
-## i Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
+## ℹ Use `spec()` to retrieve the full column specification for this data.
+## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
 <pre class="r"><code>tobacco_data_2007 = read_csv(&quot;./data/PRAM_2007_tobacco.csv&quot;)</code></pre>
-<pre><code>## Warning: One or more parsing issues, call `problems()` on your data frame for details,
-## e.g.:
+<pre><code>## Warning: One or more parsing issues, call `problems()` on your data frame for
+## details, e.g.:
 ##   dat &lt;- vroom(...)
 ##   problems(dat)</code></pre>
 <pre><code>## Rows: 42838 Columns: 23
-## -- Column specification --------------------------------------------------------
+## ── Column specification ──────────────────────────────────────────────────
 ## Delimiter: &quot;,&quot;
 ## chr (16): LocationAbbr, Class, Topic, Question, DataSource, Response, Data_V...
 ## dbl  (6): Year, Data_Value, Low_Confidence_Limit, High_Confidence_Limit, Sam...
 ## lgl  (1): Data_Value_Std_Err
 ## 
-## i Use `spec()` to retrieve the full column specification for this data.
-## i Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
+## ℹ Use `spec()` to retrieve the full column specification for this data.
+## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
 <pre class="r"><code>no_contraception_data_2007 = read_csv(&quot;./data/PRAM_2007_no_contraception.csv&quot;)</code></pre>
 <pre><code>## Rows: 6015 Columns: 27
-## -- Column specification --------------------------------------------------------
+## ── Column specification ──────────────────────────────────────────────────
 ## Delimiter: &quot;,&quot;
 ## chr (19): LocationAbbr, LocationDesc, Class, Topic, Question, DataSource, Re...
 ## dbl  (6): Year, Data_Value, Low_Confidence_Limit, High_Confidence_Limit, Sam...
 ## lgl  (2): Data_Value_Footnote_Symbol, Data_Value_Std_Err
 ## 
-## i Use `spec()` to retrieve the full column specification for this data.
-## i Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
+## ℹ Use `spec()` to retrieve the full column specification for this data.
+## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
 <pre class="r"><code>infant_mortality_df = read_csv(&quot;./data/PRAM_2007_infantmortality.csv&quot;)</code></pre>
 <pre><code>## Rows: 1386 Columns: 27
-## -- Column specification --------------------------------------------------------
+## ── Column specification ──────────────────────────────────────────────────
 ## Delimiter: &quot;,&quot;
 ## chr (19): LocationAbbr, LocationDesc, Class, Topic, Question, DataSource, Re...
 ## dbl  (6): Year, Data_Value, Low_Confidence_Limit, High_Confidence_Limit, Sam...
 ## lgl  (2): Data_Value_Footnote_Symbol, Data_Value_Std_Err
 ## 
-## i Use `spec()` to retrieve the full column specification for this data.
-## i Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
+## ℹ Use `spec()` to retrieve the full column specification for this data.
+## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
 <p>Cleaning Alcohol data</p>
 <pre class="r"><code>cleaned_alc_2007 &lt;- alcohol_data_2007 |&gt;
   janitor::clean_names() |&gt;
@@ -438,15 +437,9 @@ view(cleaned_alc_2007)</code></pre>
   drop_na(response)
 
 view(cleaned_tobac_2007)</code></pre>
-<p>Cleaning No Contraception Data</p>
-<pre class="r"><code>cleaned_no_contra_2007 &lt;- no_contraception_data_2007 %&gt;%
-  janitor::clean_names() %&gt;%
-  select(-geolocation, -data_value_type) %&gt;%
-  drop_na(response)
-
-view(cleaned_no_contra_2007)</code></pre>
-<div id="alcohol" class="section level3">
-<h3>Alcohol</h3>
+</div>
+<div id="alcohol" class="section level4">
+<h4>Alcohol</h4>
 <ul>
 <li><code>year</code> refers to the year data was recorded</li>
 <li><code>class</code> refers to ….</li>
@@ -470,39 +463,40 @@ interval</li>
 <li><code>response_id</code></li>
 </ul>
 </div>
-<div id="data-set-no-substance-abuse-contraception"
-class="section level2">
-<h2>2007 Data-set: No Substance Abuse &amp; Contraception</h2>
+<div id="data-set-reading-in-no-substance-abuse-contraception"
+class="section level4">
+<h4>2007 Data-set: Reading in No Substance Abuse &amp;
+Contraception</h4>
 <pre class="r"><code>no_alcohol_data_2007 = read_csv(&quot;./data/PRAM_2007_no_alcohol.csv&quot;)</code></pre>
 <pre><code>## Rows: 54 Columns: 27
-## -- Column specification --------------------------------------------------------
+## ── Column specification ──────────────────────────────────────────────────
 ## Delimiter: &quot;,&quot;
 ## chr (18): LocationAbbr, LocationDesc, Class, Topic, Question, DataSource, Re...
 ## dbl  (6): Year, Data_Value, Low_Confidence_Limit, High_Confidence_Limit, Sam...
 ## lgl  (3): Data_Value_Footnote_Symbol, Data_Value_Footnote, Data_Value_Std_Err
 ## 
-## i Use `spec()` to retrieve the full column specification for this data.
-## i Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
+## ℹ Use `spec()` to retrieve the full column specification for this data.
+## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
 <pre class="r"><code>no_tobacco_data_2007 = read_csv(&quot;./data/PRAM_2007_no_tobacco.csv&quot;)</code></pre>
 <pre><code>## Rows: 54 Columns: 27
-## -- Column specification --------------------------------------------------------
+## ── Column specification ──────────────────────────────────────────────────
 ## Delimiter: &quot;,&quot;
 ## chr (18): LocationAbbr, LocationDesc, Class, Topic, Question, DataSource, Re...
 ## dbl  (6): Year, Data_Value, Low_Confidence_Limit, High_Confidence_Limit, Sam...
 ## lgl  (3): Data_Value_Footnote_Symbol, Data_Value_Footnote, Data_Value_Std_Err
 ## 
-## i Use `spec()` to retrieve the full column specification for this data.
-## i Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
+## ℹ Use `spec()` to retrieve the full column specification for this data.
+## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
 <pre class="r"><code>contraception_data_2007 = read_csv(&quot;./data/PRAM_2007_contraception.csv&quot;)</code></pre>
 <pre><code>## Rows: 12030 Columns: 23
-## -- Column specification --------------------------------------------------------
+## ── Column specification ──────────────────────────────────────────────────
 ## Delimiter: &quot;,&quot;
 ## chr (16): LocationAbbr, Class, Topic, Question, DataSource, Response, Data_V...
 ## dbl  (6): Year, Data_Value, Low_Confidence_Limit, High_Confidence_Limit, Sam...
 ## lgl  (1): Data_Value_Std_Err
 ## 
-## i Use `spec()` to retrieve the full column specification for this data.
-## i Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
+## ℹ Use `spec()` to retrieve the full column specification for this data.
+## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
 <p>Cleaning the No Alcohol Data</p>
 <pre class="r"><code>cleaned_no_alc_2007 &lt;- no_alcohol_data_2007 |&gt;
   janitor::clean_names() |&gt;
@@ -517,7 +511,21 @@ view(cleaned_no_alc_2007)</code></pre>
   drop_na(response)
 
 view(cleaned_no_tobacco_2007)</code></pre>
-<p>Cleaning Contraception Use Data</p>
+</div>
+<div id="outcome-data-cleaning-infant-mortality-rate-data"
+class="section level4">
+<h4>Outcome Data: Cleaning Infant Mortality Rate Data</h4>
+<pre class="r"><code>cleaned_infant_mortality &lt;- infant_mortality_df |&gt;
+  janitor::clean_names() |&gt;
+  select(-data_value_std_err, -data_value_type, -data_value_unit, -data_value_footnote_symbol, -data_value_footnote) |&gt;
+  drop_na(response)
+
+view(cleaned_infant_mortality)</code></pre>
+</div>
+<div id="other-aspects-of-data-we-are-interested-in"
+class="section level4">
+<h4>Other aspects of data we are interested in</h4>
+<p>Use of Contraception</p>
 <pre class="r"><code>cleaned_contraception_2007 &lt;- contraception_data_2007 |&gt;
   janitor::clean_names() |&gt;
   select(-data_value_std_err, -geolocation, -data_value_type) |&gt;
@@ -526,19 +534,13 @@ view(cleaned_no_tobacco_2007)</code></pre>
   drop_na(response)
 
 view(cleaned_contraception_2007)</code></pre>
-</div>
-</div>
-<div id="cleaning-mortality-rate" class="section level1">
-<h1>Cleaning Mortality Rate</h1>
-<pre class="r"><code>cleaned_infant_mortality &lt;- infant_mortality_df |&gt;
-  janitor::clean_names() |&gt;
-  select(-data_value_std_err, -data_value_type, -data_value_unit, -data_value_footnote_symbol, -data_value_footnote) |&gt;
+<p>No Contraception Use</p>
+<pre class="r"><code>cleaned_no_contra_2007 &lt;- no_contraception_data_2007 %&gt;%
+  janitor::clean_names() %&gt;%
+  select(-geolocation, -data_value_type) %&gt;%
   drop_na(response)
 
-view(cleaned_infant_mortality)</code></pre>
-<div id="visualization-and-analysis" class="section level2">
-<h2>visualization and Analysis</h2>
-</div>
+view(cleaned_no_contra_2007)</code></pre>
 </div>
 
 

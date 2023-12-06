@@ -361,11 +361,28 @@ div.tocify {
 </div>
 
 
-<p>Testing plot</p>
-<pre class="r"><code>library(ggplot2)</code></pre>
-<pre class="r"><code>cleaned_alc_2007|&gt;
+<p>Loading pakcages for the plots</p>
+<pre class="r"><code>library(ggplot2)
+library(plotly)</code></pre>
+<pre><code>## Warning: package &#39;plotly&#39; was built under R version 4.3.2</code></pre>
+<pre><code>## 
+## Attaching package: &#39;plotly&#39;</code></pre>
+<pre><code>## The following object is masked from &#39;package:ggplot2&#39;:
+## 
+##     last_plot</code></pre>
+<pre><code>## The following object is masked from &#39;package:stats&#39;:
+## 
+##     filter</code></pre>
+<pre><code>## The following object is masked from &#39;package:graphics&#39;:
+## 
+##     layout</code></pre>
+<pre class="r"><code>library(flexdashboard)</code></pre>
+<p>Plot 1: Alcohol Consumption in relation to Infant Mortality</p>
+<pre class="r"><code>cleaned_alc_2007 |&gt;
   ggplot( aes( x = question, y = response))</code></pre>
 <p><img src="Visualization_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
+<p>Plot 2: Tobacco Consumption in relation to Infant Mortality</p>
+<p>Plot 3: No Consumption in relation to Infant Mortality</p>
 
 
 

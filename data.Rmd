@@ -31,11 +31,12 @@ Cleaning Alcohol data
 ```{r}
 cleaned_alc_2007 <- alcohol_data_2007 |>
   janitor::clean_names() |>
-  select(-data_value_std_err, -geolocation, -data_value_type) |>
+  select(-data_value_std_err, -data_value_type) |>
   filter(response != "DRINKER WHO QUIT") |>
   filter(response != "NONDRINKER") |>
   filter( response != "NO") |>
-  drop_na(response)
+  drop_na(response) |>
+  separate(geolocation, into = c("latitude", "longitude"), sep = ", ", convert = TRUE)
 
 view(cleaned_alc_2007)
 ```
@@ -50,7 +51,8 @@ cleaned_tobac_2007 <- tobacco_data_2007 |>
   filter(response != "NONSMOKER") |>
   filter(response != "None (0 cig)") |>
   filter( response != "NO") |>
-  drop_na(response)
+  drop_na(response) |>
+  separate(geolocation, into = c("latitude", "longitude"), sep = ", ", convert = TRUE)
 
 view(cleaned_tobac_2007)
 ```
@@ -116,7 +118,8 @@ view(cleaned_no_tobacco_2007)
 cleaned_infant_mortality <- infant_mortality_df |>
   janitor::clean_names() |>
   select(-data_value_std_err, -data_value_type, -data_value_unit, -data_value_footnote_symbol, -data_value_footnote) |>
-  drop_na(response)
+  drop_na(response) |>
+  separate(geolocation, into = c("latitude", "longitude"), sep = ", ", convert = TRUE)
 
 view(cleaned_infant_mortality)
 

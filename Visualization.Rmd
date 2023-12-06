@@ -63,12 +63,6 @@ ggplot() +
        y = "Y-axis Label") +
   theme_minimal()
 
-ggplot() +
-  geom_point(aes(x = cleaned_alc_2007$question, y = cleaned_infant_mortality$response), color = "blue", size = 3) +
-  labs(title = "Scatter Plot of Two Variables from Different Datasets",
-       x = "X-axis Label",
-       y = "Y-axis Label") +
-  theme_minimal()
 ```
 
 Plot 2: Tobacco Consumption in relation to Infant Mortality
@@ -79,16 +73,16 @@ Plot 3: No Consumption in relation to Infant Mortality
 Map Data 
 
 ```{r}
-leaflet() %>% 
-  addTiles() %>% 
-  addCircleMarkers(data = cleaned_alc_2007,
-                   lng = ~ longitude,  # Adjust column name if needed
-                   lat = ~ latitude,   # Adjust column name if needed
-                   label = ~Group.1,
-                   radius = 7,
-                   color = "orange",
-                   stroke = TRUE,
-                   fillOpacity = 0.75,
-                   popup = ~paste("Yes:", response))  # Adjust column name
+#leaflet() %>% 
+ # addTiles() %>% 
+  #addCircleMarkers(data = cleaned_alc_2007,
+   #                lng = ~ longitude,  # Adjust column name if needed
+    #               lat = ~ latitude,   # Adjust column name if needed
+     #              label = ~Group.1,
+      #             radius = 7,
+      #             color = "orange",
+       #            stroke = TRUE,
+        #           fillOpacity = 0.75,
+         #          popup = ~paste("Yes:", response))  # Adjust column name
 ```
 

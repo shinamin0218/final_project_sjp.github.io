@@ -78,8 +78,8 @@ Map Data
 
 ```{r}
 
-leaflet() %>% 
-  addTiles() %>% 
+leaflet() |> 
+  addTiles() |> 
   addCircleMarkers(data = cleaned_alc_2007,
                    lng = ~longitude,  # Adjust column name if needed
                    lat = ~latitude,   # Adjust column name if needed
@@ -88,9 +88,8 @@ leaflet() %>%
                    color = "orange",
                    stroke = TRUE,
                    fillOpacity = 0.75,
-                   popup = ~paste("Yes:", response)) 
-
-
+                   popup = ~paste("Response:", response)) 
 
 ```
+
 

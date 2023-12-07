@@ -15,9 +15,10 @@ library(flexdashboard)
 library(dplyr)
 library(tidyverse)
 library(leaflet)
+library(knitr)
 ```
 
-Reading in Cleaned Data 
+# Reading in Cleaned Data 
 
 ```{r, message=FALSE, warning=FALSE}
 alcohol_data_2007 = read_csv("./data/PRAM_2007_alcohol.csv")
@@ -194,5 +195,34 @@ leaflet() |>
                    stroke = TRUE,
                    fillOpacity = 0.75,
                    popup = ~paste("Response:", response))
+```
+
+#### States with the most infant mortality rates 
+
+The plot above shows the locations of infant mortality rate across the US. 
+
+```{r}
+infant_deaths <- cleaned_infant_mortality |>
+  filter(question == "Indicator of infant currently alive" & response == "NO") |>
+  group_by(location_desc) |>
+  summarize(total_infant_deaths = n()) |>
+  kable()
+
+print(infant_deaths)
+
+```
+
+
+The table provides a summary of total infant deaths by state, with each row representing a specific location. The 'location_desc' column denotes the state or city, and the 'total_infant_deaths' column indicates the corresponding number of infant deaths in each location. The data suggests variability in infant mortality rates across different regions, with some areas reporting higher or lower rates than others. For instance, states like Pennsylvania have a notably lower count of infant deaths, while others, such as Alaska and Arkansas, have higher counts. This summary provides an overview of the distribution of infant deaths across various geographical locations. 
+
+```{r}
+infant_deaths_race <- cleaned_infant_mortality |>
+  filter(break_out_category == "Maternal Race/Ethnicity" & break_out == "Other non-Hispanic")|>
+  filter(question == "Indicator of infant currently alive" & response == "NO")|>
+  group_by(break_out_category) |>
+  summarize(break_out_response = n()) |>
+  kable()
+
+print(infant_deaths_race)
 ```
 

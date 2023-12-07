@@ -29,6 +29,8 @@ no_contraception_data_2007 = read_csv("./data/PRAM_2007_no_contraception.csv")
 
 infant_mortality_df = read_csv("./data/PRAM_2007_infantmortality.csv")
 
+maternal_race = read_csv("./data/PRAM_2007_Maternal_Race.csv")
+
 # cleaned alcohol data 
 cleaned_alc_2007 <- alcohol_data_2007 |>
   janitor::clean_names() |>
@@ -51,6 +53,14 @@ cleaned_tobac_2007 <- tobacco_data_2007 |>
   filter(response != "None (0 cig)") |>
   filter( response != "NO") |>
   drop_na(response, geolocation) |>
+  separate(geolocation, into = c("latitude", "longitude"), sep = ", ", convert = TRUE) |>
+   mutate(latitude = as.numeric(str_replace_all(latitude, "\\(|\\)", "")),  # Convert to numeric and remove parentheses
+         longitude = as.numeric(str_replace_all(longitude, "\\(|\\)", "")))  # Convert to numeric and remove parentheses
+
+cleaned_mat_race <- maternal_race |>
+  janitor::clean_names() |>
+  select(-data_value_std_err, -data_value_type) |>
+  drop_na(response,geolocation) |>
   separate(geolocation, into = c("latitude", "longitude"), sep = ", ", convert = TRUE) |>
    mutate(latitude = as.numeric(str_replace_all(latitude, "\\(|\\)", "")),  # Convert to numeric and remove parentheses
          longitude = as.numeric(str_replace_all(longitude, "\\(|\\)", "")))  # Convert to numeric and remove parentheses
@@ -215,14 +225,23 @@ print(infant_deaths)
 
 The table provides a summary of total infant deaths by state, with each row representing a specific location. The `location_desc` column denotes the state, and the `total_infant_deaths` column indicates the corresponding number of infant deaths in each location. The data suggests variability in infant mortality rates across different regions, with some areas reporting higher or lower rates than others. For instance, states like Pennsylvania have a notably lower count of infant deaths, while others, such as Alaska and Arkansas, have higher counts. However, most of the data seemed to stay within the 35 to 50 range. This summary provides an overview of the distribution of infant deaths across various geographical locations. 
 
-```{r}
-infant_deaths_race <- cleaned_infant_mortality |>
-  filter(break_out_category == "Maternal Race/Ethnicity" & break_out == "Other non-Hispanic")|>
-  filter(question == "Indicator of infant currently alive" & response == "NO")|>
-  group_by(break_out_category) |>
-  summarize(break_out_response = n()) |>
-  kable()
 
-print(infant_deaths_race)
+```{r}
+filtered_mortality_race <- cleaned_infant_mortality %>%
+  filter(break_out_category == "Maternal Race/Ethnicity" & (break_out == "Hispanic" | break_out == "Non-hispanic" | break_out == "White, non-Hispanic")) |>
+ # filter(break_out_category == "Maternal Hispanic" & (break_out == "Non-hispanic")) |>
+  filter(question == "Indicator of infant currently alive" & response == "NO") 
+
+print(filtered_mortality_race)
+
+view(filtered_mortality_race)
+
+plot_infant_deaths <- ggplot(filtered_mortality_race, aes(x = break_out, fill = break_out)) +
+  geom_bar() +
+  labs(title = "Infant Deaths by Ethnicity",
+       x = "Ethnicity",
+       y = "Total Infant Deaths") +
+  scale_fill_manual(values = c("Hispanic" = "red", "Non-hispanic" = "blue", "White, non-Hispanic" = "green")) +
+  theme_minimal()
 ```
 

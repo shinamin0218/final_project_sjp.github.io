@@ -114,11 +114,6 @@ Plot 1: Alcohol Consumption in relation to Infant Mortality
 ```{r, message=FALSE, warning=FALSE}
 
 
-cleaned_infant_mortality <- infant_mortality_df |>
-  janitor::clean_names() |>
-  select(-data_value_std_err, -data_value_type, -data_value_unit, -data_value_footnote_symbol, -data_value_footnote) |>
-  drop_na(response)
-
 # Plot of question and responses for alcohol
 
 cleaned_alc_2007 |>
@@ -186,3 +181,18 @@ leaflet() |>
 
 
 ### Map of Infant Mortality Rate
+
+```{r}
+leaflet() |> 
+  addTiles() |> 
+  addCircleMarkers(data = cleaned_infant_mortality,
+                   lng = ~longitude,  # Adjust column name if needed
+                   lat = ~latitude,   # Adjust column name if needed
+                   label = ~location_abbr,   # Assuming 'Group.1' is a column in your data
+                   radius = 7,
+                   color = "orange",
+                   stroke = TRUE,
+                   fillOpacity = 0.75,
+                   popup = ~paste("Response:", response))
+```
+

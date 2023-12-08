@@ -9,7 +9,7 @@ output:
 
 ### Group Members: Shina, Pavithra and Jenna
 
-<img src="images/grouppic.jpeg" style="width:75%">
+<img src="images/grouppic.jpeg" style="width:50%">
 
 
 

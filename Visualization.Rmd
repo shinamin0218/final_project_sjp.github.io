@@ -186,7 +186,7 @@ gg_plot <- cleaned_tobac_2007 %>%
   labs(
     x = "Question",
     y = "Response",
-    title = "Alcohol Consumption by State"
+    title = "Tobacco Use by State"
   )
 
 # Extract data directly from the original data frame
@@ -208,23 +208,6 @@ plot_ly(data = plot_data, x = ~location_abbr, y = ~count, color = ~response, typ
 
 
 
-```{r}
-
-cleaned_tobac_2007 |>
-  ggplot(aes(x = question, fill = response)) +
-  geom_bar(position = "dodge") +
-  labs(title = "Questions and Responses", x = "Questions", y = "Count") +
-  theme_minimal() +
-  theme(axis.text.x = element_text(angle = 45, hjust = 1, size = 2)) +  # Adjust the size parameter
-  labs(
-    x = "Question",
-    y = "Response",
-    title = "Questions vs Response of Tobacco Use"
-  )
-```
-
-
-Plot 3: No Consumption in relation to Infant Mortality
 
 ### Map of Maternal Alcohol Use
 
@@ -312,8 +295,10 @@ plot_infant_deaths <- ggplot(filtered_mortality_race, aes(x = break_out, fill = 
   labs(title = "Infant Deaths by Ethnicity",
        x = "Ethnicity",
        y = "Total Infant Deaths") +
-  scale_fill_manual(values = c("Hispanic" = "red", "Non-hispanic" = "blue", "White, non-Hispanic" = "green")) +
+  scale_fill_manual(values = c("Hispanic" = "blue", "Non-hispanic" = "green", "White, non-Hispanic" = "pink")) +
   theme_minimal()
+
+print(plot_infant_deaths)
 ```
 
 The `plot_infant_deaths` above shows a plot of infant deaths categorized by whether they were Hispanic or not. The graph shows that those who were not Hispanic had a higher infant death count than those who were Hispanic.

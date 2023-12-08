@@ -70,7 +70,7 @@ view(cleaned_tobac_2007)
 - `question` the question that was recorded 
 - `data_source` where the recorded data came from
 - `response` participants response to the question 
-- `data_value` 
+- `data_value` number of participants answered yes to the question
 - `low_confidence_limit` the lower bound of the confidence interval 
 - `high_confidence-limit` the upper bound of the confidence interval
 - `sample_size`

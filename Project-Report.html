@@ -13,7 +13,7 @@
 
 <title>Infant Fatality Across the US</title>
 
-<script src="site_libs/header-attrs-2.25/header-attrs.js"></script>
+<script src="site_libs/header-attrs-2.24/header-attrs.js"></script>
 <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.5/css/sandstone.min.css" rel="stylesheet" />
@@ -638,6 +638,26 @@ continued drinking the same or more amount of alcohol, 1200 reduced how
 much they consumed alcohol, and about 700 nondrinkers resumed drinking.
 It is obvious that more mothers continued drinking the same amount or
 more alcohol than reducing how much they consumed.</p>
+</div>
+<div id="maternal-tobacco-use" class="section level3">
+<h3>Maternal Tobacco Use</h3>
+<pre class="r"><code>maternal_tobac_plot &lt;- cleaned_tobac_2007 |&gt;
+  ggplot(aes(x = question, fill = response)) +
+  geom_bar(position = &quot;dodge&quot;) +
+  labs(title = &quot;Questions and Responses&quot;, x = &quot;Questions&quot;, y = &quot;Count&quot;) +
+  theme_minimal() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1, size = 8)) +  # Adjust the size parameter
+  labs(
+    x = &quot;Question&quot;,
+    y = &quot;Response&quot;,
+    title = &quot;Questions vs Response of Tobacco Use&quot;
+  )</code></pre>
+<p>The <code>maternal_tobac_plot</code> displays the questions and
+responses in terms of maternal use of tobacco. The three questions we
+focused on was cigarette use before, during and after conception. From
+the graph, we can see that in the last 3 months of pregnancy, about 1700
+individuals smoked 1-5 cigarettes a day, about 1700 smoked 6-10
+cigarettes a day, and about 700 smoked 41+ a day.</p>
 </div>
 </div>
 <div id="discussion" class="section level1">

@@ -139,8 +139,6 @@ cleaned_alc_2007 |>
     title =  "Questions vs Response of Alcohol Consumption"
   )
 
-# creating "yes" variable 
-
 
 # plot showing infant mortality rate vs alcohol consumption
 ggplot() +

@@ -209,43 +209,44 @@ leaflet() |>
                    lng = ~longitude,  # Adjust column name if needed
                    lat = ~latitude,   # Adjust column name if needed
                    label = ~location_abbr,   # Assuming 'Group.1' is a column in your data
-                   radius = 7,
-                   color = "orange",
+                   radius = ~data_value * 0.12,
+                   color = "blue",
                    stroke = TRUE,
-                   fillOpacity = 0.75,
+                   fillOpacity = 0.1,
                    popup = ~paste("Response:", response)) 
 ```
 
 ### Map of Maternal Tobacco use
 
 ```{r, message=FALSE, warning=FALSE}
-leaflet() |> 
-  addTiles() |> 
+leaflet() %>%
+  addTiles() %>%
   addCircleMarkers(data = cleaned_tobac_2007,
-                   lng = ~longitude,  # Adjust column name if needed
-                   lat = ~latitude,   # Adjust column name if needed
-                   label = ~location_abbr,   # Assuming 'Group.1' is a column in your data
-                   radius = 7,
-                   color = "orange",
+                   lng = ~longitude,  
+                   lat = ~latitude,   
+                   label = ~location_abbr,   
+                   radius = ~data_value * 0.12,
+                   color = "magenta",
                    stroke = TRUE,
-                   fillOpacity = 0.75,
-                   popup = ~paste("Response:", response)) 
+                   fillOpacity = 0.1,
+                   popup = ~paste("Response:", response),
+                   group = ~location_abbr)
 ```
 
 
 ### Map of Infant Mortality Rate
 
 ```{r}
-leaflet() |> 
-  addTiles() |> 
+leaflet() %>%
+  addTiles() %>%
   addCircleMarkers(data = cleaned_infant_mortality,
-                   lng = ~longitude,  # Adjust column name if needed
-                   lat = ~latitude,   # Adjust column name if needed
-                   label = ~location_abbr,   # Assuming 'Group.1' is a column in your data
-                   radius = 7,
+                   lng = ~longitude,
+                   lat = ~latitude,
+                   label = ~location_abbr,
+                   radius = ~data_value * 0.12,
                    color = "orange",
                    stroke = TRUE,
-                   fillOpacity = 0.75,
+                   fillOpacity = 0.5,
                    popup = ~paste("Response:", response))
 ```
 

@@ -8,7 +8,7 @@ output:
 ---
 Loading packages for the plots
 
-```{r message=FALSE}
+```{r message=FALSE, warning=FALSE}
 library(ggplot2)
 library(plotly)
 library(flexdashboard)
@@ -229,7 +229,6 @@ The table provides a summary of total infant deaths by state, with each row repr
 ```{r}
 filtered_mortality_race <- cleaned_infant_mortality %>%
   filter(break_out_category == "Maternal Race/Ethnicity" & (break_out == "Hispanic" | break_out == "Non-hispanic" | break_out == "White, non-Hispanic")) |>
- # filter(break_out_category == "Maternal Hispanic" & (break_out == "Non-hispanic")) |>
   filter(question == "Indicator of infant currently alive" & response == "NO") 
 
 print(filtered_mortality_race)
@@ -245,3 +244,4 @@ plot_infant_deaths <- ggplot(filtered_mortality_race, aes(x = break_out, fill = 
   theme_minimal()
 ```
 
+The `plot_infant_deaths` above shows a plot of infant deaths categorized by whether they were Hispanic or not. The graph shows that those who were not Hispanic had a higher infant death count than those who were Hispanic.

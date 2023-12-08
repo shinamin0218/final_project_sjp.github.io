@@ -155,25 +155,6 @@ plot_ly(data = plot_data, x = ~question, y = ~count, color = ~response, type = "
     barmode = "stack"
   )
 
-
-# plot showing infant mortality rate vs alcohol consumption
-ggplot() +
-  geom_point(data = cleaned_alc_2007, aes(x = question, y = response), color = "blue", size = 3) +
-  geom_point(data = cleaned_infant_mortality, aes(x = question, y = response), color = "red", size = 3) +
-  labs(title = "Scatter Plot of Two Variables from Different Datasets",
-       x = "X-axis Label",
-       y = "Y-axis Label") +
-  theme_minimal()
-
-plot_ly() %>%
-  add_trace(data = cleaned_alc_2007, type = "scatter", mode = "markers",
-            x = ~question, y = ~response, marker = list(color = "blue", size = 3)) %>%
-  add_trace(data = cleaned_infant_mortality, type = "scatter", mode = "markers",
-            x = ~question, y = ~response, marker = list(color = "red", size = 3)) %>%
-  layout(title = "Scatter Plot of Two Variables from Different Datasets",
-         xaxis = list(title = "X-axis Label", tickfont = list(size = 8)),
-         yaxis = list(title = "Y-axis Label"),
-         showlegend = FALSE)
 ```
 
 Plot 2: Tobacco Plots
@@ -196,7 +177,7 @@ gg_plot <- cleaned_tobac_2007 %>%
   labs(
     x = "Question",
     y = "Response",
-    title = "Alcohol Consumption by State"
+    title = "Tobacco Use by State"
   )
 
 # Extract data directly from the original data frame
@@ -218,23 +199,6 @@ plot_ly(data = plot_data, x = ~location_abbr, y = ~count, color = ~response, typ
 
 
 
-```{r}
-
-cleaned_tobac_2007 |>
-  ggplot(aes(x = question, fill = response)) +
-  geom_bar(position = "dodge") +
-  labs(title = "Questions and Responses", x = "Questions", y = "Count") +
-  theme_minimal() +
-  theme(axis.text.x = element_text(angle = 45, hjust = 1, size = 2)) +  # Adjust the size parameter
-  labs(
-    x = "Question",
-    y = "Response",
-    title = "Questions vs Response of Tobacco Use"
-  )
-```
-
-
-Plot 3: No Consumption in relation to Infant Mortality
 
 ### Map of Maternal Alcohol Use
 
@@ -245,43 +209,44 @@ leaflet() |>
                    lng = ~longitude,  # Adjust column name if needed
                    lat = ~latitude,   # Adjust column name if needed
                    label = ~location_abbr,   # Assuming 'Group.1' is a column in your data
-                   radius = 7,
-                   color = "orange",
+                   radius = ~data_value * 0.12,
+                   color = "blue",
                    stroke = TRUE,
-                   fillOpacity = 0.75,
+                   fillOpacity = 0.1,
                    popup = ~paste("Response:", response)) 
 ```
 
 ### Map of Maternal Tobacco use
 
 ```{r, message=FALSE, warning=FALSE}
-leaflet() |> 
-  addTiles() |> 
+leaflet() %>%
+  addTiles() %>%
   addCircleMarkers(data = cleaned_tobac_2007,
-                   lng = ~longitude,  # Adjust column name if needed
-                   lat = ~latitude,   # Adjust column name if needed
-                   label = ~location_abbr,   # Assuming 'Group.1' is a column in your data
-                   radius = 7,
-                   color = "orange",
+                   lng = ~longitude,  
+                   lat = ~latitude,   
+                   label = ~location_abbr,   
+                   radius = ~data_value * 0.12,
+                   color = "magenta",
                    stroke = TRUE,
-                   fillOpacity = 0.75,
-                   popup = ~paste("Response:", response)) 
+                   fillOpacity = 0.1,
+                   popup = ~paste("Response:", response),
+                   group = ~location_abbr)
 ```
 
 
 ### Map of Infant Mortality Rate
 
 ```{r}
-leaflet() |> 
-  addTiles() |> 
+leaflet() %>%
+  addTiles() %>%
   addCircleMarkers(data = cleaned_infant_mortality,
-                   lng = ~longitude,  # Adjust column name if needed
-                   lat = ~latitude,   # Adjust column name if needed
-                   label = ~location_abbr,   # Assuming 'Group.1' is a column in your data
-                   radius = 7,
+                   lng = ~longitude,
+                   lat = ~latitude,
+                   label = ~location_abbr,
+                   radius = ~data_value * 0.12,
                    color = "orange",
                    stroke = TRUE,
-                   fillOpacity = 0.75,
+                   fillOpacity = 0.5,
                    popup = ~paste("Response:", response))
 ```
 
@@ -304,7 +269,7 @@ knitr::kable(infant_deaths)
 The table provides a summary of total infant deaths by state, with each row representing a specific location. The `location_desc` column denotes the state, and the `total_infant_deaths` column indicates the corresponding number of infant deaths in each location. The data suggests variability in infant mortality rates across different regions, with some areas reporting higher or lower rates than others. For instance, states like Pennsylvania have a notably lower count of infant deaths, while others, such as Alaska and Arkansas, have higher counts. However, most of the data seemed to stay within the 35 to 50 range. This summary provides an overview of the distribution of infant deaths across various geographical locations. 
 
 
-
+# Plot of Infant Mortality and Race/Ethnicity
 
 ```{r}
 filtered_mortality_race <- cleaned_infant_mortality %>%
@@ -322,11 +287,37 @@ plot_infant_deaths <- ggplot(filtered_mortality_race, aes(x = break_out, fill = 
   labs(title = "Infant Deaths by Ethnicity",
        x = "Ethnicity",
        y = "Total Infant Deaths") +
-  scale_fill_manual(values = c("Hispanic" = "red", "Non-hispanic" = "blue", "White, non-Hispanic" = "green")) +
+  scale_fill_manual(values = c("Hispanic" = "blue", "Non-hispanic" = "green", "White, non-Hispanic" = "pink")) +
   theme_minimal()
+
+print(plot_infant_deaths)
 ```
 
 The `plot_infant_deaths` above shows a plot of infant deaths categorized by whether they were Hispanic or not. The graph shows that those who were not Hispanic had a higher infant death count than those who were Hispanic.
+
+#Plot of Infant Mortality and Maternal Income
+
+```{r}
+
+filtered_mortality_income <- cleaned_infant_mortality %>%
+  filter(break_out_category == "Income (years 2004 and beyond)" &
+         (break_out %in% c("Less than $10,000", "$25,000 to $49,999", "$50,000 or more")) &
+         question == "Indicator of infant currently alive" & response == "NO")
+
+view(filtered_mortality_income)
+
+plot_infant_income <- ggplot(filtered_mortality_income, aes(x = break_out, fill = break_out)) +
+  geom_bar() +
+  labs(title = "Infant Deaths by Income",
+       x = "Income",
+       y = "Total Infant Deaths") +
+  scale_fill_manual(values = c("Less than $10,000" = "blue", "$25,000 to $49,999" = "purple", "$50,000 or more" = "pink")) +
+  theme_minimal()
+
+print(plot_infant_income)
+
+```
+
 
 # creating a linear regression
 ```{r}

@@ -132,7 +132,7 @@ cleaned_alc_2007 |>
   geom_bar(position = "dodge") +
   labs(title = "Questions and Responses", x = "Questions", y = "Count") +
   theme_minimal() +
-  theme(axis.text.x = element_text(angle = 45, hjust = 1))+
+  theme(axis.text.x = element_text(angle = 45, hjust = 1, size = 4))+
   labs(
     x = "Question",
     y = "Response",
@@ -151,7 +151,37 @@ ggplot() +
 
 ```
 
-Plot 2: Tobacco Consumption in relation to Infant Mortality
+Plot 2: Tobacco Plots
+
+```{r}
+cleaned_tobac_2007 |>
+  ggplot(aes(x = location_abbr, fill = response)) +
+  geom_bar(position = "dodge") +
+  labs(title = "Questions and Responses", x = "Questions", y = "Count") +
+  theme_minimal() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))+
+  labs(
+    x = "Question",
+    y = "Response",
+    title =  "Alcohol Consumption by State"
+  )
+```
+
+
+```{r}
+
+cleaned_tobac_2007 |>
+  ggplot(aes(x = question, fill = response)) +
+  geom_bar(position = "dodge") +
+  labs(title = "Questions and Responses", x = "Questions", y = "Count") +
+  theme_minimal() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1, size = 2)) +  # Adjust the size parameter
+  labs(
+    x = "Question",
+    y = "Response",
+    title = "Questions vs Response of Tobacco Use"
+  )
+```
 
 
 Plot 3: No Consumption in relation to Infant Mortality
@@ -247,7 +277,10 @@ plot_infant_deaths <- ggplot(filtered_mortality_race, aes(x = break_out, fill = 
 ```
 
 The `plot_infant_deaths` above shows a plot of infant deaths categorized by whether they were Hispanic or not. The graph shows that those who were not Hispanic had a higher infant death count than those who were Hispanic.
+
+# creating a linear regression
 ```{r}
 merged_data <- left_join(cleaned_alc_2007, cleaned_infant_mortality, by = "year") %>%
   select(location_abbr.x, location_abbr.y, location_desc.x, location_desc.y, topic.x, topic.y, question.x, response.x, class.y, topic.y, question.y, break_out_category.y, response.y)
 ```
+

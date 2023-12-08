@@ -1,5 +1,5 @@
 ---
-title: "Project Work"
+title: "Infant Fatality Across the US"
 output: 
   html_document:
     toc: true
@@ -9,6 +9,13 @@ output:
 
 Both substance abuse and maternal/infant mortality run rampant in the United States, and with the the use of the CDC 2007 PRAM Data set, we are interested in looking at the relationships between these variables. 
 
+## *Data Cleaning* 
+
+We loaded in data from the PRAMS 2007 dataset. This dataset provided information about many different aspects about maternal health and birth that we were interested in addressing. 
+
+After loading in the data, we cleaned each dataset by removing unecessary columns. We then filtered the responses to tailor the dataframe to each dataset, such as removing "no" responses to if mothers were smoking during conception to create a dataset displaying data for mothers who were smoking during conception. 
+
+We used the seperate function for the "geolocation" variable by splitting it into a longitude and latitude variable that was used in creating our leaflet plots.
 
 ## Initial questions
 
@@ -22,11 +29,11 @@ Upon reviewing reviewing the 2007 CDC PRAM data set, and thoroughly understandin
 Other parts of the data that interested us was also the use of contraception in the sample demographic. 
 
 
-## Motivation for this Project
+## *Motivation for this Project*
 We are interested in looking at how pregnancy outcomes changes among mothers who drank or smoked cigarettes before conception, and comparing it to mothers who did not abuse any substances. As a group, we were collectively interested in both Maternal Child Health and Substance Abuse and this was an ideal way to combine those two interests. The demographics, social dynamics, and healthcare system in the United States provide a unique perspective on the outcomes of maternal health and substance abuse. We are interested in learning more about the relationship between substance abuse and infant mortality rates. 
 
 
-## Related Work
+## *Related Work*
 
 ##### Alcohol use during pregnancy
 
@@ -44,3 +51,8 @@ The consumption of alcohol during pregnancy has been correlated with a spectrum 
 While specific data on infant mortality rates were not explicitly provided, it is noteworthy that maternal smoking during pregnancy constitutes a well-established risk factor for sudden unexpected infant death (SUID). The risk of SUID more than doubled (adjusted odds ratio [aOR] = 2.44; 95% confidence interval [CI] 2.31–2.57) in the presence of any maternal smoking during pregnancy. Furthermore, a twofold increase in SUID risk was observed when comparing no smoking to smoking just 1 cigarette daily throughout pregnancy. 
 [Reference](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6564075/)
 
+# Exploratory Analysis
+
+### *Infant Deaths Across the US*
+
+# *Discussion*

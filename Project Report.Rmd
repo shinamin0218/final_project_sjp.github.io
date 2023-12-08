@@ -53,6 +53,6 @@ While specific data on infant mortality rates were not explicitly provided, it i
 
 # Exploratory Analysis
 
-### *Infant Deaths Across the US*
+### Infant Deaths Across the US
 
 # *Discussion*

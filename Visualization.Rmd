@@ -247,3 +247,7 @@ plot_infant_deaths <- ggplot(filtered_mortality_race, aes(x = break_out, fill = 
 ```
 
 The `plot_infant_deaths` above shows a plot of infant deaths categorized by whether they were Hispanic or not. The graph shows that those who were not Hispanic had a higher infant death count than those who were Hispanic.
+```{r}
+merged_data <- left_join(cleaned_alc_2007, cleaned_infant_mortality, by = "year") %>%
+  select(location_abbr.x, location_abbr.y, location_desc.x, location_desc.y, topic.x, topic.y, question.x, response.x, class.y, topic.y, question.y, break_out_category.y, response.y)
+```

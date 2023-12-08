@@ -186,7 +186,7 @@ gg_plot <- cleaned_tobac_2007 %>%
   labs(
     x = "Question",
     y = "Response",
-    title = "Alcohol Consumption by State"
+    title = "Tobacco Use by State"
   )
 
 # Extract data directly from the original data frame
@@ -208,23 +208,6 @@ plot_ly(data = plot_data, x = ~location_abbr, y = ~count, color = ~response, typ
 
 
 
-```{r}
-
-cleaned_tobac_2007 |>
-  ggplot(aes(x = question, fill = response)) +
-  geom_bar(position = "dodge") +
-  labs(title = "Questions and Responses", x = "Questions", y = "Count") +
-  theme_minimal() +
-  theme(axis.text.x = element_text(angle = 45, hjust = 1, size = 2)) +  # Adjust the size parameter
-  labs(
-    x = "Question",
-    y = "Response",
-    title = "Questions vs Response of Tobacco Use"
-  )
-```
-
-
-Plot 3: No Consumption in relation to Infant Mortality
 
 ### Map of Maternal Alcohol Use
 

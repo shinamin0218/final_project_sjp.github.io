@@ -1,5 +1,5 @@
 ---
-title: "About"
+title: "About Us"
 output: 
   html_document:
     toc: true
@@ -7,4 +7,20 @@ output:
 ---
 
 
-Hi, we are Shina, Pavithra and Jenna from p8015 Fall 2
+Hi, we are Shina, Pavithra and Jenna from p8015 Fall 2!
+
+Thank you for viewing our website :) Feel free to learn more about us by our socials linked below:
+
+### [Shina Min]
+
+
+
+### [Jenna Mohammed](Jenna-Mohammed.github.io)
+
+Hi! My name is Jenna Mohammed, and I am a first year MS student studying Epidemiology at the Mailman School of Public Health. I'm interested in Psychiatric and Neurological Epidemiology :)
+
+Fun Fact: I play cello!!
+
+### Pavithra 
+
+

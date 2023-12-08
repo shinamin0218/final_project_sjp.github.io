@@ -268,7 +268,7 @@ knitr::kable(infant_deaths)
 The table provides a summary of total infant deaths by state, with each row representing a specific location. The `location_desc` column denotes the state, and the `total_infant_deaths` column indicates the corresponding number of infant deaths in each location. The data suggests variability in infant mortality rates across different regions, with some areas reporting higher or lower rates than others. For instance, states like Pennsylvania have a notably lower count of infant deaths, while others, such as Alaska and Arkansas, have higher counts. However, most of the data seemed to stay within the 35 to 50 range. This summary provides an overview of the distribution of infant deaths across various geographical locations. 
 
 
-
+# Plot of Infant Mortality and Race/Ethnicity
 
 ```{r}
 filtered_mortality_race <- cleaned_infant_mortality %>%
@@ -293,6 +293,30 @@ print(plot_infant_deaths)
 ```
 
 The `plot_infant_deaths` above shows a plot of infant deaths categorized by whether they were Hispanic or not. The graph shows that those who were not Hispanic had a higher infant death count than those who were Hispanic.
+
+#Plot of Infant Mortality and Maternal Income
+
+```{r}
+
+filtered_mortality_income <- cleaned_infant_mortality %>%
+  filter(break_out_category == "Income (years 2004 and beyond)" &
+         (break_out %in% c("Less than $10,000", "$25,000 to $49,999", "$50,000 or more")) &
+         question == "Indicator of infant currently alive" & response == "NO")
+
+view(filtered_mortality_income)
+
+plot_infant_income <- ggplot(filtered_mortality_income, aes(x = break_out, fill = break_out)) +
+  geom_bar() +
+  labs(title = "Infant Deaths by Income",
+       x = "Income",
+       y = "Total Infant Deaths") +
+  scale_fill_manual(values = c("Less than $10,000" = "blue", "$25,000 to $49,999" = "purple", "$50,000 or more" = "pink")) +
+  theme_minimal()
+
+print(plot_infant_income)
+
+```
+
 
 # creating a linear regression
 ```{r}

@@ -7,10 +7,10 @@ output:
 ---
 
 
-### Group Members: Shina, Pavithra and Jenna
 
-<img src="images/grouppic.jpeg" style="width:50%">
 
+
+![](images/Infant_mortality.jpeg)
 
 
 

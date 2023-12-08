@@ -11,6 +11,8 @@ navbar:
       href: proposal.html
     - text: "Visualization and Analysis"
       href: visualization.html
+    - text: "About"
+      href: about.html
     - icon: fa-envelope fa-lg
       href: mailto:<you@youremail.com>
     - icon: fa-github fa-lg

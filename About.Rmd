@@ -6,14 +6,18 @@ output:
     toc_float: true
 ---
 
+### Group Members: Shina, Pavithra and Jenna
 
-Hi, we are Shina, Pavithra and Jenna from p8015 Fall 2!
+<img src="images/grouppic.jpeg" style="width:60%">
+
+
+Hi, we are Shina, Pavithra and Jenna from p8015 Fall 2023!
 
 Thank you for viewing our website :) Feel free to learn more about us by our socials linked below:
 
 ### [Shina Min](https://shinamin0218.github.io/)
 
-Hello fellow Public Health students~ my name is Shina Min and I am currently pursuing a Master's degree in Epidemiology at Columbia University with a strong interest in the fields of aging, and chronic diseases, espically Alzheimer's disease!
+Hello fellow Public Health students! My name is Shina Min, and I am currently pursuing a Master's degree in Epidemiology at Columbia University. I have a keen interest in the fields of aging and chronic diseases, with a particular focus on Alzheimer's disease. I am passionate about contributing to research and interventions that address the challenges posed by these health issues. Looking forward to connecting and collaborating with like-minded individuals in our shared journey in the field of Public Health!
 
 Fun Fact: My favorite movie is La La Land!
 

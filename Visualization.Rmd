@@ -155,23 +155,13 @@ plot_ly(data = plot_data, x = ~question, y = ~count, color = ~response, type = "
     barmode = "stack"
   )
 
-
-# plot showing infant mortality rate vs alcohol consumption
-ggplot() +
-  geom_point(data = cleaned_alc_2007, aes(x = question, y = response), color = "blue", size = 3) +
-  geom_point(data = cleaned_infant_mortality, aes(x = question, y = response), color = "red", size = 3) +
-  labs(title = "Scatter Plot of Two Variables from Different Datasets",
-       x = "X-axis Label",
-       y = "Y-axis Label") +
-  theme_minimal()
-
-plot_ly() %>%
+  plot_ly() %>%
   add_trace(data = cleaned_alc_2007, type = "scatter", mode = "markers",
             x = ~question, y = ~response, marker = list(color = "blue", size = 3)) %>%
   add_trace(data = cleaned_infant_mortality, type = "scatter", mode = "markers",
             x = ~question, y = ~response, marker = list(color = "red", size = 3)) %>%
   layout(title = "Scatter Plot of Two Variables from Different Datasets",
-         xaxis = list(title = "X-axis Label", tickfont = list(size = 8)),
+         xaxis = list(title = "X-axis Label", tickfont = list(size = 6)),
          yaxis = list(title = "Y-axis Label"),
          showlegend = FALSE)
 ```

@@ -216,3 +216,5 @@ print(maternal_tobac_plot)
 The `maternal_tobac_plot` displays the questions and responses in terms of maternal use of tobacco. The three questions we focused on was cigarette use before, during and after conception. From the graph, we can see that in the last 3 months of pregnancy, about 1700 individuals smoked 1-5 cigarettes a day, about 1700 smoked 6-10 cigarettes a day, and about 700 smoked 41+ a day. 
 
 # Discussion
+
+Test 

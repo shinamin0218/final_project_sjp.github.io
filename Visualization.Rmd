@@ -134,7 +134,7 @@ gg_plot <- cleaned_alc_2007 %>%
   geom_bar(position = "dodge") +
   labs(title = "Questions and Responses", x = "Questions", y = "Count") +
   theme_minimal() +
-  theme(axis.text.x = element_text(angle = 45, hjust = 6, size = 3)) +
+  theme(axis.text.x = element_text(angle = 45, hjust = 5, size = 2)) +
   labs(
     x = "Question",
     y = "Response",
@@ -150,7 +150,7 @@ plot_data <- cleaned_alc_2007 %>%
 plot_ly(data = plot_data, x = ~question, y = ~count, color = ~response, type = "bar", split = ~response) %>%
   layout(
     title = "Questions vs Response of Alcohol Consumption",
-    xaxis = list(title = "Question"),
+    xaxis = list(title = "Question",tickfont = list(size = 5)),
     yaxis = list(title = "Response"),
     barmode = "stack"
   )
@@ -171,7 +171,7 @@ plot_ly() %>%
   add_trace(data = cleaned_infant_mortality, type = "scatter", mode = "markers",
             x = ~question, y = ~response, marker = list(color = "red", size = 3)) %>%
   layout(title = "Scatter Plot of Two Variables from Different Datasets",
-         xaxis = list(title = "X-axis Label"),
+         xaxis = list(title = "X-axis Label", tickfont = list(size = 8)),
          yaxis = list(title = "Y-axis Label"),
          showlegend = FALSE)
 ```

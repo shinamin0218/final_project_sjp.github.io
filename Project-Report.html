@@ -13,7 +13,7 @@
 
 <title>Infant Fatality Across the US</title>
 
-<script src="site_libs/header-attrs-2.25/header-attrs.js"></script>
+<script src="site_libs/header-attrs-2.24/header-attrs.js"></script>
 <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.5/css/sandstone.min.css" rel="stylesheet" />
@@ -460,10 +460,185 @@ href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6564075/">Reference</a></p>
 <h1>Exploratory Analysis</h1>
 <div id="infant-deaths-across-the-us" class="section level3">
 <h3>Infant Deaths Across the US</h3>
+<pre class="r"><code>infant_deaths &lt;- cleaned_infant_mortality %&gt;%
+  filter(question == &quot;Indicator of infant currently alive&quot; &amp; response == &quot;NO&quot;) %&gt;%
+  group_by(location_desc) %&gt;%
+  summarize(total_infant_deaths = n())
+
+# Display the table using knitr::kable()
+knitr::kable(infant_deaths)</code></pre>
+<table>
+<thead>
+<tr class="header">
+<th align="left">location_desc</th>
+<th align="right">total_infant_deaths</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Alaska</td>
+<td align="right">45</td>
+</tr>
+<tr class="even">
+<td align="left">Arkansas</td>
+<td align="right">45</td>
+</tr>
+<tr class="odd">
+<td align="left">Colorado</td>
+<td align="right">47</td>
+</tr>
+<tr class="even">
+<td align="left">Delaware</td>
+<td align="right">40</td>
+</tr>
+<tr class="odd">
+<td align="left">Georgia</td>
+<td align="right">43</td>
+</tr>
+<tr class="even">
+<td align="left">Hawaii</td>
+<td align="right">45</td>
+</tr>
+<tr class="odd">
+<td align="left">Illinois</td>
+<td align="right">47</td>
+</tr>
+<tr class="even">
+<td align="left">Maine</td>
+<td align="right">42</td>
+</tr>
+<tr class="odd">
+<td align="left">Maryland</td>
+<td align="right">45</td>
+</tr>
+<tr class="even">
+<td align="left">Massachusetts</td>
+<td align="right">44</td>
+</tr>
+<tr class="odd">
+<td align="left">Michigan</td>
+<td align="right">43</td>
+</tr>
+<tr class="even">
+<td align="left">Minnesota</td>
+<td align="right">41</td>
+</tr>
+<tr class="odd">
+<td align="left">Missouri</td>
+<td align="right">42</td>
+</tr>
+<tr class="even">
+<td align="left">Nebraska</td>
+<td align="right">45</td>
+</tr>
+<tr class="odd">
+<td align="left">New Jersey</td>
+<td align="right">39</td>
+</tr>
+<tr class="even">
+<td align="left">New York (excluding NYC)</td>
+<td align="right">47</td>
+</tr>
+<tr class="odd">
+<td align="left">New York City</td>
+<td align="right">47</td>
+</tr>
+<tr class="even">
+<td align="left">North Carolina</td>
+<td align="right">47</td>
+</tr>
+<tr class="odd">
+<td align="left">Ohio</td>
+<td align="right">46</td>
+</tr>
+<tr class="even">
+<td align="left">Oklahoma</td>
+<td align="right">47</td>
+</tr>
+<tr class="odd">
+<td align="left">Oregon</td>
+<td align="right">46</td>
+</tr>
+<tr class="even">
+<td align="left">Pennsylvania</td>
+<td align="right">3</td>
+</tr>
+<tr class="odd">
+<td align="left">Rhode Island</td>
+<td align="right">46</td>
+</tr>
+<tr class="even">
+<td align="left">South Carolina</td>
+<td align="right">47</td>
+</tr>
+<tr class="odd">
+<td align="left">South Dakota</td>
+<td align="right">43</td>
+</tr>
+<tr class="even">
+<td align="left">Utah</td>
+<td align="right">47</td>
+</tr>
+<tr class="odd">
+<td align="left">Vermont</td>
+<td align="right">47</td>
+</tr>
+<tr class="even">
+<td align="left">Washington</td>
+<td align="right">43</td>
+</tr>
+<tr class="odd">
+<td align="left">West Virginia</td>
+<td align="right">47</td>
+</tr>
+<tr class="even">
+<td align="left">Wisconsin</td>
+<td align="right">40</td>
+</tr>
+<tr class="odd">
+<td align="left">Wyoming</td>
+<td align="right">43</td>
+</tr>
+</tbody>
+</table>
+<p>The presented table summarizes total infant deaths by state, where
+each row represents a distinct geographical location. The
+‘location_desc’ column specifies the state, while the
+‘total_infant_deaths’ column reveals the corresponding count of infant
+deaths in each location. The data indicates variations in infant
+mortality rates across regions, with some areas reporting higher or
+lower rates than others. Notably, states like Pennsylvania exhibit lower
+counts of infant deaths, whereas Alaska and Arkansas show higher counts.
+Nevertheless, a majority of the data falls within the 35 to 50 range.
+This summary offers a comprehensive overview of the distribution of
+infant deaths across diverse geographical locations.</p>
+</div>
+<div id="maternal-alcohol-use" class="section level3">
+<h3>Maternal Alcohol Use</h3>
+<pre class="r"><code># Plot of question and responses for alcohol
+
+Maternal_alc_use &lt;- cleaned_alc_2007 |&gt;
+  ggplot(aes(x = question, fill = response)) +
+  geom_bar(position = &quot;dodge&quot;) +
+  labs(title = &quot;Questions and Responses&quot;, x = &quot;Questions&quot;, y = &quot;Count&quot;) +
+  theme_minimal() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1, size = 4))+
+  labs(
+    x = &quot;Question&quot;,
+    y = &quot;Response&quot;,
+    title =  &quot;Questions vs Response of Alcohol Consumption&quot;
+  )</code></pre>
+<p>the <code>Maternal_alc_use</code> plot shows the responses to the
+questions asked. From this plot, we can see that from the 3 months
+before pregnancy and the last 3 months of pregnancy, about 1300 monthers
+continued drinking the same or more amount of alcohol, 1200 reduced how
+much they consumed alcohol, and about 700 nondrinkers resumed drinking.
+It is obvious that more mothers continued drinking the same amount or
+more alcohol than reducing how much they consumed.</p>
 </div>
 </div>
 <div id="discussion" class="section level1">
-<h1><em>Discussion</em></h1>
+<h1>Discussion</h1>
 </div>
 
 

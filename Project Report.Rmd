@@ -7,6 +7,112 @@ output:
 ---
 
 
+```{r, message=FALSE, warning=FALSE, include=FALSE}
+library(ggplot2)
+library(plotly)
+library(flexdashboard)
+library(dplyr)
+library(tidyverse)
+library(leaflet)
+library(knitr)
+
+alcohol_data_2007 = read_csv("./data/PRAM_2007_alcohol.csv")
+
+tobacco_data_2007 = read_csv("./data/PRAM_2007_tobacco.csv")
+
+no_contraception_data_2007 = read_csv("./data/PRAM_2007_no_contraception.csv")
+
+infant_mortality_df = read_csv("./data/PRAM_2007_infantmortality.csv")
+
+maternal_race = read_csv("./data/PRAM_2007_Maternal_Race.csv")
+
+# cleaned alcohol data 
+cleaned_alc_2007 <- alcohol_data_2007 |>
+  janitor::clean_names() |>
+  select(-data_value_std_err, -data_value_type) |>
+  filter(response != "DRINKER WHO QUIT") |>
+  filter(response != "NONDRINKER") |>
+  filter( response != "NO") |>
+  drop_na(response,geolocation) |>
+  separate(geolocation, into = c("latitude", "longitude"), sep = ", ", convert = TRUE) |>
+   mutate(latitude = as.numeric(str_replace_all(latitude, "\\(|\\)", "")),  # Convert to numeric and remove parentheses
+         longitude = as.numeric(str_replace_all(longitude, "\\(|\\)", "")))  # Convert to numeric and remove parentheses
+
+# cleaned tobacco data 
+
+cleaned_tobac_2007 <- tobacco_data_2007 |>
+  janitor::clean_names() |>
+  select(-data_value_type) |>
+  filter(response != "SMOKER WHO QUIT") |>
+  filter(response != "NONSMOKER") |>
+  filter(response != "None (0 cig)") |>
+  filter( response != "NO") |>
+  drop_na(response, geolocation) |>
+  separate(geolocation, into = c("latitude", "longitude"), sep = ", ", convert = TRUE) |>
+   mutate(latitude = as.numeric(str_replace_all(latitude, "\\(|\\)", "")),  # Convert to numeric and remove parentheses
+         longitude = as.numeric(str_replace_all(longitude, "\\(|\\)", "")))  # Convert to numeric and remove parentheses
+
+cleaned_mat_race <- maternal_race |>
+  janitor::clean_names() |>
+  select(-data_value_std_err, -data_value_type) |>
+  drop_na(response,geolocation) |>
+  separate(geolocation, into = c("latitude", "longitude"), sep = ", ", convert = TRUE) |>
+   mutate(latitude = as.numeric(str_replace_all(latitude, "\\(|\\)", "")),  # Convert to numeric and remove parentheses
+         longitude = as.numeric(str_replace_all(longitude, "\\(|\\)", "")))  # Convert to numeric and remove parentheses
+  
+no_alcohol_data_2007 = read_csv("./data/PRAM_2007_no_alcohol.csv")
+
+no_tobacco_data_2007 = read_csv("./data/PRAM_2007_no_tobacco.csv")
+
+contraception_data_2007 = read_csv("./data/PRAM_2007_contraception.csv")
+
+# cleaned no alcohol data 
+
+cleaned_no_alc_2007 <- no_alcohol_data_2007 |>
+  janitor::clean_names() |>
+  select(-data_value_std_err, -geolocation, -data_value_type) |>
+  drop_na(response)
+
+view(cleaned_no_alc_2007)
+
+# cleaned no tobacco data 
+
+cleaned_no_tobacco_2007 <- no_tobacco_data_2007 |>
+  janitor::clean_names() |>
+  select(-data_value_std_err, -geolocation, -data_value_type) |>
+  drop_na(response)
+
+# cleaned infant mortality 
+
+cleaned_infant_mortality <- infant_mortality_df |>
+  janitor::clean_names() |>
+  select(-data_value_std_err, -data_value_type, -data_value_unit, -data_value_footnote_symbol, -data_value_footnote) |>
+  drop_na(response, geolocation) |>
+  separate(geolocation, into = c("latitude", "longitude"), sep = ", ", convert = TRUE) |>
+   mutate(latitude = as.numeric(str_replace_all(latitude, "\\(|\\)", "")),  # Convert to numeric and remove parentheses
+         longitude = as.numeric(str_replace_all(longitude, "\\(|\\)", "")))  # Convert to numeric and remove parentheses
+
+# cleaned conception
+
+cleaned_contraception_2007 <- contraception_data_2007 |>
+  janitor::clean_names() |>
+  select(-data_value_std_err, -geolocation, -data_value_type) |>
+  filter(response != "YES (CHECKED)") |>
+  filter(response != "YES") |>
+  drop_na(response)
+
+# cleaned non conception
+
+cleaned_no_contra_2007 <- no_contraception_data_2007 %>%
+  janitor::clean_names() %>%
+  select(-data_value_type) %>%
+  drop_na(response) |>
+  separate(geolocation, into = c("latitude", "longitude"), sep = ", ", convert = TRUE) |>
+   mutate(latitude = as.numeric(str_replace_all(latitude, "\\(|\\)", "")),  # Convert to numeric and remove parentheses
+         longitude = as.numeric(str_replace_all(longitude, "\\(|\\)", "")))  # Convert to numeric and remove parentheses
+
+```
+
 Both substance abuse and maternal/infant mortality run rampant in the United States, and with the the use of the CDC 2007 PRAM Data set, we are interested in looking at the relationships between these variables. 
 
 ## Data Cleaning
@@ -55,4 +161,36 @@ While specific data on infant mortality rates were not explicitly provided, it i
 
 ### Infant Deaths Across the US
 
-# *Discussion*
+```{r}
+infant_deaths <- cleaned_infant_mortality %>%
+  filter(question == "Indicator of infant currently alive" & response == "NO") %>%
+  group_by(location_desc) %>%
+  summarize(total_infant_deaths = n())
+
+# Display the table using knitr::kable()
+knitr::kable(infant_deaths)
+```
+
+The presented table summarizes total infant deaths by state, where each row represents a distinct geographical location. The 'location_desc' column specifies the state, while the 'total_infant_deaths' column reveals the corresponding count of infant deaths in each location. The data indicates variations in infant mortality rates across regions, with some areas reporting higher or lower rates than others. Notably, states like Pennsylvania exhibit lower counts of infant deaths, whereas Alaska and Arkansas show higher counts. Nevertheless, a majority of the data falls within the 35 to 50 range. This summary offers a comprehensive overview of the distribution of infant deaths across diverse geographical locations.
+
+### Maternal Alcohol Use 
+
+```{r}
+# Plot of question and responses for alcohol
+
+Maternal_alc_use <- cleaned_alc_2007 |>
+  ggplot(aes(x = question, fill = response)) +
+  geom_bar(position = "dodge") +
+  labs(title = "Questions and Responses", x = "Questions", y = "Count") +
+  theme_minimal() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1, size = 4))+
+  labs(
+    x = "Question",
+    y = "Response",
+    title =  "Questions vs Response of Alcohol Consumption"
+  )
+```
+
+the `Maternal_alc_use` plot shows the responses to the questions asked. From this plot, we can see that from the 3 months before pregnancy and the last 3 months of pregnancy, about 1300 monthers continued drinking the same or more amount of alcohol, 1200 reduced how much they consumed alcohol, and about 700 nondrinkers resumed drinking. It is obvious that more mothers continued drinking the same amount or more alcohol than reducing how much they consumed.
+
+# Discussion

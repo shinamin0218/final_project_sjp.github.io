@@ -6,9 +6,8 @@ output:
     toc: true
     toc_float: true
 ---
-Loading packages for the plots
 
-```{r message=FALSE, warning=FALSE}
+```{r message=FALSE, warning=FALSE, include=FALSE}
 library(ggplot2)
 library(plotly)
 library(flexdashboard)
@@ -18,9 +17,7 @@ library(leaflet)
 library(knitr)
 ```
 
-# Reading in Cleaned Data 
-
-```{r, message=FALSE, warning=FALSE}
+```{r, message=FALSE, warning=FALSE, include=FALSE}
 alcohol_data_2007 = read_csv("./data/PRAM_2007_alcohol.csv")
 
 tobacco_data_2007 = read_csv("./data/PRAM_2007_tobacco.csv")
@@ -119,10 +116,8 @@ cleaned_no_contra_2007 <- no_contraception_data_2007 %>%
 ```
 
 
+### Plots of Maternal Alcohol Consumption
 
-
-
-Plot 1: Alcohol Consumption in relation to Infant Mortality
 ```{r, message=FALSE, warning=FALSE}
 
 
@@ -141,6 +136,11 @@ gg_plot <- cleaned_alc_2007 %>%
     title = "Questions vs Response of Alcohol Consumption"
   )
 
+
+
+```
+
+```{r}
 # Extract data directly from the original data frame
 plot_data <- cleaned_alc_2007 %>%
   group_by(question, response) %>%
@@ -154,10 +154,10 @@ plot_ly(data = plot_data, x = ~question, y = ~count, color = ~response, type = "
     yaxis = list(title = "Response"),
     barmode = "stack"
   )
-
 ```
 
-Plot 2: Tobacco Plots
+
+### Plots of Maternal Tobacco Use
 
 ```{r}
 library(ggplot2)
@@ -195,8 +195,6 @@ plot_ly(data = plot_data, x = ~location_abbr, y = ~count, color = ~response, typ
   )
 
 ```
-
-
 
 
 
@@ -301,7 +299,7 @@ The `plot_infant_deaths` above shows a plot of infant deaths categorized by whet
 
 filtered_mortality_income <- cleaned_infant_mortality %>%
   filter(break_out_category == "Income (years 2004 and beyond)" &
-         (break_out %in% c("Less than $10,000", "$25,000 to $49,999", "$50,000 or more")) &
+         (break_out %in% c("Less than $10,000", "$10,000 to $24,999", "$25,000 to $49,999", "$50,000 or more")) &
          question == "Indicator of infant currently alive" & response == "NO")
 
 view(filtered_mortality_income)
@@ -309,19 +307,118 @@ view(filtered_mortality_income)
 plot_infant_income <- ggplot(filtered_mortality_income, aes(x = break_out, fill = break_out)) +
   geom_bar() +
   labs(title = "Infant Deaths by Income",
-       x = "Income",
+       x = "Maternal Income",
        y = "Total Infant Deaths") +
-  scale_fill_manual(values = c("Less than $10,000" = "blue", "$25,000 to $49,999" = "purple", "$50,000 or more" = "pink")) +
+  scale_fill_manual(values = c("Less than $10,000" = "blue", "$10,000 to $24,999" = "red", "$25,000 to $49,999" = "purple", "$50,000 or more" = "pink")) +
   theme_minimal()
 
 print(plot_infant_income)
 
 ```
 
+### Plot of Infant Mortality and Maternal Age 
 
-# creating a linear regression
 ```{r}
-merged_data <- left_join(cleaned_alc_2007, cleaned_infant_mortality, by = "year") %>%
-  select(location_abbr.x, location_abbr.y, location_desc.x, location_desc.y, topic.x, topic.y, question.x, response.x, class.y, topic.y, question.y, break_out_category.y, response.y)
+filtered_mortality_age <- cleaned_infant_mortality %>%
+  filter(break_out_category == "Maternal Age - 18 to 44 years in groupings" &
+         (break_out %in% c("Age < 18", "Age 18 - 24", "Age 25 - 29", "Age 30 - 44", "Age 45+")) &
+         question == "Indicator of infant currently alive" & response == "NO")
+
+plot_mortality_age <- ggplot(filtered_mortality_age, aes(x = break_out, fill = break_out)) +
+  geom_bar() +
+  labs(title = "Infant Deaths by Maternal Age",
+       x = "Maternal Age",
+       y = "Total Infant Deaths") +
+  scale_fill_manual(values = c("Age < 18" = "blue", "Age 18 - 24" = "purple", "Age 25 - 29" = "pink", "Age 30 - 44" = "yellow", "Age 45+" = "orange")) +
+  theme_minimal()
+
+print(plot_mortality_age)
+
+```
+
+### Plot of Maternal Education and Infant Death 
+
+```{r}
+filtered_mortality_educ <- cleaned_infant_mortality %>%
+  filter(break_out_category == "Maternal Education" &
+         (break_out %in% c("<12 yrs", "12 yrs", ">12 yrs")) &
+         question == "Indicator of infant currently alive" & response == "NO")
+
+plot_mortality_educ <- filtered_mortality_educ |>
+ggplot(aes(x = break_out, fill = break_out)) +
+  geom_bar() +
+  labs(title = "Infant Deaths by Maternal Education",
+       x = "Maternal Education",
+       y = "Total Infant Deaths") +
+  scale_fill_manual(values = c("<12 yrs" = "blue", "12 yrs" = "purple", ">12 yrs" = "pink")) +
+  theme_minimal()
+
+print(plot_mortality_educ)
+```
+
+### Plot of Maternal Medicaid Recepient and Infant Death
+
+```{r}
+filtered_mortality_medi <- cleaned_infant_mortality %>%
+  filter(break_out_category == "Medicaid Recipient" &
+         (break_out %in% c("Non-Medicaid", "Medicaid")) &
+         question == "Indicator of infant currently alive" & response == "NO")
+
+plot_mortality_medi <- filtered_mortality_medi |>
+ggplot(aes(x = break_out, fill = break_out)) +
+  geom_bar() +
+  labs(title = "Infant Deaths by Medicaid Recpient",
+       x = "Medicaid Recepient",
+       y = "Total Infant Deaths") +
+  scale_fill_manual(values = c("Non-Medicaid" = "blue", "Medicaid" = "purple")) +
+  theme_minimal()
+
+print(plot_mortality_medi)
+```
+
+### Plot of Maternal Smoking and Infant Death
+
+```{r}
+filtered_mortality_smoke <- cleaned_infant_mortality %>%
+  filter(break_out_category == "Smoked last 3 months of Pregnancy" &
+         (break_out %in% c("Non-Smoker", "Smoker")) &
+         question == "Indicator of infant currently alive" & response == "NO")
+
+plot_mortality_smoke <- filtered_mortality_smoke |>
+ggplot(aes(x = break_out, fill = break_out)) +
+  geom_bar() +
+  labs(title = "Infant Deaths by Maternal Smoking",
+       x = "Maternal Smoking Status",
+       y = "Total Infant Deaths") +
+  scale_fill_manual(values = c("Non-Smoker" = "pink", "Smoker" = "yellow")) +
+  theme_minimal()
+
+print(plot_mortality_smoke)
+```
+
+### Plot of Maternal Intent and Infant Death
+
+```{r}
+filtered_mortality_intent <- cleaned_infant_mortality %>%
+  filter(break_out_category == "Pregnancy Intendedness" &
+         (break_out %in% c("Unintended", "Intended")) &
+         question == "Indicator of infant currently alive" & response == "NO")
+
+plot_mortality_intent <- filtered_mortality_intent |>
+ggplot(aes(x = break_out, fill = break_out)) +
+  geom_bar() +
+  labs(title = "Infant Deaths by Maternal Intent",
+       x = "Maternal Intent",
+       y = "Total Infant Deaths") +
+  scale_fill_manual(values = c("Unintended" = "orange", "Intended" = "red")) +
+  theme_minimal()
+
+print(plot_mortality_intent)
+```
+
+### creating a linear regression
+```{r}
+#merged_data <- left_join(cleaned_alc_2007, cleaned_infant_mortality, by = "year") %>%
+ # select(location_abbr.x, location_abbr.y, location_desc.x, location_desc.y, topic.x, #topic.y, question.x, response.x, class.y, topic.y, question.y, break_out_category.y, #response.y)
 ```
 

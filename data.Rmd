@@ -37,9 +37,8 @@ cleaned_alc_2007 <- alcohol_data_2007 |>
   filter( response != "NO") |>
   drop_na(response,geolocation) |>
   separate(geolocation, into = c("latitude", "longitude"), sep = ", ", convert = TRUE) |>
-   mutate(latitude = as.numeric(str_replace_all(latitude, "\\(|\\)", "")),  # Convert to numeric and remove parentheses
-         longitude = as.numeric(str_replace_all(longitude, "\\(|\\)", "")))  # Convert to numeric and remove parentheses
-
+   mutate(latitude = as.numeric(str_replace_all(latitude, "\\(|\\)", "")),  
+         longitude = as.numeric(str_replace_all(longitude, "\\(|\\)", "")))  
 
 view(cleaned_alc_2007)
 ```
@@ -56,8 +55,8 @@ cleaned_tobac_2007 <- tobacco_data_2007 |>
   filter( response != "NO") |>
   drop_na(response, geolocation) |>
   separate(geolocation, into = c("latitude", "longitude"), sep = ", ", convert = TRUE) |>
-   mutate(latitude = as.numeric(str_replace_all(latitude, "\\(|\\)", "")),  # Convert to numeric and remove parentheses
-         longitude = as.numeric(str_replace_all(longitude, "\\(|\\)", "")))  # Convert to numeric and remove parentheses
+   mutate(latitude = as.numeric(str_replace_all(latitude, "\\(|\\)", "")),  
+         longitude = as.numeric(str_replace_all(longitude, "\\(|\\)", "")))  
 
 view(cleaned_tobac_2007)
 ```
@@ -132,34 +131,6 @@ view(cleaned_infant_mortality)
 
 ```
 
-#### Other aspects of data we are interested in 
-
-Use of Contraception
-
-```{r}
-cleaned_contraception_2007 <- contraception_data_2007 |>
-  janitor::clean_names() |>
-  select(-data_value_std_err, -geolocation, -data_value_type) |>
-  filter(response != "YES (CHECKED)") |>
-  filter(response != "YES") |>
-  drop_na(response)
-
-view(cleaned_contraception_2007)
-```
-
-No Contraception Use
-
-```{r}
-cleaned_no_contra_2007 <- no_contraception_data_2007 %>%
-  janitor::clean_names() %>%
-  select(-data_value_type) %>%
-  drop_na(response) |>
-  separate(geolocation, into = c("latitude", "longitude"), sep = ", ", convert = TRUE) |>
-   mutate(latitude = as.numeric(str_replace_all(latitude, "\\(|\\)", "")),  # Convert to numeric and remove parentheses
-         longitude = as.numeric(str_replace_all(longitude, "\\(|\\)", "")))  # Convert to numeric and remove parentheses
-
-view(cleaned_no_contra_2007)
-```
 
 
 

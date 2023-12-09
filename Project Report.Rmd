@@ -240,7 +240,7 @@ Regarding Infant Mortality, we addressed different aspects that may have contrib
 Additionally, upon analyzing infant mortality rate in the United States, it was found that most states had infant death rates ranging between 40  and 48. However, there were a few outliers, such as Pennsylvania that had 3 total infant deaths. Colorado, Illinois, New York, NYC, North Carolina, Oklahoma, South Carolina, and West Virginia had the highest total infant death count of 47. It is also important to note that New York, excluding NYC, had 47 infant deaths, and New York City specifically had 47 infant deaths in 2007. Combined, New York had a total of 94 deaths, providing evidence that highly urban areas may experience higher infant death rates. However since the dataframe does not provide city-specific data from other states, we cannot draw any conclusions about urban populations and its relationship to infant mortality rates.
 
 
-## **Limitations**
+### **Limitations**
 
 There are some limitations to interpreting the 2007 PRAMS dataset. Upon conducting a more in depth observational analysis, we found that the sample was not representative of the United States as a whole. There were only 31 states surveyed out of the 50, which skews the results of our analysis. Our variables of interest looked at income levels, race/ethnicity, which had several gaps. For example, the race/ethnicity category only included hispanic, white-non-hispanic and black-non-hispanic, which is not representative of the United States population. Additionally, the income levels were too broad which skews the data for the participants who have an income between different categories.
 

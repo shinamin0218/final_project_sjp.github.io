@@ -168,20 +168,6 @@ library(ggplot2)
 library(plotly)
 library(dplyr)
 
-
-# Create ggplot object
-gg_plot <- cleaned_tobac_2007 %>%
-  ggplot(aes(x = location_abbr, fill = response)) +
-  geom_bar(position = "dodge") +
-  labs(title = "Questions and Responses", x = "Questions", y = "Count") +
-  theme_minimal() +
-  theme(axis.text.x = element_text(angle = 45, hjust = 1)) +
-  labs(
-    x = "Question",
-    y = "Response",
-    title = "Tobacco Use by State"
-  )
-
 # Extract data directly from the original data frame
 plot_data <- cleaned_tobac_2007 %>%
   group_by(location_abbr, response) %>%

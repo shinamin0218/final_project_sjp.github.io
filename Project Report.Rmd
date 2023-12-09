@@ -178,19 +178,18 @@ The presented table summarizes total infant deaths by state, where each row repr
 ```{r}
 # Plot of question and responses for alcohol
 
-Maternal_alc_use <- cleaned_alc_2007 |>
-  ggplot(aes(x = question, fill = response)) +
-  geom_bar(position = "dodge") +
-  labs(title = "Questions and Responses", x = "Questions", y = "Count") +
-  theme_minimal() +
-  theme(axis.text.x = element_text(angle = 45, hjust = 1, size = 4))+
-  labs(
-    x = "Question",
-    y = "Response",
-    title =  "Questions vs Response of Alcohol Consumption"
-  )
+plot_data <- cleaned_alc_2007 %>%
+  group_by(question, response) %>%
+  summarize(count = n())
 
-print(Maternal_alc_use)
+# Convert data to Plotly
+plot_ly(data = plot_data, x = ~question, y = ~count, color = ~response, type = "bar", split = ~response) %>%
+  layout(
+    title = "Questions vs Response of Alcohol Consumption",
+    xaxis = list(title = "Question",tickfont = list(size = 5)),
+    yaxis = list(title = "Response"),
+    barmode = "stack"
+  )
 ```
 
 the `Maternal_alc_use` plot shows the responses to the questions asked. From this plot, we can see that from the 3 months before pregnancy and the last 3 months of pregnancy, about 1300 monthers continued drinking the same or more amount of alcohol, 1200 reduced how much they consumed alcohol, and about 700 nondrinkers resumed drinking. It is obvious that more mothers continued drinking the same amount or more alcohol than reducing how much they consumed.
@@ -198,19 +197,30 @@ the `Maternal_alc_use` plot shows the responses to the questions asked. From thi
 ### Maternal Tobacco Use 
 
 ```{r}
-maternal_tobac_plot <- cleaned_tobac_2007 |>
-  ggplot(aes(x = question, fill = response)) +
+gg_plot <- cleaned_tobac_2007 %>%
+  ggplot(aes(x = location_abbr, fill = response)) +
   geom_bar(position = "dodge") +
   labs(title = "Questions and Responses", x = "Questions", y = "Count") +
   theme_minimal() +
-  theme(axis.text.x = element_text(angle = 45, hjust = 1, size = 8)) +  # Adjust the size parameter
+  theme(axis.text.x = element_text(angle = 45, hjust = 1)) +
   labs(
     x = "Question",
     y = "Response",
-    title = "Questions vs Response of Tobacco Use"
+    title = "Tobacco Use by State"
   )
 
-print(maternal_tobac_plot)
+# Extract data directly from the original data frame
+plot_data <- cleaned_tobac_2007 %>%
+  group_by(location_abbr, response) %>%
+  summarize(count = n())
+
+plot_ly(data = plot_data, x = ~location_abbr, y = ~count, color = ~response, type = "bar", split = ~response) %>%
+  layout(
+    title = " Tobacco Use by State",
+    xaxis = list(title = "Question"),
+    yaxis = list(title = "Response"),
+    barmode = "stack"
+  )
 ```
 
 The `maternal_tobac_plot` displays the questions and responses in terms of maternal use of tobacco. The three questions we focused on was cigarette use before, during and after conception. From the graph, we can see that in the last 3 months of pregnancy, about 1700 individuals smoked 1-5 cigarettes a day, about 1700 smoked 6-10 cigarettes a day, and about 700 smoked 41+ a day. 

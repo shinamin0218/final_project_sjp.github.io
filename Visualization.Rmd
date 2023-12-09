@@ -306,14 +306,13 @@ box_ggplot =
   mutate(break_out = fct_reorder(break_out,sample_size)) %>%
   ggplot(aes(x = break_out, y = sample_size, fill = break_out)) +
   geom_boxplot(alpha = 0.5) +
+    labs(x = "Ethnicity",
+       y = "Total Infant Deaths",
+       fill = "Ethnicity") +
   theme(axis.text.x = element_text(angle = 90, hjust = 1))
   
 
-ggplotly(box_ggplot) %>%
-  layout(
-    xaxis = list(title = "Ethnicity"),
-    yaxis = list(title = "Total Infant Deaths")
-  )
+ggplotly(box_ggplot)
 
 print(ggplotly(box_ggplot))
 ```
@@ -371,8 +370,8 @@ filtered_mortality_age %>%
   theme(axis.text = element_text(angle = 90, hjust = 1)) +
   labs(
     title = "Infants Deaths by Maternal Age",
-    x = "Maternal Age (C)",
-    y = "Total Infant Deaths (C)",
+    x = "Maternal Age",
+    y = "Total Infant Deaths",
     color = "break_out",
     fill = "Maternal Age",
     caption = "Data from the PRAMStat Data for 2007"
@@ -414,8 +413,6 @@ plot_mortality_educ =
     
 
 ggplotly(plot_mortality_educ)
-
-print(ggplotly(plot_mortality_educ))
 
 ```
 
@@ -462,11 +459,12 @@ plot_mortality_intent =
   filtered_mortality_intent %>%
   ggplot(aes(x = break_out, y = sample_size, fill = break_out)) +
   geom_boxplot(alpha = .5) +
-  theme(axis.text.x = element_text(angle = 90, hjust = 1))
-  theme(legend.position = "none") +
-  labs(title = "Infant Deaths by Maternal Intent",
-       x = "Maternal Intent",
-       y = "Total Infant Deaths")
+  theme(axis.text = element_text(angle = 90, hjust = 1)) +
+  labs(
+    title = "Infant Deaths by Maternal Intent",
+    x = "Maternal Intent",
+    y = "Total Infant Deaths",
+    fill = "Maternal Intent")
 
 ggplotly(plot_mortality_intent)
 

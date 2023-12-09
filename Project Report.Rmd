@@ -141,7 +141,7 @@ We are interested in looking at how pregnancy outcomes changes among mothers who
 
 ## Related Work
 
-##### Alcohol use during pregnancy
+**Alcohol use during pregnancy**
 
 The negative impact of smoking during pregnancy is evident in its direct association with adverse birth outcomes. This habit has been linked to a range of complications, including damage to the umbilical cord structure, an elevated risk of miscarriage and ectopic pregnancy, as well as an increased likelihood of low birth weight, placental abruption, preterm birth, and heightened infant mortality rates. 
 [Reference](https://pubmed.ncbi.nlm.nih.gov/17884310/)
@@ -149,7 +149,8 @@ The negative impact of smoking during pregnancy is evident in its direct associa
 According to Wolfe et al., within a dataset comprising 4,536,701 birth records, 1.20% exhibited diagnostic codes related to drug or alcohol discharge (n = 54,290). The unadjusted Relative Risks (RRs) for maternal (RR = 2.7), fetal (RR = 1.3), neonatal (RR = 2.4), and post-neonatal (RR = 4.3) mortality were elevated among births diagnosed with drug or alcohol-related conditions. 
 [Reference](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3349286/)
 
-##### Tobacco use during pregnancy
+
+**Tobacco use during pregnancy**
 
 The consumption of alcohol during pregnancy has been correlated with a spectrum of adverse birth outcomes. This includes heightened risks of miscarriage, stillbirth, infant mortality, congenital anomalies, low birthweight, reduced gestational age, preterm delivery, and infants being born small for their gestational age.
 [Reference](https://pubmed.ncbi.nlm.nih.gov/19797967/)
@@ -237,7 +238,8 @@ Regarding Infant Mortality, we addressed different aspects that may have contrib
 
 Additionally, upon analyzing infant mortality rate in the United States, it was found that most states had infant death rates ranging between 40  and 48. However, there were a few outliers, such as Pennsylvania that had 3 total infant deaths. Colorado, Illinois, New York, NYC, North Carolina, Oklahoma, South Carolina, and West Virginia had the highest total infant death count of 47. It is also important to note that New York, excluding NYC, had 47 infant deaths, and New York City specifically had 47 infant deaths in 2007. Combined, New York had a total of 94 deaths, providing evidence that highly urban areas may experience higher infant death rates. However since the dataframe does not provide city-specific data from other states, we cannot draw any conclusions about urban populations and its relationship to infant mortality rates.
 
-**Limitations**
+
+### Limitations
 
 There are some limitations to interpreting the 2007 PRAMS dataset. Upon conducting a more in depth observational analysis, we found that the sample was not representative of the United States as a whole. There were only 31 states surveyed out of the 50, which skews the results of our analysis. Our variables of interest looked at income levels, race/ethnicity, which had several gaps. For example, the race/ethnicity category only included hispanic, white-non-hispanic and black-non-hispanic, which is not representative of the United States population. Additionally, the income levels were too broad which skews the data for the participants who have an income between different categories.
 

@@ -8,13 +8,13 @@ navbar:
     - text: "Data"
       href: data.html
     - text: "Project Report"
-      href: project-report.html
+      href: Project-Report.html
     - text: "Visualization and Analysis"
-      href: visualization.html
+      href: Visualization.html
     - text: "About"
-      href: about.html
+      href: About.html
     - icon: fa-envelope fa-lg
-      href: mailto:<you@youremail.com>
+      href: mailto:<jam2530@cumc.columbia.edu>
     - icon: fa-github fa-lg
       href: https://github.com/shinamin0218/final_project_sjp.github.io.git
 output:

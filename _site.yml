@@ -7,8 +7,6 @@ navbar:
       href: proposal.html
     - text: "Data"
       href: data.html
-    - text: "Project Report"
-      href: Project-report.html
     - text: "Visualization and Analysis"
       href: Visualization.html
     - text: "Project-Report"

@@ -17,6 +17,7 @@ library(leaflet)
 library(knitr)
 library(forcats)
 library(viridis)
+library(ggridges)
 
 knitr::opts_chunk$set(
 	echo = TRUE,
@@ -265,6 +266,7 @@ The table provides a summary of total infant deaths by state, with each row repr
 
 ### Looking at infant mortality rates by race, income levels, age,  education levels and intent. 
 
+
 #### Table showing Infant Mortality by Race/Ethnicity
 
 ```{r}
@@ -282,15 +284,16 @@ view(filtered_mortality_race)
 This table shows in depth information about infant mortality rate by race-ethnicity in the 31 states in this sample. The race/ethnicity variable was re-categorized into just "Hispanic" and "White-non Hispanic" to give us our variables of interest. Using this information, we will visualize the relationship between infant mortality rate and how race/ethnicity plays a role. 
 
 
-#### Plot showing the effect of Race/Ethnicity on Infant Mortality 
+### Plot showing the effect of Race/Ethnicity on Infant Mortality 
 
 ```{r}
 box_ggplot =
   filtered_mortality_race %>%
   mutate(break_out = fct_reorder(break_out,sample_size)) %>%
   ggplot(aes(x = break_out, y = sample_size, fill = break_out)) +
-  geom_boxplot() +
+  geom_boxplot(alpha = 0.5) +
   theme(axis.text.x = element_text(angle = 90, hjust = 1))
+  
 
 ggplotly(box_ggplot) %>%
   layout(
@@ -304,7 +307,7 @@ print(ggplotly(box_ggplot))
 The `plot_infant_deaths` above shows a plot of infant deaths categorized by whether they were Hispanic or not. The graph shows that those who were not Hispanic had a higher infant death count than those who were Hispanic.
 
 
-#### Plot of Infant Mortality and Maternal Income
+### Plot of Infant Mortality and Maternal Income
 
 ```{r}
 filtered_mortality_income = cleaned_infant_mortality %>%
@@ -334,7 +337,7 @@ print(ggplotly(density_ggplot_subset))
 This plot shows the relationship between maternal income levels and infant mortality rate. From the density graph, those in the income bracket of $25,000-$49,000 had a higher infant mortality rate and those who made more than $50,000 had the lowest. This was an interesting observation, as those who made less that $10,000 a year would be expected to have the highest infant mortality as low income levels is a social determinant of infant health outcomes. 
 
 
-#### Plot of Infant Mortality and Maternal Age 
+### Plot of Infant Mortality and Maternal Age 
 
 ```{r}
 # Assuming 'cleaned_infant_mortality' is your data frame
@@ -372,7 +375,7 @@ print(ggplotly(ggp_age_plot))
 This plot shows infant mortality rates by age. Interestingly, maternal populations below the age of 18 have the lowest infant mortality rates. Comparatively, women in the 45+ age category have a higher infant mortality rate. Women in the 18-24, 25-29 and 30-44 all have approximately the same levels of infant mortality rates. 
 
 
-#### Plot of Maternal Education and Infant Death 
+### Plot of Maternal Education and Infant Death 
 
 ```{r}
 filtered_mortality_educ <- cleaned_infant_mortality %>%
@@ -380,21 +383,28 @@ filtered_mortality_educ <- cleaned_infant_mortality %>%
          (break_out %in% c("<12 yrs", "12 yrs", ">12 yrs")) &
          question == "Indicator of infant currently alive" & response == "NO")
 
-plot_mortality_educ <- filtered_mortality_educ |>
-ggplot(aes(x = break_out, fill = break_out)) +
-  geom_bar() +
+
+plot_mortality_educ =
+  filtered_mortality_educ %>%
+  mutate(name = forcats::fct_reorder(break_out, sample_size)) %>%
+  ggplot(aes(x = break_out, y = sample_size)) +
+  geom_violin(aes(fill = break_out), alpha = 0.5) + 
+  stat_summary(fun = "median", color = "blue") +
   labs(title = "Infant Deaths by Maternal Education",
        x = "Maternal Education",
-       y = "Total Infant Deaths") +
-  scale_fill_manual(values = c("<12 yrs" = "blue", "12 yrs" = "purple", ">12 yrs" = "pink")) +
-  theme_minimal()
+       y = "Total Infant Deaths",
+       fill = "Maternal Education")
+    
 
-print(plot_mortality_educ)
+ggplotly(plot_mortality_educ)
+
+print(ggplotly(plot_mortality_educ))
+
 ```
 
 This plot shows the relationship between maternal education and infant mortality rates. This is an interesting finding that shows those with greater than 12 years of education had higher infant mortality rates compared to those with less than 12 years of education. This could be because factors like race could have been a confounding variable. Additionally, it can also be assumed that people who were in school longer were also older, so that could also be an additional factor. 
 
-#### Plot of Maternal Medicaid Recepient and Infant Death
+### Plot of Maternal Medicaid Recepient and Infant Death
 
 ```{r}
 filtered_mortality_medi <- cleaned_infant_mortality %>%
@@ -402,22 +412,24 @@ filtered_mortality_medi <- cleaned_infant_mortality %>%
          (break_out %in% c("Non-Medicaid", "Medicaid")) &
          question == "Indicator of infant currently alive" & response == "NO")
 
-plot_mortality_medi <- filtered_mortality_medi |>
-ggplot(aes(x = break_out, fill = break_out)) +
-  geom_bar() +
-  labs(title = "Infant Deaths by Medicaid Recpient",
-       x = "Medicaid Recepient",
-       y = "Total Infant Deaths") +
-  scale_fill_manual(values = c("Non-Medicaid" = "blue", "Medicaid" = "purple")) +
-  theme_minimal()
+plot_mortality_medi =
+  filtered_mortality_medi %>%
+  ggplot(aes(x = sample_size, y = break_out, fill = break_out, group = break_out)) +
+  geom_density_ridges(scale = 0.85, alpha = 0.5) +  # Adjust alpha here
+  labs(title = "Infant Deaths by Maternal Medicaid Status",
+       x = "Maternal Medi",
+       y = "Total Infant Deaths",
+       fill = "Medicaid Status") +
+  scale_fill_viridis(discrete = TRUE, name = "Medicaid Status")
 
 print(plot_mortality_medi)
+
 ```
 
 This plot shows the relationship between infant mortality rate and mothers who were recipients of medicaid. This bar graph shows that there is no statistical difference. 
 
 
-#### Plot of Maternal Intent and Infant Death
+### Plot of Maternal Intent and Infant Death
 
 ```{r}
 filtered_mortality_intent <- cleaned_infant_mortality %>%
@@ -425,16 +437,22 @@ filtered_mortality_intent <- cleaned_infant_mortality %>%
          (break_out %in% c("Unintended", "Intended")) &
          question == "Indicator of infant currently alive" & response == "NO")
 
-plot_mortality_intent <- filtered_mortality_intent |>
-ggplot(aes(x = break_out, fill = break_out)) +
-  geom_bar() +
+
+plot_mortality_intent =
+  filtered_mortality_intent %>%
+  ggplot(aes(x = break_out, y = sample_size, color = break_out)) +
+  geom_point(alpha = 0.5) +
+  theme(legend.position = "none") +
   labs(title = "Infant Deaths by Maternal Intent",
        x = "Maternal Intent",
        y = "Total Infant Deaths") +
-  scale_fill_manual(values = c("Unintended" = "orange", "Intended" = "red")) +
-  theme_minimal()
+  scale_fill_viridis(discrete = TRUE, name = "Maternal Intent")
 
-print(plot_mortality_intent)
+
+ggplotly(plot_mortality_intent)
+
+print(ggplotly(plot_mortality_intent))
+
 ```
 
 This plot shows the relationship between maternal intent to have children with infant mortality rate. Those who intended to have a child, actually had a higher rate of infant mortality rate. There could be several confounding factors that could contribute to this, such as age and stress factors. 

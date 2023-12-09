@@ -451,7 +451,8 @@ filtered_mortality_intent <- cleaned_infant_mortality %>%
 plot_mortality_intent =
   filtered_mortality_intent %>%
   ggplot(aes(x = break_out, y = sample_size, fill = break_out)) +
-  geom_boxplot(alpha = .5) +  # Remove or set alpha = 1 to fill the boxplots
+  geom_boxplot(alpha = .5) +
+  theme(axis.text.x = element_text(angle = 90, hjust = 1))
   theme(legend.position = "none") +
   labs(title = "Infant Deaths by Maternal Intent",
        x = "Maternal Intent",

@@ -377,7 +377,7 @@ class="section level4">
 Contraception</h4>
 <pre class="r"><code>alcohol_data_2007 = read_csv(&quot;./data/PRAM_2007_alcohol.csv&quot;)</code></pre>
 <pre><code>## Rows: 16637 Columns: 27
-## ── Column specification ──────────────────────────────────────────────
+## ── Column specification ────────────────────────────────────────────────────────
 ## Delimiter: &quot;,&quot;
 ## chr (19): LocationAbbr, LocationDesc, Class, Topic, Question, DataSource, Re...
 ## dbl  (7): Year, Data_Value, Data_Value_Footnote_Symbol, Low_Confidence_Limit...
@@ -387,7 +387,7 @@ Contraception</h4>
 ## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
 <pre class="r"><code>tobacco_data_2007 = read_csv(&quot;./data/PRAM_2007_tobacco.csv&quot;)</code></pre>
 <pre><code>## Rows: 32891 Columns: 27
-## ── Column specification ──────────────────────────────────────────────
+## ── Column specification ────────────────────────────────────────────────────────
 ## Delimiter: &quot;,&quot;
 ## chr (19): LocationAbbr, LocationDesc, Class, Topic, Question, DataSource, Re...
 ## dbl  (6): Year, Data_Value, Low_Confidence_Limit, High_Confidence_Limit, Sam...
@@ -397,7 +397,7 @@ Contraception</h4>
 ## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
 <pre class="r"><code>no_contraception_data_2007 = read_csv(&quot;./data/PRAM_2007_no_contraception.csv&quot;)</code></pre>
 <pre><code>## Rows: 15509 Columns: 27
-## ── Column specification ──────────────────────────────────────────────
+## ── Column specification ────────────────────────────────────────────────────────
 ## Delimiter: &quot;,&quot;
 ## chr (19): LocationAbbr, LocationDesc, Class, Topic, Question, DataSource, Re...
 ## dbl  (6): Year, Data_Value, Low_Confidence_Limit, High_Confidence_Limit, Sam...
@@ -407,7 +407,7 @@ Contraception</h4>
 ## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
 <pre class="r"><code>infant_mortality_df = read_csv(&quot;./data/PRAM_2007_infantmortality.csv&quot;)</code></pre>
 <pre><code>## Rows: 1386 Columns: 27
-## ── Column specification ──────────────────────────────────────────────
+## ── Column specification ────────────────────────────────────────────────────────
 ## Delimiter: &quot;,&quot;
 ## chr (19): LocationAbbr, LocationDesc, Class, Topic, Question, DataSource, Re...
 ## dbl  (6): Year, Data_Value, Low_Confidence_Limit, High_Confidence_Limit, Sam...
@@ -447,7 +447,7 @@ view(cleaned_tobac_2007)</code></pre>
 <h4>Variables</h4>
 <ul>
 <li><code>year</code> refers to the year data was recorded</li>
-<li><code>class</code> refers to ….</li>
+<li><code>class</code> refers to Infant Health</li>
 <li><code>topic</code> refers to the topic of the data</li>
 <li><code>question</code> the question that was recorded</li>
 <li><code>data_source</code> where the recorded data came from</li>
@@ -458,15 +458,23 @@ question</li>
 interval</li>
 <li><code>high_confidence-limit</code> the upper bound of the confidence
 interval</li>
-<li><code>sample_size</code></li>
-<li><code>break_out</code></li>
-<li><code>break_out_category</code></li>
-<li><code>class_id</code></li>
-<li><code>question_id</code></li>
-<li><code>location_id</code></li>
-<li><code>break_out_id</code></li>
-<li><code>break_out_category_id</code></li>
-<li><code>response_id</code></li>
+<li><code>sample_size</code> the number of participants</li>
+<li><code>break_out</code> refers to the general variable encompassing
+two categories</li>
+<li><code>break_out_category</code> the specific indicator variable
+used</li>
+<li><code>class_id</code> an identifier associated with a particular
+class or category.</li>
+<li><code>question_id</code> corresponds to a specific question within a
+dataset or system</li>
+<li><code>location_id</code> assigned to a particular location or
+geographic entity</li>
+<li><code>break_out_id</code> represents a variable used to break out in
+plots and tables</li>
+<li><code>break_out_category_id</code> associated with the category or
+indicator variable used</li>
+<li><code>response_id</code> specific response within a dataset, related
+to a question</li>
 </ul>
 </div>
 <div id="data-set-reading-in-no-substance-abuse-contraception"
@@ -475,7 +483,7 @@ class="section level4">
 Contraception</h4>
 <pre class="r"><code>no_alcohol_data_2007 = read_csv(&quot;./data/PRAM_2007_no_alcohol.csv&quot;)</code></pre>
 <pre><code>## Rows: 5640 Columns: 27
-## ── Column specification ──────────────────────────────────────────────
+## ── Column specification ────────────────────────────────────────────────────────
 ## Delimiter: &quot;,&quot;
 ## chr (19): LocationAbbr, LocationDesc, Class, Topic, Question, DataSource, Re...
 ## dbl  (6): Year, Data_Value, Low_Confidence_Limit, High_Confidence_Limit, Sam...
@@ -485,7 +493,7 @@ Contraception</h4>
 ## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
 <pre class="r"><code>no_tobacco_data_2007 = read_csv(&quot;./data/PRAM_2007_no_tobacco.csv&quot;)</code></pre>
 <pre><code>## Rows: 15055 Columns: 27
-## ── Column specification ──────────────────────────────────────────────
+## ── Column specification ────────────────────────────────────────────────────────
 ## Delimiter: &quot;,&quot;
 ## chr (19): LocationAbbr, LocationDesc, Class, Topic, Question, DataSource, Re...
 ## dbl  (6): Year, Data_Value, Low_Confidence_Limit, High_Confidence_Limit, Sam...
@@ -495,7 +503,7 @@ Contraception</h4>
 ## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
 <pre class="r"><code>contraception_data_2007 = read_csv(&quot;./data/PRAM_2007_contraception.csv&quot;)</code></pre>
 <pre><code>## Rows: 36083 Columns: 27
-## ── Column specification ──────────────────────────────────────────────
+## ── Column specification ────────────────────────────────────────────────────────
 ## Delimiter: &quot;,&quot;
 ## chr (19): LocationAbbr, LocationDesc, Class, Topic, Question, DataSource, Re...
 ## dbl  (7): Year, Data_Value, Data_Value_Footnote_Symbol, Low_Confidence_Limit...

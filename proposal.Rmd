@@ -6,7 +6,7 @@ output:
     toc_float: true
 ---
 
-## FINAL PROJECT- P8105
+## **FINAL PROJECT- P8105**
 
 ```{r echo = FALSE}
 group_members =
@@ -19,11 +19,11 @@ knitr::kable(group_members, format = "markdown", col.names = c("Names", "Emails"
 ```
 
 
-## Project Title
+## **Project Title**
 Looking at the effect of alcohol and tobacco consumption and other demographic factors on Infant Mortality Rates
 
 
-## Intended Final Products
+## **Intended Final Products**
 Creating a website:
 
 * Using Plotly to create graphs comparing the different data sets
@@ -32,11 +32,11 @@ Creating a website:
 * All graphs and results (specific comparisons stated in planned analyses)
 * Github repo showcasing all our committs and work
 
-## The anticipated data sources
+## **The anticipated data sources**
 * CDC PRAMStat Data for 2007
 * Peer-reviewed journal for related work literature
 
-## The planned analyses / visualizations / coding challenges
+## **The planned analyses / visualizations / coding challenges**
 * Data Manipulation: To compare and contrast the different data sets
   - Compare infant mortality rate in relation to alcohol consumption
   - Compare infant mortality rate in relation to tobacco consumption
@@ -49,7 +49,7 @@ Creating a website:
 * Visualization: ggplots (histograms, bar graph, scatter plot, density plot) and Maps.
 * Coding challenges: Plots, using patchwork to combine data sets, creating a website, and formatting for aesthetics, and creating interactive maps
 
-## The planned timeline
+## **The planned timeline**
 * Planning (1st week)
   - Define the project scope and goals 
   - Plan the site structure and features

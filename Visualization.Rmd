@@ -115,6 +115,9 @@ cleaned_no_contra_2007 <- no_contraception_data_2007 %>%
 
 ```
 
+We aim to see the patterns of infant mortality among maternal populations based on their tobacco and alcohol consumption mpatterns. Additionally, we also want to see how demographic factors such as race, age, income levels, educational levels and intent to have children can also contribute to infant mortality rates. 
+
+
 
 ### Plots of Maternal Alcohol Consumption
 
@@ -256,7 +259,7 @@ leaflet() %>%
   * This Leaflet plot provides a visual representation of infant mortality data on a map. The size of the circles corresponds to the values in the data_value column, indicating the rate of infant mortality for each location.
   
   
-### States with the most infant mortality rates 
+### Infant Mortality by State 
 
 The plot above shows the locations of infant mortality rate across the US. 
 
@@ -274,8 +277,9 @@ knitr::kable(infant_deaths)
 
 The table provides a summary of total infant deaths by state, with each row representing a specific location. The `location_desc` column denotes the state, and the `total_infant_deaths` column indicates the corresponding number of infant deaths in each location. The data suggests variability in infant mortality rates across different regions, with some areas reporting higher or lower rates than others. For instance, states like Pennsylvania have a notably lower count of infant deaths, while others, such as Alaska and Arkansas, have higher counts. However, most of the data seemed to stay within the 35 to 50 range. This summary provides an overview of the distribution of infant deaths across various geographical locations. 
 
+### Looking at infant mortality rates by race, income levels, age,  education levels and intent. 
 
-### Table showing Infant Mortality by Race/Ethnicity
+#### Table showing Infant Mortality by Race/Ethnicity
 
 ```{r}
 filtered_mortality_race <- cleaned_infant_mortality %>%
@@ -292,7 +296,7 @@ view(filtered_mortality_race)
 This table shows in depth information about infant mortality rate by race-ethnicity in the 31 states in this sample. The race/ethnicity variable was re-categorized into just "Hispanic" and "White-non Hispanic" to give us our variables of interest. Using this information, we will visualize the relationship between infant mortality rate and how race/ethnicity plays a role. 
 
 
-### Plot showing the effect of Race/Ethnicity on Infant Mortality 
+#### Plot showing the effect of Race/Ethnicity on Infant Mortality 
 
 ```{r}
 plot_infant_deaths <- ggplot(filtered_mortality_race, aes(x = break_out, fill = break_out)) +
@@ -309,7 +313,7 @@ print(plot_infant_deaths)
 The `plot_infant_deaths` above shows a plot of infant deaths categorized by whether they were Hispanic or not. The graph shows that those who were not Hispanic had a higher infant death count than those who were Hispanic.
 
 
-#Plot of Infant Mortality and Maternal Income
+#### Plot of Infant Mortality and Maternal Income
 
 ```{r}
 
@@ -332,10 +336,10 @@ print(plot_infant_income)
 
 ```
 
-This plot shows the relationship between maternal income levels and infant mortality rate. From the bar graph, those in the income bracket of "$25,000-$49,000" had a higher infant mortality rate and those who made more than $50,000 had the lowest. This was an interesting observation, as those who made less that $10,000 year would be expected to have the highest infant mortality as low income levels is a social determinant of infant health outcomes. 
+This plot shows the relationship between maternal income levels and infant mortality rate. From the bar graph, those in the income bracket of $25,000-$49,000 had a higher infant mortality rate and those who made more than $50,000 had the lowest. This was an interesting observation, as those who made less that $10,000 a year would be expected to have the highest infant mortality as low income levels is a social determinant of infant health outcomes. 
 
 
-### Plot of Infant Mortality and Maternal Age 
+#### Plot of Infant Mortality and Maternal Age 
 
 ```{r}
 filtered_mortality_age <- cleaned_infant_mortality %>%
@@ -355,7 +359,11 @@ print(plot_mortality_age)
 
 ```
 
-### Plot of Maternal Education and Infant Death 
+
+This plot shows infant mortality rates by age. Interestingly, maternal populations below the age of 18 have the lowest infant mortality rates. Comparatively, women in the 45+ age category have a higher infant mortality rate. Women in the 18-24, 25-29 and 30-44 all have approximately the same levels of infant mortality rates. 
+
+
+#### Plot of Maternal Education and Infant Death 
 
 ```{r}
 filtered_mortality_educ <- cleaned_infant_mortality %>%
@@ -375,7 +383,9 @@ ggplot(aes(x = break_out, fill = break_out)) +
 print(plot_mortality_educ)
 ```
 
-### Plot of Maternal Medicaid Recepient and Infant Death
+This plot shows the relationship between maternal education and infant mortality rates. This is an interesting finding that shows those with greater than 12 years of education had higher infant mortality rates compared to those with less than 12 years of education. This could be because factors like race could have been a confounding variable. Additionally, it can also be assumed that people who were in school longer were also older, so that could also be an additional factor. 
+
+#### Plot of Maternal Medicaid Recepient and Infant Death
 
 ```{r}
 filtered_mortality_medi <- cleaned_infant_mortality %>%
@@ -395,27 +405,10 @@ ggplot(aes(x = break_out, fill = break_out)) +
 print(plot_mortality_medi)
 ```
 
-### Plot of Maternal Smoking and Infant Death
+This plot shows the relationship between infant mortality rate and mothers who were recipients of medicaid. This bar graph shows that there is no statistical difference. 
 
-```{r}
-filtered_mortality_smoke <- cleaned_infant_mortality %>%
-  filter(break_out_category == "Smoked last 3 months of Pregnancy" &
-         (break_out %in% c("Non-Smoker", "Smoker")) &
-         question == "Indicator of infant currently alive" & response == "NO")
 
-plot_mortality_smoke <- filtered_mortality_smoke |>
-ggplot(aes(x = break_out, fill = break_out)) +
-  geom_bar() +
-  labs(title = "Infant Deaths by Maternal Smoking",
-       x = "Maternal Smoking Status",
-       y = "Total Infant Deaths") +
-  scale_fill_manual(values = c("Non-Smoker" = "pink", "Smoker" = "yellow")) +
-  theme_minimal()
-
-print(plot_mortality_smoke)
-```
-
-### Plot of Maternal Intent and Infant Death
+#### Plot of Maternal Intent and Infant Death
 
 ```{r}
 filtered_mortality_intent <- cleaned_infant_mortality %>%
@@ -435,3 +428,4 @@ ggplot(aes(x = break_out, fill = break_out)) +
 print(plot_mortality_intent)
 ```
 
+This plot shows the relationship between maternal intent to have children with infant mortality rate. Those who intended to have a child, actually had a higher rate of infant mortality rate. There could be several confounding factors that could contribute to this, such as age and stress factors. 

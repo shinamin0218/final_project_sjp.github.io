@@ -121,28 +121,6 @@ We aim to see the patterns of infant mortality among maternal populations based 
 
 ### Plots of Maternal Alcohol Consumption
 
-```{r, message=FALSE, warning=FALSE}
-
-
-# Plot of question and responses for alcohol
-
-# Create ggplot object
-gg_plot <- cleaned_alc_2007 %>%
-  ggplot(aes(x = question, fill = response)) +
-  geom_bar(position = "dodge") +
-  labs(title = "Questions and Responses", x = "Questions", y = "Count") +
-  theme_minimal() +
-  theme(axis.text.x = element_text(angle = 45, hjust = 5, size = 2)) +
-  labs(
-    x = "Question",
-    y = "Response",
-    title = "Questions vs Response of Alcohol Consumption"
-  )
-
-print(gg_plot)
-
-```
-
 ```{r}
 # Extract data directly from the original data frame
 plot_data <- cleaned_alc_2007 %>%

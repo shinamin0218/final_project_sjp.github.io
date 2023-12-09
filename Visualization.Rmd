@@ -161,6 +161,7 @@ plot_ly(data = plot_data, x = ~question, y = ~count, color = ~response, type = "
 Plot 1 shows the number of individuals who consumed alcohol, resumed drinking alcohol after quitting briefly, or reduced the total number of drinks consumed. The x-axis shows the indicators from the CDC 2007 PRAM data set, and y-axis shows the data values. Overall, it looks like the number of mothers who had the same drinks or more had the highest amount of data values. 
 
 --------------------------------------------------------------------
+
 ### **Plots of Maternal Tobacco Use**
 
 ```{r}

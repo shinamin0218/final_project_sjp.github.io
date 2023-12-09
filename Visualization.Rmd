@@ -149,7 +149,8 @@ plot_data <- cleaned_alc_2007 %>%
   summarize(count = n())
 
 # Convert data to Plotly
-plot_ly(data = plot_data, x = ~question, y = ~count, color = ~response, type = "bar", split = ~response) %>%
+plot_ly(
+  data = plot_data, x = ~question, y = ~count, color = ~response, colors = "viridis", type = "bar", split = ~response) %>%
   layout(
     title = "Questions vs Response of Alcohol Consumption",
     xaxis = list(title = "Question",tickfont = list(size = 5)),
@@ -175,7 +176,7 @@ plot_data <- cleaned_tobac_2007 %>%
   summarize(count = n())
 
 # Convert data to Plotly
-plot_ly(data = plot_data, x = ~location_abbr, y = ~count, color = ~response, type = "bar", split = ~response) %>%
+plot_ly(data = plot_data, x = ~location_abbr, y = ~count, color = ~response, colors = "viridis", type = "bar", split = ~response) %>%
   layout(
     title = " Tobacco Use by State",
     xaxis = list(title = "Question"),
@@ -201,7 +202,7 @@ leaflet() |>
                    lat = ~latitude,   # Adjust column name if needed
                    label = ~location_abbr,   # Assuming 'Group.1' is a column in your data
                    radius = ~data_value * 0.12,
-                   color = "orange",
+                   color = "turquoise",
                    stroke = TRUE,
                    fillOpacity = 0.75,
                    popup = ~paste("Response:", response)) 

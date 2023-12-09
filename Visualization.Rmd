@@ -51,16 +51,16 @@ cleaned_tobac_2007 <- tobacco_data_2007 |>
   filter( response != "NO") |>
   drop_na(response, geolocation) |>
   separate(geolocation, into = c("latitude", "longitude"), sep = ", ", convert = TRUE) |>
-   mutate(latitude = as.numeric(str_replace_all(latitude, "\\(|\\)", "")),  # Convert to numeric and remove parentheses
-         longitude = as.numeric(str_replace_all(longitude, "\\(|\\)", "")))  # Convert to numeric and remove parentheses
+   mutate(latitude = as.numeric(str_replace_all(latitude, "\\(|\\)", "")),  
+         longitude = as.numeric(str_replace_all(longitude, "\\(|\\)", "")))  
 
 cleaned_mat_race <- maternal_race |>
   janitor::clean_names() |>
   select(-data_value_std_err, -data_value_type) |>
   drop_na(response,geolocation) |>
   separate(geolocation, into = c("latitude", "longitude"), sep = ", ", convert = TRUE) |>
-   mutate(latitude = as.numeric(str_replace_all(latitude, "\\(|\\)", "")),  # Convert to numeric and remove parentheses
-         longitude = as.numeric(str_replace_all(longitude, "\\(|\\)", "")))  # Convert to numeric and remove parentheses
+   mutate(latitude = as.numeric(str_replace_all(latitude, "\\(|\\)", "")),  
+         longitude = as.numeric(str_replace_all(longitude, "\\(|\\)", "")))  
   
 no_alcohol_data_2007 = read_csv("./data/PRAM_2007_no_alcohol.csv")
 
@@ -91,8 +91,8 @@ cleaned_infant_mortality <- infant_mortality_df |>
   select(-data_value_std_err, -data_value_type, -data_value_unit, -data_value_footnote_symbol, -data_value_footnote) |>
   drop_na(response, geolocation) |>
   separate(geolocation, into = c("latitude", "longitude"), sep = ", ", convert = TRUE) |>
-   mutate(latitude = as.numeric(str_replace_all(latitude, "\\(|\\)", "")),  # Convert to numeric and remove parentheses
-         longitude = as.numeric(str_replace_all(longitude, "\\(|\\)", "")))  # Convert to numeric and remove parentheses
+   mutate(latitude = as.numeric(str_replace_all(latitude, "\\(|\\)", "")),  
+         longitude = as.numeric(str_replace_all(longitude, "\\(|\\)", "")))  
 
 # cleaned conception
 
@@ -110,12 +110,12 @@ cleaned_no_contra_2007 <- no_contraception_data_2007 %>%
   select(-data_value_type) %>%
   drop_na(response) |>
   separate(geolocation, into = c("latitude", "longitude"), sep = ", ", convert = TRUE) |>
-   mutate(latitude = as.numeric(str_replace_all(latitude, "\\(|\\)", "")),  # Convert to numeric and remove parentheses
-         longitude = as.numeric(str_replace_all(longitude, "\\(|\\)", "")))  # Convert to numeric and remove parentheses
+   mutate(latitude = as.numeric(str_replace_all(latitude, "\\(|\\)", "")),  
+         longitude = as.numeric(str_replace_all(longitude, "\\(|\\)", "")))  
 
 ```
 
-We aim to see the patterns of infant mortality among maternal populations based on their tobacco and alcohol consumption mpatterns. Additionally, we also want to see how demographic factors such as race, age, income levels, educational levels and intent to have children can also contribute to infant mortality rates. 
+We aim to see the patterns of infant mortality among maternal populations based on their tobacco and alcohol consumption patterns. Additionally, we also want to see how demographic factors such as race, age, income levels, educational levels and intent to have children can also contribute to infant mortality rates. 
 
 
 
@@ -138,8 +138,6 @@ gg_plot <- cleaned_alc_2007 %>%
     y = "Response",
     title = "Questions vs Response of Alcohol Consumption"
   )
-
-
 
 ```
 
@@ -168,8 +166,6 @@ library(ggplot2)
 library(plotly)
 library(dplyr)
 
-# Assuming cleaned_tobac_2007 is a data frame
-# If not, convert it to a data frame using as.data.frame()
 
 # Create ggplot object
 gg_plot <- cleaned_tobac_2007 %>%
@@ -199,6 +195,7 @@ plot_ly(data = plot_data, x = ~location_abbr, y = ~count, color = ~response, typ
   )
 
 ```
+
 Plot 2 shows tobacco consumption by state according to the 2007 CDC PRAM data set. The highest data values were amongst those who answered “yes” and the lowest data values were among those who were specific and answered “41+/ day.”
 
 
@@ -217,8 +214,8 @@ leaflet() |>
                    fillOpacity = 0.1,
                    popup = ~paste("Response:", response)) 
 ```
+
 This map visualizes data points from the `cleaned_tobac_2007` dataset, showcasing the prevalence of Tobacco Use during pregnancy across different states. The sizes of the circles represent the values in the `data_value` column, reflecting the number of participants who responded affirmatively to Tobacco Use during pregnancy in each state. Larger circles indicate a higher number of positive responses, offering an overview of the distribution of this behavior across geographic regions
-  
   
   
 ### Map of Maternal Tobacco use
@@ -237,6 +234,7 @@ leaflet() %>%
                    popup = ~paste("Response:", response),
                    group = ~location_abbr)
 ```
+
 This map illustrates data points from the `cleaned_tobac_2007` dataset, depicting the prevalence of Tobacco Use during pregnancy across various states. The sizes of the circles correspond to the values in the `data_value` column, reflecting the number of participants who reported affirmative responses to Tobacco Use during pregnancy in each state. Larger circles indicate a higher number of positive responses, providing insight into the regional distribution of this behavior
 
 
@@ -256,6 +254,7 @@ leaflet() %>%
                    fillOpacity = 0.5,
                    popup = ~paste("Response:", response))
 ```
+
 This Leaflet plot provides a visual representation of infant mortality data on a map. The size of the circles corresponds to the values in the `data_value` column, indicating the rate of infant mortality for each location.
   
   

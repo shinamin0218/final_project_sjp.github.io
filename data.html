@@ -377,7 +377,11 @@ class="section level4">
 Contraception</h4>
 <pre class="r"><code>alcohol_data_2007 = read_csv(&quot;./data/PRAM_2007_alcohol.csv&quot;)</code></pre>
 <pre><code>## Rows: 16637 Columns: 27
+<<<<<<< HEAD
 ## ── Column specification ───────────────────────────────────────
+=======
+## -- Column specification ---------------------------------
+>>>>>>> 3e832083d93a2d1cc0572cf71f5d43c94769f092
 ## Delimiter: &quot;,&quot;
 ## chr (19): LocationAbbr, LocationDesc, Class, Topic, Question, DataSource, Re...
 ## dbl  (7): Year, Data_Value, Data_Value_Footnote_Symbol, Low_Confidence_Limit...
@@ -387,7 +391,11 @@ Contraception</h4>
 ## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
 <pre class="r"><code>tobacco_data_2007 = read_csv(&quot;./data/PRAM_2007_tobacco.csv&quot;)</code></pre>
 <pre><code>## Rows: 32891 Columns: 27
+<<<<<<< HEAD
 ## ── Column specification ───────────────────────────────────────
+=======
+## -- Column specification ---------------------------------
+>>>>>>> 3e832083d93a2d1cc0572cf71f5d43c94769f092
 ## Delimiter: &quot;,&quot;
 ## chr (19): LocationAbbr, LocationDesc, Class, Topic, Question, DataSource, Re...
 ## dbl  (6): Year, Data_Value, Low_Confidence_Limit, High_Confidence_Limit, Sam...
@@ -397,7 +405,11 @@ Contraception</h4>
 ## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
 <pre class="r"><code>no_contraception_data_2007 = read_csv(&quot;./data/PRAM_2007_no_contraception.csv&quot;)</code></pre>
 <pre><code>## Rows: 15509 Columns: 27
+<<<<<<< HEAD
 ## ── Column specification ───────────────────────────────────────
+=======
+## -- Column specification ---------------------------------
+>>>>>>> 3e832083d93a2d1cc0572cf71f5d43c94769f092
 ## Delimiter: &quot;,&quot;
 ## chr (19): LocationAbbr, LocationDesc, Class, Topic, Question, DataSource, Re...
 ## dbl  (6): Year, Data_Value, Low_Confidence_Limit, High_Confidence_Limit, Sam...
@@ -407,7 +419,11 @@ Contraception</h4>
 ## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
 <pre class="r"><code>infant_mortality_df = read_csv(&quot;./data/PRAM_2007_infantmortality.csv&quot;)</code></pre>
 <pre><code>## Rows: 1386 Columns: 27
+<<<<<<< HEAD
 ## ── Column specification ───────────────────────────────────────
+=======
+## -- Column specification ---------------------------------
+>>>>>>> 3e832083d93a2d1cc0572cf71f5d43c94769f092
 ## Delimiter: &quot;,&quot;
 ## chr (19): LocationAbbr, LocationDesc, Class, Topic, Question, DataSource, Re...
 ## dbl  (6): Year, Data_Value, Low_Confidence_Limit, High_Confidence_Limit, Sam...
@@ -424,9 +440,8 @@ Contraception</h4>
   filter( response != &quot;NO&quot;) |&gt;
   drop_na(response,geolocation) |&gt;
   separate(geolocation, into = c(&quot;latitude&quot;, &quot;longitude&quot;), sep = &quot;, &quot;, convert = TRUE) |&gt;
-   mutate(latitude = as.numeric(str_replace_all(latitude, &quot;\\(|\\)&quot;, &quot;&quot;)),  # Convert to numeric and remove parentheses
-         longitude = as.numeric(str_replace_all(longitude, &quot;\\(|\\)&quot;, &quot;&quot;)))  # Convert to numeric and remove parentheses
-
+   mutate(latitude = as.numeric(str_replace_all(latitude, &quot;\\(|\\)&quot;, &quot;&quot;)),  
+         longitude = as.numeric(str_replace_all(longitude, &quot;\\(|\\)&quot;, &quot;&quot;)))  
 
 view(cleaned_alc_2007)</code></pre>
 <p>Cleaning Tobacco Data</p>
@@ -439,8 +454,8 @@ view(cleaned_alc_2007)</code></pre>
   filter( response != &quot;NO&quot;) |&gt;
   drop_na(response, geolocation) |&gt;
   separate(geolocation, into = c(&quot;latitude&quot;, &quot;longitude&quot;), sep = &quot;, &quot;, convert = TRUE) |&gt;
-   mutate(latitude = as.numeric(str_replace_all(latitude, &quot;\\(|\\)&quot;, &quot;&quot;)),  # Convert to numeric and remove parentheses
-         longitude = as.numeric(str_replace_all(longitude, &quot;\\(|\\)&quot;, &quot;&quot;)))  # Convert to numeric and remove parentheses
+   mutate(latitude = as.numeric(str_replace_all(latitude, &quot;\\(|\\)&quot;, &quot;&quot;)),  
+         longitude = as.numeric(str_replace_all(longitude, &quot;\\(|\\)&quot;, &quot;&quot;)))  
 
 view(cleaned_tobac_2007)</code></pre>
 </div>
@@ -476,7 +491,11 @@ class="section level4">
 Contraception</h4>
 <pre class="r"><code>no_alcohol_data_2007 = read_csv(&quot;./data/PRAM_2007_no_alcohol.csv&quot;)</code></pre>
 <pre><code>## Rows: 5640 Columns: 27
+<<<<<<< HEAD
 ## ── Column specification ───────────────────────────────────────
+=======
+## -- Column specification ---------------------------------
+>>>>>>> 3e832083d93a2d1cc0572cf71f5d43c94769f092
 ## Delimiter: &quot;,&quot;
 ## chr (19): LocationAbbr, LocationDesc, Class, Topic, Question, DataSource, Re...
 ## dbl  (6): Year, Data_Value, Low_Confidence_Limit, High_Confidence_Limit, Sam...
@@ -486,7 +505,11 @@ Contraception</h4>
 ## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
 <pre class="r"><code>no_tobacco_data_2007 = read_csv(&quot;./data/PRAM_2007_no_tobacco.csv&quot;)</code></pre>
 <pre><code>## Rows: 15055 Columns: 27
+<<<<<<< HEAD
 ## ── Column specification ───────────────────────────────────────
+=======
+## -- Column specification ---------------------------------
+>>>>>>> 3e832083d93a2d1cc0572cf71f5d43c94769f092
 ## Delimiter: &quot;,&quot;
 ## chr (19): LocationAbbr, LocationDesc, Class, Topic, Question, DataSource, Re...
 ## dbl  (6): Year, Data_Value, Low_Confidence_Limit, High_Confidence_Limit, Sam...
@@ -496,7 +519,11 @@ Contraception</h4>
 ## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
 <pre class="r"><code>contraception_data_2007 = read_csv(&quot;./data/PRAM_2007_contraception.csv&quot;)</code></pre>
 <pre><code>## Rows: 36083 Columns: 27
+<<<<<<< HEAD
 ## ── Column specification ───────────────────────────────────────
+=======
+## -- Column specification ---------------------------------
+>>>>>>> 3e832083d93a2d1cc0572cf71f5d43c94769f092
 ## Delimiter: &quot;,&quot;
 ## chr (19): LocationAbbr, LocationDesc, Class, Topic, Question, DataSource, Re...
 ## dbl  (7): Year, Data_Value, Data_Value_Footnote_Symbol, Low_Confidence_Limit...
@@ -531,29 +558,6 @@ class="section level4">
          longitude = as.numeric(str_replace_all(longitude, &quot;\\(|\\)&quot;, &quot;&quot;)))  # Convert to numeric and remove parentheses
 
 view(cleaned_infant_mortality)</code></pre>
-</div>
-<div id="other-aspects-of-data-we-are-interested-in"
-class="section level4">
-<h4>Other aspects of data we are interested in</h4>
-<p>Use of Contraception</p>
-<pre class="r"><code>cleaned_contraception_2007 &lt;- contraception_data_2007 |&gt;
-  janitor::clean_names() |&gt;
-  select(-data_value_std_err, -geolocation, -data_value_type) |&gt;
-  filter(response != &quot;YES (CHECKED)&quot;) |&gt;
-  filter(response != &quot;YES&quot;) |&gt;
-  drop_na(response)
-
-view(cleaned_contraception_2007)</code></pre>
-<p>No Contraception Use</p>
-<pre class="r"><code>cleaned_no_contra_2007 &lt;- no_contraception_data_2007 %&gt;%
-  janitor::clean_names() %&gt;%
-  select(-data_value_type) %&gt;%
-  drop_na(response) |&gt;
-  separate(geolocation, into = c(&quot;latitude&quot;, &quot;longitude&quot;), sep = &quot;, &quot;, convert = TRUE) |&gt;
-   mutate(latitude = as.numeric(str_replace_all(latitude, &quot;\\(|\\)&quot;, &quot;&quot;)),  # Convert to numeric and remove parentheses
-         longitude = as.numeric(str_replace_all(longitude, &quot;\\(|\\)&quot;, &quot;&quot;)))  # Convert to numeric and remove parentheses
-
-view(cleaned_no_contra_2007)</code></pre>
 </div>
 
 

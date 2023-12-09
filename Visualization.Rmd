@@ -15,6 +15,26 @@ library(dplyr)
 library(tidyverse)
 library(leaflet)
 library(knitr)
+library(forcats)
+library(viridis)
+
+knitr::opts_chunk$set(
+	echo = TRUE,
+	warning = FALSE,
+	fig.width = 8, 
+  fig.height = 6,
+  out.width = "90%"
+)
+
+options(
+  ggplot2.continuous.colour = "viridis",
+  ggplot2.continuous.fill = "viridis"
+)
+
+scale_colour_discrete = scale_colour_viridis_d
+scale_fill_discrete = scale_fill_viridis_d
+
+theme_set(theme_minimal() + theme(legend.position = "bottom"))
 ```
 
 ```{r, message=FALSE, warning=FALSE, include=FALSE}
@@ -121,26 +141,6 @@ We aim to see the patterns of infant mortality among maternal populations based 
 
 ### Plots of Maternal Alcohol Consumption
 
-```{r, message=FALSE, warning=FALSE}
-
-
-# Plot of question and responses for alcohol
-
-# Create ggplot object
-gg_plot <- cleaned_alc_2007 %>%
-  ggplot(aes(x = question, fill = response)) +
-  geom_bar(position = "dodge") +
-  labs(title = "Questions and Responses", x = "Questions", y = "Count") +
-  theme_minimal() +
-  theme(axis.text.x = element_text(angle = 45, hjust = 5, size = 2)) +
-  labs(
-    x = "Question",
-    y = "Response",
-    title = "Questions vs Response of Alcohol Consumption"
-  )
-
-```
-
 ```{r}
 # Extract data directly from the original data frame
 plot_data <- cleaned_alc_2007 %>%
@@ -165,20 +165,6 @@ Plot 1 shows the number of individuals who consumed alcohol, resumed drinking al
 library(ggplot2)
 library(plotly)
 library(dplyr)
-
-
-# Create ggplot object
-gg_plot <- cleaned_tobac_2007 %>%
-  ggplot(aes(x = location_abbr, fill = response)) +
-  geom_bar(position = "dodge") +
-  labs(title = "Questions and Responses", x = "Questions", y = "Count") +
-  theme_minimal() +
-  theme(axis.text.x = element_text(angle = 45, hjust = 1)) +
-  labs(
-    x = "Question",
-    y = "Response",
-    title = "Tobacco Use by State"
-  )
 
 # Extract data directly from the original data frame
 plot_data <- cleaned_tobac_2007 %>%
@@ -209,9 +195,9 @@ leaflet() |>
                    lat = ~latitude,   # Adjust column name if needed
                    label = ~location_abbr,   # Assuming 'Group.1' is a column in your data
                    radius = ~data_value * 0.12,
-                   color = "blue",
+                   color = "orange",
                    stroke = TRUE,
-                   fillOpacity = 0.1,
+                   fillOpacity = 0.75,
                    popup = ~paste("Response:", response)) 
 ```
 
@@ -228,9 +214,9 @@ leaflet() %>%
                    lat = ~latitude,   
                    label = ~location_abbr,   
                    radius = ~data_value * 0.12,
-                   color = "magenta",
+                   color = "pink",
                    stroke = TRUE,
-                   fillOpacity = 0.1,
+                   fillOpacity = 0.75,
                    popup = ~paste("Response:", response),
                    group = ~location_abbr)
 ```
@@ -249,7 +235,7 @@ leaflet() %>%
                    lat = ~latitude,
                    label = ~location_abbr,
                    radius = ~data_value * 0.12,
-                   color = "orange",
+                   color = "yellow",
                    stroke = TRUE,
                    fillOpacity = 0.5,
                    popup = ~paste("Response:", response))
@@ -276,6 +262,7 @@ knitr::kable(infant_deaths)
 
 The table provides a summary of total infant deaths by state, with each row representing a specific location. The `location_desc` column denotes the state, and the `total_infant_deaths` column indicates the corresponding number of infant deaths in each location. The data suggests variability in infant mortality rates across different regions, with some areas reporting higher or lower rates than others. For instance, states like Pennsylvania have a notably lower count of infant deaths, while others, such as Alaska and Arkansas, have higher counts. However, most of the data seemed to stay within the 35 to 50 range. This summary provides an overview of the distribution of infant deaths across various geographical locations. 
 
+
 ### Looking at infant mortality rates by race, income levels, age,  education levels and intent. 
 
 #### Table showing Infant Mortality by Race/Ethnicity
@@ -298,15 +285,20 @@ This table shows in depth information about infant mortality rate by race-ethnic
 #### Plot showing the effect of Race/Ethnicity on Infant Mortality 
 
 ```{r}
-plot_infant_deaths <- ggplot(filtered_mortality_race, aes(x = break_out, fill = break_out)) +
-  geom_bar() +
-  labs(title = "Infant Deaths by Ethnicity",
-       x = "Ethnicity",
-       y = "Total Infant Deaths") +
-  scale_fill_manual(values = c("Hispanic" = "blue", "Non-hispanic" = "green", "White, non-Hispanic" = "pink")) +
-  theme_minimal()
+box_ggplot =
+  filtered_mortality_race %>%
+  mutate(break_out = fct_reorder(break_out,sample_size)) %>%
+  ggplot(aes(x = break_out, y = sample_size, fill = break_out)) +
+  geom_boxplot() +
+  theme(axis.text.x = element_text(angle = 90, hjust = 1))
 
-print(plot_infant_deaths)
+ggplotly(box_ggplot) %>%
+  layout(
+    xaxis = list(title = "Ethnicity"),
+    yaxis = list(title = "Total Infant Deaths")
+  )
+
+print(ggplotly(box_ggplot))
 ```
 
 The `plot_infant_deaths` above shows a plot of infant deaths categorized by whether they were Hispanic or not. The graph shows that those who were not Hispanic had a higher infant death count than those who were Hispanic.
@@ -315,46 +307,64 @@ The `plot_infant_deaths` above shows a plot of infant deaths categorized by whet
 #### Plot of Infant Mortality and Maternal Income
 
 ```{r}
-
-filtered_mortality_income <- cleaned_infant_mortality %>%
+filtered_mortality_income = cleaned_infant_mortality %>%
   filter(break_out_category == "Income (years 2004 and beyond)" &
          (break_out %in% c("Less than $10,000", "$10,000 to $24,999", "$25,000 to $49,999", "$50,000 or more")) &
          question == "Indicator of infant currently alive" & response == "NO")
 
-view(filtered_mortality_income)
+subset_data <- head(filtered_mortality_income, 50)  # Adjust the number as needed
+density_ggplot_subset = 
+  subset_data %>%
+  mutate(break_out = fct_reorder(break_out, sample_size)) %>%
+  ggplot(aes(x = sample_size, fill = break_out)) +
+  geom_density(alpha = 0.5) +
+  labs(x = "Maternal Income",
+       y = "Density",
+       fill = "Maternal Income")
 
-plot_infant_income <- ggplot(filtered_mortality_income, aes(x = break_out, fill = break_out)) +
-  geom_bar() +
-  labs(title = "Infant Deaths by Income",
-       x = "Maternal Income",
-       y = "Total Infant Deaths") +
-  scale_fill_manual(values = c("Less than $10,000" = "blue", "$10,000 to $24,999" = "red", "$25,000 to $49,999" = "purple", "$50,000 or more" = "pink")) +
-  theme_minimal()
+  ggplotly(density_ggplot_subset) %>%
+  layout(
+    yaxis = list(title = "Density"),
+    barmode = "stack"
+  )
 
-print(plot_infant_income)
-
+print(ggplotly(density_ggplot_subset))
 ```
 
-This plot shows the relationship between maternal income levels and infant mortality rate. From the bar graph, those in the income bracket of $25,000-$49,000 had a higher infant mortality rate and those who made more than $50,000 had the lowest. This was an interesting observation, as those who made less that $10,000 a year would be expected to have the highest infant mortality as low income levels is a social determinant of infant health outcomes. 
+This plot shows the relationship between maternal income levels and infant mortality rate. From the density graph, those in the income bracket of $25,000-$49,000 had a higher infant mortality rate and those who made more than $50,000 had the lowest. This was an interesting observation, as those who made less that $10,000 a year would be expected to have the highest infant mortality as low income levels is a social determinant of infant health outcomes. 
 
 
 #### Plot of Infant Mortality and Maternal Age 
 
 ```{r}
+# Assuming 'cleaned_infant_mortality' is your data frame
+# and you have loaded the required libraries
+
 filtered_mortality_age <- cleaned_infant_mortality %>%
   filter(break_out_category == "Maternal Age - 18 to 44 years in groupings" &
          (break_out %in% c("Age < 18", "Age 18 - 24", "Age 25 - 29", "Age 30 - 44", "Age 45+")) &
          question == "Indicator of infant currently alive" & response == "NO")
 
-plot_mortality_age <- ggplot(filtered_mortality_age, aes(x = break_out, fill = break_out)) +
-  geom_bar() +
-  labs(title = "Infant Deaths by Maternal Age",
-       x = "Maternal Age",
-       y = "Total Infant Deaths") +
-  scale_fill_manual(values = c("Age < 18" = "blue", "Age 18 - 24" = "purple", "Age 25 - 29" = "pink", "Age 30 - 44" = "yellow", "Age 45+" = "orange")) +
-  theme_minimal()
+ggp_age_plot =
+filtered_mortality_age %>%
+  ggplot(aes(x = break_out, y = sample_size, fill = break_out)) +
+  geom_boxplot(alpha = 0.5) +
+  theme(axis.text = element_text(angle = 90, hjust = 1)) +
+  labs(
+    title = "Infants Deaths by Maternal Age",
+    x = "Maternal Age (C)",
+    y = "Total Infant Deaths (C)",
+    color = "break_out",
+    fill = "Maternal Age",
+    caption = "Data from the PRAMStat Data for 2007"
+  ) +
+  viridis::scale_color_viridis(
+    name = "break_out",
+    discrete = TRUE
+  )
 
-print(plot_mortality_age)
+ggplotly(ggp_age_plot)
+print(ggplotly(ggp_age_plot))
 
 ```
 

@@ -115,7 +115,7 @@ cleaned_no_contra_2007 <- no_contraception_data_2007 %>%
 
 Both substance abuse and maternal/infant mortality run rampant in the United States, and with the the use of the CDC 2007 PRAM Data set, we are interested in looking at the relationships between these variables. 
 
-## Data Cleaning
+## **Data Cleaning**
 
 We loaded in data from the PRAMS 2007 dataset. This dataset provided information about many different aspects about maternal health and birth that we were interested in addressing. 
 
@@ -123,7 +123,7 @@ After loading in the data, we cleaned each dataset by removing unecessary column
 
 We used the separate function for the "geolocation" variable by splitting it into a longitude and latitude variable that was used in creating our leaflet plots.
 
-## Initial questions
+## **Initial questions**
 
 ##### **Our initial research question**
 Is there a significant relationship between infant mortality rate and the consumption of Alcohol and Tobacco consumption?
@@ -139,9 +139,9 @@ Other parts of the data that interested us was also the use of contraception in 
 We are interested in looking at how pregnancy outcomes changes among mothers who drank or smoked cigarettes before conception, and comparing it to mothers who did not abuse any substances. As a group, we were collectively interested in both Maternal Child Health and Substance Abuse and this was an ideal way to combine those two interests. The demographics, social dynamics, and healthcare system in the United States provide a unique perspective on the outcomes of maternal health and substance abuse. We are interested in learning more about the relationship between substance abuse and infant mortality rates. 
 
 
-## Related Work
+## **Related Work**
 
-**Alcohol use during pregnancy**
+####**Alcohol use during pregnancy**
 
 The negative impact of smoking during pregnancy is evident in its direct association with adverse birth outcomes. This habit has been linked to a range of complications, including damage to the umbilical cord structure, an elevated risk of miscarriage and ectopic pregnancy, as well as an increased likelihood of low birth weight, placental abruption, preterm birth, and heightened infant mortality rates. 
 [Reference](https://pubmed.ncbi.nlm.nih.gov/17884310/)
@@ -150,7 +150,7 @@ According to Wolfe et al., within a dataset comprising 4,536,701 birth records, 
 [Reference](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3349286/)
 
 
-**Tobacco use during pregnancy**
+####**Tobacco use during pregnancy**
 
 The consumption of alcohol during pregnancy has been correlated with a spectrum of adverse birth outcomes. This includes heightened risks of miscarriage, stillbirth, infant mortality, congenital anomalies, low birthweight, reduced gestational age, preterm delivery, and infants being born small for their gestational age.
 [Reference](https://pubmed.ncbi.nlm.nih.gov/19797967/)
@@ -158,7 +158,7 @@ The consumption of alcohol during pregnancy has been correlated with a spectrum 
 While specific data on infant mortality rates were not explicitly provided, it is noteworthy that maternal smoking during pregnancy constitutes a well-established risk factor for sudden unexpected infant death (SUID). The risk of SUID more than doubled (adjusted odds ratio [aOR] = 2.44; 95% confidence interval [CI] 2.31–2.57) in the presence of any maternal smoking during pregnancy. Furthermore, a twofold increase in SUID risk was observed when comparing no smoking to smoking just 1 cigarette daily throughout pregnancy. 
 [Reference](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6564075/)
 
-# Exploratory Analysis
+# **Exploratory Analysis**
 
 ### Infant Deaths Across the US
 
@@ -174,7 +174,7 @@ knitr::kable(infant_deaths)
 
 The presented table summarizes total infant deaths by state, where each row represents a distinct geographical location. The 'location_desc' column specifies the state, while the 'total_infant_deaths' column reveals the corresponding count of infant deaths in each location. The data indicates variations in infant mortality rates across regions, with some areas reporting higher or lower rates than others. Notably, states like Pennsylvania exhibit lower counts of infant deaths, whereas Alaska and Arkansas show higher counts. Nevertheless, a majority of the data falls within the 35 to 50 range. This summary offers a comprehensive overview of the distribution of infant deaths across diverse geographical locations.
 
-### Maternal Alcohol Use 
+### Maternal Alcohol Use
 
 ```{r}
 # Plot of question and responses for alcohol
@@ -226,7 +226,7 @@ plot_ly(data = plot_data, x = ~location_abbr, y = ~count, color = ~response, typ
 
 The `maternal_tobac_plot` displays the questions and responses in terms of maternal use of tobacco. The three questions we focused on was cigarette use before, during and after conception. From the graph, we can see that in the last 3 months of pregnancy, about 1700 individuals smoked 1-5 cigarettes a day, about 1700 smoked 6-10 cigarettes a day, and about 700 smoked 41+ a day. 
 
-# Discussion
+# **Discussion**
 
 For this analysis, we looked at the 2007 CDC PRAMS dataset. We cleaned and analyzed the data specific to maternal substance use and infant mortality. 
 
@@ -239,7 +239,7 @@ Regarding Infant Mortality, we addressed different aspects that may have contrib
 Additionally, upon analyzing infant mortality rate in the United States, it was found that most states had infant death rates ranging between 40  and 48. However, there were a few outliers, such as Pennsylvania that had 3 total infant deaths. Colorado, Illinois, New York, NYC, North Carolina, Oklahoma, South Carolina, and West Virginia had the highest total infant death count of 47. It is also important to note that New York, excluding NYC, had 47 infant deaths, and New York City specifically had 47 infant deaths in 2007. Combined, New York had a total of 94 deaths, providing evidence that highly urban areas may experience higher infant death rates. However since the dataframe does not provide city-specific data from other states, we cannot draw any conclusions about urban populations and its relationship to infant mortality rates.
 
 
-### Limitations
+### **Limitations**
 
 There are some limitations to interpreting the 2007 PRAMS dataset. Upon conducting a more in depth observational analysis, we found that the sample was not representative of the United States as a whole. There were only 31 states surveyed out of the 50, which skews the results of our analysis. Our variables of interest looked at income levels, race/ethnicity, which had several gaps. For example, the race/ethnicity category only included hispanic, white-non-hispanic and black-non-hispanic, which is not representative of the United States population. Additionally, the income levels were too broad which skews the data for the participants who have an income between different categories.
 

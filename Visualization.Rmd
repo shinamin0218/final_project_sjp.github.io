@@ -138,9 +138,9 @@ cleaned_no_contra_2007 <- no_contraception_data_2007 %>%
 
 We aim to see the patterns of infant mortality among maternal populations based on their tobacco and alcohol consumption patterns. Additionally, we also want to see how demographic factors such as race, age, income levels, educational levels and intent to have children can also contribute to infant mortality rates. 
 
+-----------------------------------------------------------------------------------
 
-
-### Plots of Maternal Alcohol Consumption
+### **Plots of Maternal Alcohol Consumption**
 
 ```{r}
 # Extract data directly from the original data frame
@@ -160,7 +160,8 @@ plot_ly(data = plot_data, x = ~question, y = ~count, color = ~response, type = "
 
 Plot 1 shows the number of individuals who consumed alcohol, resumed drinking alcohol after quitting briefly, or reduced the total number of drinks consumed. The x-axis shows the indicators from the CDC 2007 PRAM data set, and y-axis shows the data values. Overall, it looks like the number of mothers who had the same drinks or more had the highest amount of data values. 
 
-### Plots of Maternal Tobacco Use
+--------------------------------------------------------------------
+### **Plots of Maternal Tobacco Use**
 
 ```{r}
 library(ggplot2)
@@ -185,8 +186,11 @@ plot_ly(data = plot_data, x = ~location_abbr, y = ~count, color = ~response, typ
 
 Plot 2 shows tobacco consumption by state according to the 2007 CDC PRAM data set. The highest data values were amongst those who answered “yes” and the lowest data values were among those who were specific and answered “41+/ day.”
 
+--------------------------------------------------------------------------------
 
-### Map of Maternal Alcohol Use
+### **Maternal Health and Infant Mortality Maps **
+
+#### **Map of Maternal Alcohol Use**
 
 ```{r, message=FALSE, warning=FALSE}
 leaflet() |> 
@@ -204,8 +208,9 @@ leaflet() |>
 
 This map visualizes data points from the `cleaned_tobac_2007` dataset, showcasing the prevalence of Tobacco Use during pregnancy across different states. The sizes of the circles represent the values in the `data_value` column, reflecting the number of participants who responded affirmatively to Tobacco Use during pregnancy in each state. Larger circles indicate a higher number of positive responses, offering an overview of the distribution of this behavior across geographic regions
   
+-------------------------------------------------------------------------------- 
   
-### Map of Maternal Tobacco use
+#### **Map of Maternal Tobacco use**
 
 ```{r, message=FALSE, warning=FALSE}
 leaflet() %>%
@@ -224,9 +229,9 @@ leaflet() %>%
 
 This map illustrates data points from the `cleaned_tobac_2007` dataset, depicting the prevalence of Tobacco Use during pregnancy across various states. The sizes of the circles correspond to the values in the `data_value` column, reflecting the number of participants who reported affirmative responses to Tobacco Use during pregnancy in each state. Larger circles indicate a higher number of positive responses, providing insight into the regional distribution of this behavior
 
+--------------------------------------------------------------------------------
 
-### Map of Infant Mortality Rate
-
+#### **Map of Infant Mortality Rate**
 
 ```{r}
 leaflet() %>%
@@ -244,8 +249,9 @@ leaflet() %>%
 
 This Leaflet plot provides a visual representation of infant mortality data on a map. The size of the circles corresponds to the values in the `data_value` column, indicating the rate of infant mortality for each location.
   
+--------------------------------------------------------------------------------
   
-### Infant Mortality by State 
+### **Infant Mortality by State**
 
 The plot above shows the locations of infant mortality rate across the US. 
 
@@ -264,7 +270,7 @@ knitr::kable(infant_deaths)
 The table provides a summary of total infant deaths by state, with each row representing a specific location. The `location_desc` column denotes the state, and the `total_infant_deaths` column indicates the corresponding number of infant deaths in each location. The data suggests variability in infant mortality rates across different regions, with some areas reporting higher or lower rates than others. For instance, states like Pennsylvania have a notably lower count of infant deaths, while others, such as Alaska and Arkansas, have higher counts. However, most of the data seemed to stay within the 35 to 50 range. This summary provides an overview of the distribution of infant deaths across various geographical locations. 
 
 
-### Looking at infant mortality rates by race, income levels, age,  education levels and intent. 
+### **Looking at infant mortality rates by race, income levels, age,  education levels and intent**
 
 
 #### Table showing Infant Mortality by Race/Ethnicity
@@ -283,8 +289,11 @@ view(filtered_mortality_race)
 
 This table shows in depth information about infant mortality rate by race-ethnicity in the 31 states in this sample. The race/ethnicity variable was re-categorized into just "Hispanic" and "White-non Hispanic" to give us our variables of interest. Using this information, we will visualize the relationship between infant mortality rate and how race/ethnicity plays a role. 
 
+-----------------------------------------------------------------------------------
 
-### Plot showing the effect of Race/Ethnicity on Infant Mortality 
+### Maternal Demographics and Infant Mortality Plots
+
+#### **Plot showing the effect of Race/Ethnicity on Infant Mortality**
 
 ```{r}
 box_ggplot =
@@ -307,7 +316,7 @@ print(ggplotly(box_ggplot))
 The `plot_infant_deaths` above shows a plot of infant deaths categorized by whether they were Hispanic or not. The graph shows that those who were not Hispanic had a higher infant death count than those who were Hispanic.
 
 
-### Plot of Infant Mortality and Maternal Income
+#### **Plot of Infant Mortality and Maternal Income**
 
 ```{r}
 filtered_mortality_income = cleaned_infant_mortality %>%
@@ -337,7 +346,7 @@ print(ggplotly(density_ggplot_subset))
 This plot shows the relationship between maternal income levels and infant mortality rate. From the density graph, those in the income bracket of $25,000-$49,000 had a higher infant mortality rate and those who made more than $50,000 had the lowest. This was an interesting observation, as those who made less that $10,000 a year would be expected to have the highest infant mortality as low income levels is a social determinant of infant health outcomes. 
 
 
-### Plot of Infant Mortality and Maternal Age 
+#### **Plot of Infant Mortality and Maternal Age**
 
 ```{r}
 # Assuming 'cleaned_infant_mortality' is your data frame
@@ -375,7 +384,7 @@ print(ggplotly(ggp_age_plot))
 This plot shows infant mortality rates by age. Interestingly, maternal populations below the age of 18 have the lowest infant mortality rates. Comparatively, women in the 45+ age category have a higher infant mortality rate. Women in the 18-24, 25-29 and 30-44 all have approximately the same levels of infant mortality rates. 
 
 
-### Plot of Maternal Education and Infant Death 
+#### **Plot of Maternal Education and Infant Death**
 
 ```{r}
 filtered_mortality_educ <- cleaned_infant_mortality %>%
@@ -404,7 +413,7 @@ print(ggplotly(plot_mortality_educ))
 
 This plot shows the relationship between maternal education and infant mortality rates. This is an interesting finding that shows those with greater than 12 years of education had higher infant mortality rates compared to those with less than 12 years of education. This could be because factors like race could have been a confounding variable. Additionally, it can also be assumed that people who were in school longer were also older, so that could also be an additional factor. 
 
-### Plot of Maternal Medicaid Recepient and Infant Death
+#### **Plot of Maternal Medicaid Recepient and Infant Death**
 
 ```{r}
 filtered_mortality_medi <- cleaned_infant_mortality %>%
@@ -429,7 +438,7 @@ print(plot_mortality_medi)
 This plot shows the relationship between infant mortality rate and mothers who were recipients of medicaid. This bar graph shows that there is no statistical difference. 
 
 
-### Plot of Maternal Intent and Infant Death
+#### **Plot of Maternal Intent and Infant Death**
 
 ```{r}
 filtered_mortality_intent <- cleaned_infant_mortality %>%

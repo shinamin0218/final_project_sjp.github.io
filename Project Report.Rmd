@@ -186,7 +186,7 @@ plot_data <- cleaned_alc_2007 %>%
   summarize(count = n())
 
 # Convert data to Plotly
-plot_ly(data = plot_data, x = ~question, y = ~count, color = ~response, type = "bar", split = ~response) %>%
+plot_ly(data = plot_data, x = ~question, y = ~count, color = ~response, colors = "viridis", type = "bar", split = ~response) %>%
   layout(
     title = "Questions vs Response of Alcohol Consumption",
     xaxis = list(title = "Question",tickfont = list(size = 5)),
@@ -217,7 +217,7 @@ plot_data <- cleaned_tobac_2007 %>%
   group_by(location_abbr, response) %>%
   summarize(count = n())
 
-plot_ly(data = plot_data, x = ~location_abbr, y = ~count, color = ~response, type = "bar", split = ~response) %>%
+plot_ly(data = plot_data, x = ~location_abbr, y = ~count, color = ~response, colors = "viridis", type = "bar", split = ~response) %>%
   layout(
     title = " Tobacco Use by State",
     xaxis = list(title = "Question"),

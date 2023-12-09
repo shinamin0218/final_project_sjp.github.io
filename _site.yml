@@ -11,8 +11,6 @@ navbar:
       href: Visualization.html
     - text: "Project-Report"
       href: Project-Report.html
-    - text: "Visualization"
-      href: Visualization.html
     - text: "About"
       href: About.html
     - icon: fa-envelope fa-lg

@@ -142,7 +142,7 @@ We are interested in looking at how pregnancy outcomes changes among mothers who
 
 ## **Related Work**
 
-####**Alcohol use during pregnancy**
+#### **Alcohol use during pregnancy**
 
 The negative impact of smoking during pregnancy is evident in its direct association with adverse birth outcomes. This habit has been linked to a range of complications, including damage to the umbilical cord structure, an elevated risk of miscarriage and ectopic pregnancy, as well as an increased likelihood of low birth weight, placental abruption, preterm birth, and heightened infant mortality rates. 
 [Reference](https://pubmed.ncbi.nlm.nih.gov/17884310/)
@@ -151,7 +151,7 @@ According to Wolfe et al., within a dataset comprising 4,536,701 birth records, 
 [Reference](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3349286/)
 
 
-####**Tobacco use during pregnancy**
+#### **Tobacco use during pregnancy**
 
 The consumption of alcohol during pregnancy has been correlated with a spectrum of adverse birth outcomes. This includes heightened risks of miscarriage, stillbirth, infant mortality, congenital anomalies, low birthweight, reduced gestational age, preterm delivery, and infants being born small for their gestational age.
 [Reference](https://pubmed.ncbi.nlm.nih.gov/19797967/)

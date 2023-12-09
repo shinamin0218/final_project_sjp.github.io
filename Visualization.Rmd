@@ -221,7 +221,7 @@ leaflet() %>%
                    lat = ~latitude,   
                    label = ~location_abbr,   
                    radius = ~data_value * 0.12,
-                   color = "pink",
+                   color = "yellow",
                    stroke = TRUE,
                    fillOpacity = 0.75,
                    popup = ~paste("Response:", response),
@@ -242,7 +242,7 @@ leaflet() %>%
                    lat = ~latitude,
                    label = ~location_abbr,
                    radius = ~data_value * 0.12,
-                   color = "yellow",
+                   color = "purple",
                    stroke = TRUE,
                    fillOpacity = 0.5,
                    popup = ~paste("Response:", response))
@@ -450,19 +450,17 @@ filtered_mortality_intent <- cleaned_infant_mortality %>%
 
 plot_mortality_intent =
   filtered_mortality_intent %>%
-  ggplot(aes(x = break_out, y = sample_size, color = break_out)) +
-  geom_point(alpha = 0.5) +
+  ggplot(aes(x = break_out, y = sample_size, fill = break_out)) +
+  geom_boxplot(alpha = .5) +  # Remove or set alpha = 1 to fill the boxplots
   theme(legend.position = "none") +
   labs(title = "Infant Deaths by Maternal Intent",
        x = "Maternal Intent",
-       y = "Total Infant Deaths") +
-  scale_fill_viridis(discrete = TRUE, name = "Maternal Intent")
-
+       y = "Total Infant Deaths")
 
 ggplotly(plot_mortality_intent)
-
 print(ggplotly(plot_mortality_intent))
+
 
 ```
 
-This `scatter plot` shows the relationship between maternal intent to have children with infant mortality rate. Those who intended to have a child, actually had a higher rate of infant mortality rate. There could be several confounding factors that could contribute to this, such as age and stress factors. 
+The presented `box plot` illustrates the connection between maternal intent to have children and the infant mortality rate. Notably, the Interquartile Range (IQR) for the intended category is larger than that of the unintended category. Surprisingly, individuals who intended to have a child exhibit a higher infant mortality rate. However, it is imperative to acknowledge the existence of potential confounding factors, including but not limited to age and stress. These variables could significantly influence the observed relationship, and a thorough examination of such factors is crucial for a more comprehensive understanding of the dynamics at play.

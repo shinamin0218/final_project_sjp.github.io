@@ -217,7 +217,7 @@ leaflet() |>
                    fillOpacity = 0.1,
                    popup = ~paste("Response:", response)) 
 ```
-  * This map visualizes data points from the cleaned_tobac_2007 dataset, showcasing the prevalence of Tobacco Use during pregnancy across different states. The sizes of the circles represent the values in the data_value column, reflecting the number of participants who responded affirmatively to Tobacco Use during pregnancy in each state. Larger circles indicate a higher number of positive responses, offering an overview of the distribution of this behavior across geographic regions
+This map visualizes data points from the cleaned_tobac_2007 dataset, showcasing the prevalence of Tobacco Use during pregnancy across different states. The sizes of the circles represent the values in the data_value column, reflecting the number of participants who responded affirmatively to Tobacco Use during pregnancy in each state. Larger circles indicate a higher number of positive responses, offering an overview of the distribution of this behavior across geographic regions
   
   
   
@@ -237,8 +237,7 @@ leaflet() %>%
                    popup = ~paste("Response:", response),
                    group = ~location_abbr)
 ```
-  * This map illustrates data points from the cleaned_tobac_2007 dataset, depicting the prevalence of Tobacco Use during pregnancy across various states. The sizes of the circles correspond to the values in the data_value column, reflecting the number of participants who reported affirmative responses to Tobacco Use during pregnancy in each state. Larger circles indicate a higher number of positive responses, providing insight into the regional distribution of this behavior
-
+This map illustrates data points from the cleaned_tobac_2007 dataset, depicting the prevalence of Tobacco Use during pregnancy across various states. The sizes of the circles correspond to the values in the data_value column, reflecting the number of participants who reported affirmative responses to Tobacco Use during pregnancy in each state. Larger circles indicate a higher number of positive responses, providing insight into the regional distribution of this behavior
 
 
 ### Map of Infant Mortality Rate
@@ -256,7 +255,7 @@ leaflet() %>%
                    fillOpacity = 0.5,
                    popup = ~paste("Response:", response))
 ```
-  * This Leaflet plot provides a visual representation of infant mortality data on a map. The size of the circles corresponds to the values in the data_value column, indicating the rate of infant mortality for each location.
+This Leaflet plot provides a visual representation of infant mortality data on a map. The size of the circles corresponds to the values in the data_value column, indicating the rate of infant mortality for each location.
   
   
 ### Infant Mortality by State 

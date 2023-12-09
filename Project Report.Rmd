@@ -118,45 +118,46 @@ Both substance abuse and maternal/infant mortality run rampant in the United Sta
 
 ## **Data Cleaning**
 
-We loaded in data from the PRAMS 2007 dataset. This dataset provided information about many different aspects about maternal health and birth that we were interested in addressing. 
+  * We loaded in data from the PRAMS 2007 dataset. This dataset provided information about many different aspects about maternal health and birth that we were interested in addressing. 
 
-After loading in the data, we cleaned each dataset by removing unecessary columns. We then filtered the responses to tailor the dataframe to each dataset, such as removing "no" responses to if mothers were smoking during conception to create a dataset displaying data for mothers who were smoking during conception. 
+  * After loading in the data, we cleaned each dataset by removing unecessary columns. We then filtered the responses to tailor the dataframe to each dataset, such as removing "no" responses to if mothers were smoking during conception to create a dataset displaying data for mothers who were smoking during conception. 
 
-We used the separate function for the "geolocation" variable by splitting it into a longitude and latitude variable that was used in creating our leaflet plots.
+  * We used the separate function for the "geolocation" variable by splitting it into a longitude and latitude variable that was used in creating our leaflet plots.
 
 ## **Initial questions**
 
 ##### **Our initial research question**
-Is there a significant relationship between infant mortality rate and the consumption of Alcohol and Tobacco consumption?
+  * Is there a significant relationship between infant mortality rate and the consumption of Alcohol and Tobacco consumption?
 
 ##### **How did these questions evolve over the course of the project?**
-Upon reviewing reviewing the 2007 CDC PRAM data set, and thoroughly understanding the data, we picked our variables of interest that we wanted to test. The data provides robust information on several important factors related to maternal and infant health outcomes. 
+  * Upon reviewing reviewing the 2007 CDC PRAM data set, and thoroughly understanding the data, we picked our variables of interest that we wanted to test. The data provides robust information on several important factors related to maternal and infant health outcomes. 
 
 ##### **What new questions did you consider in the course of your analysis?**
-Other parts of the data that interested us was also the use of contraception in the sample demographic. 
+  * Other parts of the data that interested us was also the use of contraception in the sample demographic. 
 
 
 ## **Motivation for this Project**
-We are interested in looking at how pregnancy outcomes changes among mothers who drank or smoked cigarettes before conception, and comparing it to mothers who did not abuse any substances. As a group, we were collectively interested in both Maternal Child Health and Substance Abuse and this was an ideal way to combine those two interests. The demographics, social dynamics, and healthcare system in the United States provide a unique perspective on the outcomes of maternal health and substance abuse. We are interested in learning more about the relationship between substance abuse and infant mortality rates. 
+  * We are interested in looking at how pregnancy outcomes changes among mothers who drank or smoked cigarettes before conception, and comparing it to mothers who did not abuse any substances. 
+  * As a group, we were collectively interested in both Maternal Child Health and Substance Abuse and this was an ideal way to combine those two interests. The demographics, social dynamics, and healthcare system in the United States provide a unique perspective on the outcomes of maternal health and substance abuse. We are interested in learning more about the relationship between substance abuse and infant mortality rates. 
 
 
 ## **Related Work**
 
 #### **Alcohol use during pregnancy**
 
-The negative impact of smoking during pregnancy is evident in its direct association with adverse birth outcomes. This habit has been linked to a range of complications, including damage to the umbilical cord structure, an elevated risk of miscarriage and ectopic pregnancy, as well as an increased likelihood of low birth weight, placental abruption, preterm birth, and heightened infant mortality rates. 
+  * The negative impact of smoking during pregnancy is evident in its direct association with adverse birth outcomes. This habit has been linked to a range of complications, including damage to the umbilical cord structure, an elevated risk of miscarriage and ectopic pregnancy, as well as an increased likelihood of low birth weight, placental abruption, preterm birth, and heightened infant mortality rates. 
 [Reference](https://pubmed.ncbi.nlm.nih.gov/17884310/)
 
-According to Wolfe et al., within a dataset comprising 4,536,701 birth records, 1.20% exhibited diagnostic codes related to drug or alcohol discharge (n = 54,290). The unadjusted Relative Risks (RRs) for maternal (RR = 2.7), fetal (RR = 1.3), neonatal (RR = 2.4), and post-neonatal (RR = 4.3) mortality were elevated among births diagnosed with drug or alcohol-related conditions. 
+  * According to Wolfe et al., within a dataset comprising 4,536,701 birth records, 1.20% exhibited diagnostic codes related to drug or alcohol discharge (n = 54,290). The unadjusted Relative Risks (RRs) for maternal (RR = 2.7), fetal (RR = 1.3), neonatal (RR = 2.4), and post-neonatal (RR = 4.3) mortality were elevated among births diagnosed with drug or alcohol-related conditions. 
 [Reference](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3349286/)
 
 
 #### **Tobacco use during pregnancy**
 
-The consumption of alcohol during pregnancy has been correlated with a spectrum of adverse birth outcomes. This includes heightened risks of miscarriage, stillbirth, infant mortality, congenital anomalies, low birthweight, reduced gestational age, preterm delivery, and infants being born small for their gestational age.
+  * The consumption of alcohol during pregnancy has been correlated with a spectrum of adverse birth outcomes. This includes heightened risks of miscarriage, stillbirth, infant mortality, congenital anomalies, low birthweight, reduced gestational age, preterm delivery, and infants being born small for their gestational age.
 [Reference](https://pubmed.ncbi.nlm.nih.gov/19797967/)
 
-While specific data on infant mortality rates were not explicitly provided, it is noteworthy that maternal smoking during pregnancy constitutes a well-established risk factor for sudden unexpected infant death (SUID). The risk of SUID more than doubled (adjusted odds ratio [aOR] = 2.44; 95% confidence interval [CI] 2.31–2.57) in the presence of any maternal smoking during pregnancy. Furthermore, a twofold increase in SUID risk was observed when comparing no smoking to smoking just 1 cigarette daily throughout pregnancy. 
+  * While specific data on infant mortality rates were not explicitly provided, it is noteworthy that maternal smoking during pregnancy constitutes a well-established risk factor for sudden unexpected infant death (SUID). The risk of SUID more than doubled (adjusted odds ratio [aOR] = 2.44; 95% confidence interval [CI] 2.31–2.57) in the presence of any maternal smoking during pregnancy. Furthermore, a twofold increase in SUID risk was observed when comparing no smoking to smoking just 1 cigarette daily throughout pregnancy. 
 [Reference](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6564075/)
 
 # **Exploratory Analysis**
@@ -229,20 +230,21 @@ The `maternal_tobac_plot` displays the questions and responses in terms of mater
 
 # **Discussion**
 
-For this analysis, we looked at the 2007 CDC PRAMS dataset. We cleaned and analyzed the data specific to maternal substance use and infant mortality. 
+  * For this analysis, we looked at the 2007 CDC PRAMS dataset. We cleaned and analyzed the data specific to maternal substance use and infant mortality. 
 
-We examined the relationship between alcohol use among mothers 3 months before conception and the 3 months before birth. We found that 1395 mothers consumed alcohol in the last 3 months of their pregnancy.
+  * We examined the relationship between alcohol use among mothers 3 months before conception and the 3 months before birth. We found that 1395 mothers consumed alcohol in the last 3 months of their pregnancy.
 
-We also examined the relationship between tobacco use among mothers 3 months before conception and the three months before birth. In the last 3 months of their pregnancy, about 1300 mothers reported smoking 41 or more times a day, and a little over 1300 reported smoking 1-5 times a day. About 1400 mothers reported smoking during the last 3 months of their pregnancy overall. This data shows that a significantly large portion of mothers regularly consumed tobacco during the last 3 months of their pregnancy, which may play a contributing factor to maternal and infant health outcomes after birth.
+  * We also examined the relationship between tobacco use among mothers 3 months before conception and the three months before birth. In the last 3 months of their pregnancy, about 1300 mothers reported smoking 41 or more times a day, and a little over 1300 reported smoking 1-5 times a day. About 1400 mothers reported smoking during the last 3 months of their pregnancy overall. This data shows that a significantly large portion of mothers regularly consumed tobacco during the last 3 months of their pregnancy, which may play a contributing factor to maternal and infant health outcomes after birth.
 
-Regarding Infant Mortality, we addressed different aspects that may have contributed to infant deaths. We analyzed the relationship between infant deaths and maternal smoking status, whether they were a medicaid recipient, maternal education status, and maternal age group. Regarding maternal age, we found that mothers who were less than 18 years old had less total infant death count than the higher age groups, with those 45 years old or higher having the largest infant mortality count. Maternal education, medicaid recipient, and maternal intent to give birth did not display significant results. However, these results could have been due to issues of sampling error, other non-tested confounding factors such as stress levels, and baseline health levels. The intersectionality of age and race plays a huge role as social determinants of health. 
+  * Regarding Infant Mortality, we addressed different aspects that may have contributed to infant deaths. We analyzed the relationship between infant deaths and maternal smoking status, whether they were a medicaid recipient, maternal education status, and maternal age group. Regarding maternal age, we found that mothers who were less than 18 years old had less total infant death count than the higher age groups, with those 45 years old or higher having the largest infant mortality count. Maternal education, medicaid recipient, and maternal intent to give birth did not display significant results. However, these results could have been due to issues of sampling error, other non-tested confounding factors such as stress levels, and baseline health levels. The intersectionality of age and race plays a huge role as social determinants of health. 
 
-Additionally, upon analyzing infant mortality rate in the United States, it was found that most states had infant death rates ranging between 40  and 48. However, there were a few outliers, such as Pennsylvania that had 3 total infant deaths. Colorado, Illinois, New York, NYC, North Carolina, Oklahoma, South Carolina, and West Virginia had the highest total infant death count of 47. It is also important to note that New York, excluding NYC, had 47 infant deaths, and New York City specifically had 47 infant deaths in 2007. Combined, New York had a total of 94 deaths, providing evidence that highly urban areas may experience higher infant death rates. However since the dataframe does not provide city-specific data from other states, we cannot draw any conclusions about urban populations and its relationship to infant mortality rates.
+  * Additionally, upon analyzing infant mortality rate in the United States, it was found that most states had infant death rates ranging between 40  and 48. However, there were a few outliers, such as Pennsylvania that had 3 total infant deaths. Colorado, Illinois, New York, NYC, North Carolina, Oklahoma, South Carolina, and West Virginia had the highest total infant death count of 47. It is also important to note that New York, excluding NYC, had 47 infant deaths, and New York City specifically had 47 infant deaths in 2007. Combined, New York had a total of 94 deaths, providing evidence that highly urban areas may experience higher infant death rates. However since the dataframe does not provide city-specific data from other states, we cannot draw any conclusions about urban populations and its relationship to infant mortality rates.
 
 
 ## **Limitations**
 
-There are some limitations to interpreting the 2007 PRAMS dataset. Upon conducting a more in depth observational analysis, we found that the sample was not representative of the United States as a whole. There were only 31 states surveyed out of the 50, which skews the results of our analysis. Our variables of interest looked at income levels, race/ethnicity, which had several gaps. For example, the race/ethnicity category only included hispanic, white-non-hispanic and black-non-hispanic, which is not representative of the United States population. Additionally, the income levels were too broad which skews the data for the participants who have an income between different categories.
+##### There are some limitations to interpreting the 2007 PRAMS dataset. 
+  * Upon conducting a more in depth observational analysis, we found that the sample was not representative of the United States as a whole. There were only 31 states surveyed out of the 50, which skews the results of our analysis. Our variables of interest looked at income levels, race/ethnicity, which had several gaps. For example, the race/ethnicity category only included hispanic, white-non-hispanic and black-non-hispanic, which is not representative of the United States population. Additionally, the income levels were too broad which skews the data for the participants who have an income between different categories.
 
-Overall, this study gives good insight  about the status of maternal health and infant mortality in 2007. 
+  * Overall, this study gives good insight  about the status of maternal health and infant mortality in 2007. 
 

@@ -389,83 +389,97 @@ are interested in looking at the relationships between these
 variables.</p>
 <div id="data-cleaning" class="section level2">
 <h2><strong>Data Cleaning</strong></h2>
-<p>We loaded in data from the PRAMS 2007 dataset. This dataset provided
-information about many different aspects about maternal health and birth
-that we were interested in addressing.</p>
-<p>After loading in the data, we cleaned each dataset by removing
+<ul>
+<li><p>We loaded in data from the PRAMS 2007 dataset. This dataset
+provided information about many different aspects about maternal health
+and birth that we were interested in addressing.</p></li>
+<li><p>After loading in the data, we cleaned each dataset by removing
 unecessary columns. We then filtered the responses to tailor the
 dataframe to each dataset, such as removing “no” responses to if mothers
 were smoking during conception to create a dataset displaying data for
-mothers who were smoking during conception.</p>
-<p>We used the separate function for the “geolocation” variable by
+mothers who were smoking during conception.</p></li>
+<li><p>We used the separate function for the “geolocation” variable by
 splitting it into a longitude and latitude variable that was used in
-creating our leaflet plots.</p>
+creating our leaflet plots.</p></li>
+</ul>
 </div>
 <div id="initial-questions" class="section level2">
 <h2><strong>Initial questions</strong></h2>
 <div id="our-initial-research-question" class="section level5">
 <h5><strong>Our initial research question</strong></h5>
-<p>Is there a significant relationship between infant mortality rate and
-the consumption of Alcohol and Tobacco consumption?</p>
+<ul>
+<li>Is there a significant relationship between infant mortality rate
+and the consumption of Alcohol and Tobacco consumption?</li>
+</ul>
 </div>
 <div id="how-did-these-questions-evolve-over-the-course-of-the-project"
 class="section level5">
 <h5><strong>How did these questions evolve over the course of the
 project?</strong></h5>
-<p>Upon reviewing reviewing the 2007 CDC PRAM data set, and thoroughly
+<ul>
+<li>Upon reviewing reviewing the 2007 CDC PRAM data set, and thoroughly
 understanding the data, we picked our variables of interest that we
 wanted to test. The data provides robust information on several
-important factors related to maternal and infant health outcomes.</p>
+important factors related to maternal and infant health outcomes.</li>
+</ul>
 </div>
 <div
 id="what-new-questions-did-you-consider-in-the-course-of-your-analysis"
 class="section level5">
 <h5><strong>What new questions did you consider in the course of your
 analysis?</strong></h5>
-<p>Other parts of the data that interested us was also the use of
-contraception in the sample demographic.</p>
+<ul>
+<li>Other parts of the data that interested us was also the use of
+contraception in the sample demographic.</li>
+</ul>
 </div>
 </div>
 <div id="motivation-for-this-project" class="section level2">
 <h2><strong>Motivation for this Project</strong></h2>
-<p>We are interested in looking at how pregnancy outcomes changes among
+<ul>
+<li>We are interested in looking at how pregnancy outcomes changes among
 mothers who drank or smoked cigarettes before conception, and comparing
-it to mothers who did not abuse any substances. As a group, we were
-collectively interested in both Maternal Child Health and Substance
-Abuse and this was an ideal way to combine those two interests. The
-demographics, social dynamics, and healthcare system in the United
-States provide a unique perspective on the outcomes of maternal health
-and substance abuse. We are interested in learning more about the
-relationship between substance abuse and infant mortality rates.</p>
+it to mothers who did not abuse any substances.</li>
+<li>As a group, we were collectively interested in both Maternal Child
+Health and Substance Abuse and this was an ideal way to combine those
+two interests. The demographics, social dynamics, and healthcare system
+in the United States provide a unique perspective on the outcomes of
+maternal health and substance abuse. We are interested in learning more
+about the relationship between substance abuse and infant mortality
+rates.</li>
+</ul>
 </div>
 <div id="related-work" class="section level2">
 <h2><strong>Related Work</strong></h2>
 <div id="alcohol-use-during-pregnancy" class="section level4">
 <h4><strong>Alcohol use during pregnancy</strong></h4>
-<p>The negative impact of smoking during pregnancy is evident in its
+<ul>
+<li><p>The negative impact of smoking during pregnancy is evident in its
 direct association with adverse birth outcomes. This habit has been
 linked to a range of complications, including damage to the umbilical
 cord structure, an elevated risk of miscarriage and ectopic pregnancy,
 as well as an increased likelihood of low birth weight, placental
 abruption, preterm birth, and heightened infant mortality rates. <a
-href="https://pubmed.ncbi.nlm.nih.gov/17884310/">Reference</a></p>
-<p>According to Wolfe et al., within a dataset comprising 4,536,701
+href="https://pubmed.ncbi.nlm.nih.gov/17884310/">Reference</a></p></li>
+<li><p>According to Wolfe et al., within a dataset comprising 4,536,701
 birth records, 1.20% exhibited diagnostic codes related to drug or
 alcohol discharge (n = 54,290). The unadjusted Relative Risks (RRs) for
 maternal (RR = 2.7), fetal (RR = 1.3), neonatal (RR = 2.4), and
 post-neonatal (RR = 4.3) mortality were elevated among births diagnosed
 with drug or alcohol-related conditions. <a
-href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3349286/">Reference</a></p>
+href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3349286/">Reference</a></p></li>
+</ul>
 </div>
 <div id="tobacco-use-during-pregnancy" class="section level4">
 <h4><strong>Tobacco use during pregnancy</strong></h4>
-<p>The consumption of alcohol during pregnancy has been correlated with
-a spectrum of adverse birth outcomes. This includes heightened risks of
-miscarriage, stillbirth, infant mortality, congenital anomalies, low
-birthweight, reduced gestational age, preterm delivery, and infants
-being born small for their gestational age. <a
-href="https://pubmed.ncbi.nlm.nih.gov/19797967/">Reference</a></p>
-<p>While specific data on infant mortality rates were not explicitly
+<ul>
+<li><p>The consumption of alcohol during pregnancy has been correlated
+with a spectrum of adverse birth outcomes. This includes heightened
+risks of miscarriage, stillbirth, infant mortality, congenital
+anomalies, low birthweight, reduced gestational age, preterm delivery,
+and infants being born small for their gestational age. <a
+href="https://pubmed.ncbi.nlm.nih.gov/19797967/">Reference</a></p></li>
+<li><p>While specific data on infant mortality rates were not explicitly
 provided, it is noteworthy that maternal smoking during pregnancy
 constitutes a well-established risk factor for sudden unexpected infant
 death (SUID). The risk of SUID more than doubled (adjusted odds ratio
@@ -473,7 +487,8 @@ death (SUID). The risk of SUID more than doubled (adjusted odds ratio
 any maternal smoking during pregnancy. Furthermore, a twofold increase
 in SUID risk was observed when comparing no smoking to smoking just 1
 cigarette daily throughout pregnancy. <a
-href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6564075/">Reference</a></p>
+href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6564075/">Reference</a></p></li>
+</ul>
 </div>
 </div>
 <div id="exploratory-analysis" class="section level1">
@@ -640,8 +655,8 @@ infant deaths across diverse geographical locations.</p>
 plot_data &lt;- cleaned_alc_2007 %&gt;%
   group_by(question, response) %&gt;%
   summarize(count = n())</code></pre>
-<pre><code>## `summarise()` has grouped output by &#39;question&#39;. You can override
-## using the `.groups` argument.</code></pre>
+<pre><code>## `summarise()` has grouped output by &#39;question&#39;. You can override using the
+## `.groups` argument.</code></pre>
 <pre class="r"><code># Convert data to Plotly
 plot_ly(data = plot_data, x = ~question, y = ~count, color = ~response, type = &quot;bar&quot;, split = ~response) %&gt;%
   layout(
@@ -650,8 +665,8 @@ plot_ly(data = plot_data, x = ~question, y = ~count, color = ~response, type = &
     yaxis = list(title = &quot;Response&quot;),
     barmode = &quot;stack&quot;
   )</code></pre>
-<div class="plotly html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-60d32e90f94300ed4a38" style="width:672px;height:480px;"></div>
-<script type="application/json" data-for="htmlwidget-60d32e90f94300ed4a38">{"x":{"visdat":{"1009e3a59767c":["function () ","plotlyVisDat"]},"cur_data":"1009e3a59767c","attrs":{"1009e3a59767c":{"x":{},"y":{},"color":{},"split":{},"alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"bar"}},"layout":{"margin":{"b":40,"l":60,"t":25,"r":10},"title":"Questions vs Response of Alcohol Consumption","xaxis":{"domain":[0,1],"automargin":true,"title":"Question","tickfont":{"size":5},"type":"category","categoryorder":"array","categoryarray":["(*PCH) Indicator of drinking alcohol during the three months before pregnancy","Change in drinking between three months before pregnancy and last three months of pregnancy","Indicator of drinking any alcohol during the past two years","Indicator of whether mother reported having any alcoholic drinks during the last 3 months of pregnancy"]},"yaxis":{"domain":[0,1],"automargin":true,"title":"Response"},"barmode":"stack","hovermode":"closest","showlegend":true},"source":"A","config":{"modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false},"data":[{"x":["Change in drinking between three months before pregnancy and last three months of pregnancy"],"y":[1314],"type":"bar","name":"#DRKS REDUCED","marker":{"color":"rgba(102,194,165,1)","line":{"color":"rgba(102,194,165,1)"}},"textfont":{"color":"rgba(102,194,165,1)"},"error_y":{"color":"rgba(102,194,165,1)"},"error_x":{"color":"rgba(102,194,165,1)"},"xaxis":"x","yaxis":"y","frame":null},{"x":["Change in drinking between three months before pregnancy and last three months of pregnancy"],"y":[1376],"type":"bar","name":"#DRKS SAME OR MORE","marker":{"color":"rgba(252,141,98,1)","line":{"color":"rgba(252,141,98,1)"}},"textfont":{"color":"rgba(252,141,98,1)"},"error_y":{"color":"rgba(252,141,98,1)"},"error_x":{"color":"rgba(252,141,98,1)"},"xaxis":"x","yaxis":"y","frame":null},{"x":["Change in drinking between three months before pregnancy and last three months of pregnancy"],"y":[852],"type":"bar","name":"NONDRNKR RESUMED","marker":{"color":"rgba(141,160,203,1)","line":{"color":"rgba(141,160,203,1)"}},"textfont":{"color":"rgba(141,160,203,1)"},"error_y":{"color":"rgba(141,160,203,1)"},"error_x":{"color":"rgba(141,160,203,1)"},"xaxis":"x","yaxis":"y","frame":null},{"x":["(*PCH) Indicator of drinking alcohol during the three months before pregnancy","Indicator of drinking any alcohol during the past two years","Indicator of whether mother reported having any alcoholic drinks during the last 3 months of pregnancy"],"y":[1410,1410,1395],"type":"bar","name":"YES","marker":{"color":"rgba(231,138,195,1)","line":{"color":"rgba(231,138,195,1)"}},"textfont":{"color":"rgba(231,138,195,1)"},"error_y":{"color":"rgba(231,138,195,1)"},"error_x":{"color":"rgba(231,138,195,1)"},"xaxis":"x","yaxis":"y","frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.20000000000000001,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
+<div class="plotly html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-4e775fceed5d84e3992f" style="width:672px;height:480px;"></div>
+<script type="application/json" data-for="htmlwidget-4e775fceed5d84e3992f">{"x":{"visdat":{"106e3370882e2":["function () ","plotlyVisDat"]},"cur_data":"106e3370882e2","attrs":{"106e3370882e2":{"x":{},"y":{},"color":{},"split":{},"alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"bar"}},"layout":{"margin":{"b":40,"l":60,"t":25,"r":10},"title":"Questions vs Response of Alcohol Consumption","xaxis":{"domain":[0,1],"automargin":true,"title":"Question","tickfont":{"size":5},"type":"category","categoryorder":"array","categoryarray":["(*PCH) Indicator of drinking alcohol during the three months before pregnancy","Change in drinking between three months before pregnancy and last three months of pregnancy","Indicator of drinking any alcohol during the past two years","Indicator of whether mother reported having any alcoholic drinks during the last 3 months of pregnancy"]},"yaxis":{"domain":[0,1],"automargin":true,"title":"Response"},"barmode":"stack","hovermode":"closest","showlegend":true},"source":"A","config":{"modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false},"data":[{"x":["Change in drinking between three months before pregnancy and last three months of pregnancy"],"y":[1314],"type":"bar","name":"#DRKS REDUCED","marker":{"color":"rgba(102,194,165,1)","line":{"color":"rgba(102,194,165,1)"}},"textfont":{"color":"rgba(102,194,165,1)"},"error_y":{"color":"rgba(102,194,165,1)"},"error_x":{"color":"rgba(102,194,165,1)"},"xaxis":"x","yaxis":"y","frame":null},{"x":["Change in drinking between three months before pregnancy and last three months of pregnancy"],"y":[1376],"type":"bar","name":"#DRKS SAME OR MORE","marker":{"color":"rgba(252,141,98,1)","line":{"color":"rgba(252,141,98,1)"}},"textfont":{"color":"rgba(252,141,98,1)"},"error_y":{"color":"rgba(252,141,98,1)"},"error_x":{"color":"rgba(252,141,98,1)"},"xaxis":"x","yaxis":"y","frame":null},{"x":["Change in drinking between three months before pregnancy and last three months of pregnancy"],"y":[852],"type":"bar","name":"NONDRNKR RESUMED","marker":{"color":"rgba(141,160,203,1)","line":{"color":"rgba(141,160,203,1)"}},"textfont":{"color":"rgba(141,160,203,1)"},"error_y":{"color":"rgba(141,160,203,1)"},"error_x":{"color":"rgba(141,160,203,1)"},"xaxis":"x","yaxis":"y","frame":null},{"x":["(*PCH) Indicator of drinking alcohol during the three months before pregnancy","Indicator of drinking any alcohol during the past two years","Indicator of whether mother reported having any alcoholic drinks during the last 3 months of pregnancy"],"y":[1410,1410,1395],"type":"bar","name":"YES","marker":{"color":"rgba(231,138,195,1)","line":{"color":"rgba(231,138,195,1)"}},"textfont":{"color":"rgba(231,138,195,1)"},"error_y":{"color":"rgba(231,138,195,1)"},"error_x":{"color":"rgba(231,138,195,1)"},"xaxis":"x","yaxis":"y","frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.20000000000000001,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
 <p>the <code>Maternal_alc_use</code> plot shows the responses to the
 questions asked. From this plot, we can see that from the 3 months
 before pregnancy and the last 3 months of pregnancy, about 1300 monthers
@@ -678,8 +693,8 @@ more alcohol than reducing how much they consumed.</p>
 plot_data &lt;- cleaned_tobac_2007 %&gt;%
   group_by(location_abbr, response) %&gt;%
   summarize(count = n())</code></pre>
-<pre><code>## `summarise()` has grouped output by &#39;location_abbr&#39;. You can override
-## using the `.groups` argument.</code></pre>
+<pre><code>## `summarise()` has grouped output by &#39;location_abbr&#39;. You can override using the
+## `.groups` argument.</code></pre>
 <pre class="r"><code>plot_ly(data = plot_data, x = ~location_abbr, y = ~count, color = ~response, type = &quot;bar&quot;, split = ~response) %&gt;%
   layout(
     title = &quot; Tobacco Use by State&quot;,
@@ -687,8 +702,8 @@ plot_data &lt;- cleaned_tobac_2007 %&gt;%
     yaxis = list(title = &quot;Response&quot;),
     barmode = &quot;stack&quot;
   )</code></pre>
-<div class="plotly html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-dc43d164f55592b408f2" style="width:672px;height:480px;"></div>
-<script type="application/json" data-for="htmlwidget-dc43d164f55592b408f2">{"x":{"visdat":{"1009e66579fc":["function () ","plotlyVisDat"]},"cur_data":"1009e66579fc","attrs":{"1009e66579fc":{"x":{},"y":{},"color":{},"split":{},"alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"bar"}},"layout":{"margin":{"b":40,"l":60,"t":25,"r":10},"title":" Tobacco Use by State","xaxis":{"domain":[0,1],"automargin":true,"title":"Question","type":"category","categoryorder":"array","categoryarray":["AK","AR","CO","DE","HI","IL","MA","MD","ME","MI","MN","MO","NC","NE","NJ","NY","OH","OK","OR","PA","RI","SC","SD","UT","VT","WA","WI","WV","WY","YC"]},"yaxis":{"domain":[0,1],"automargin":true,"title":"Response"},"barmode":"stack","hovermode":"closest","showlegend":true},"source":"A","config":{"modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false},"data":[{"x":["AK","AR","CO","DE","HI","IL","MA","MD","ME","MI","MN","MO","NC","NE","NJ","NY","OH","OK","OR","PA","RI","SC","SD","UT","VT","WA","WI","WV","WY","YC"],"y":[129,131,132,118,124,129,122,131,136,124,133,134,127,132,135,126,133,133,128,94,130,128,132,127,130,132,129,134,133,126],"type":"bar","name":"#CIGS REDUCED","marker":{"color":"rgba(102,194,165,1)","line":{"color":"rgba(102,194,165,1)"}},"textfont":{"color":"rgba(102,194,165,1)"},"error_y":{"color":"rgba(102,194,165,1)"},"error_x":{"color":"rgba(102,194,165,1)"},"xaxis":"x","yaxis":"y","frame":null},{"x":["AK","AR","CO","DE","HI","IL","MA","MD","ME","MI","MN","MO","NC","NE","NJ","NY","OH","OK","OR","PA","RI","SC","SD","UT","VT","WA","WI","WV","WY","YC"],"y":[137,136,136,136,135,134,135,135,136,135,135,135,135,137,136,136,134,136,136,136,136,136,134,135,137,136,136,136,137,136],"type":"bar","name":"#CIGS SAME/MORE","marker":{"color":"rgba(252,141,98,1)","line":{"color":"rgba(252,141,98,1)"}},"textfont":{"color":"rgba(252,141,98,1)"},"error_y":{"color":"rgba(252,141,98,1)"},"error_x":{"color":"rgba(252,141,98,1)"},"xaxis":"x","yaxis":"y","frame":null},{"x":["AK","AR","CO","DE","HI","IL","MA","MD","ME","MI","MN","MO","NC","NE","NJ","NY","OH","OK","OR","PA","RI","SC","SD","UT","VT","WA","WI","WV","WY","YC"],"y":[137,138,137,137,139,137,138,137,137,133,137,138,136,139,137,137,137,137,138,138,137,138,137,134,137,137,136,138,139,136],"type":"bar","name":"1-5/day","marker":{"color":"rgba(141,160,203,1)","line":{"color":"rgba(141,160,203,1)"}},"textfont":{"color":"rgba(141,160,203,1)"},"error_y":{"color":"rgba(141,160,203,1)"},"error_x":{"color":"rgba(141,160,203,1)"},"xaxis":"x","yaxis":"y","frame":null},{"x":["AK","AR","CO","DE","HI","IL","MA","MD","ME","MI","MN","MO","NC","NE","NJ","NY","OH","OK","OR","PA","RI","SC","SD","UT","VT","WA","WI","WV","WY","YC"],"y":[132,130,135,134,129,130,130,131,136,127,133,134,129,132,133,135,132,137,131,136,132,132,127,122,137,128,134,137,136,102],"type":"bar","name":"11-20/day","marker":{"color":"rgba(231,138,195,1)","line":{"color":"rgba(231,138,195,1)"}},"textfont":{"color":"rgba(231,138,195,1)"},"error_y":{"color":"rgba(231,138,195,1)"},"error_x":{"color":"rgba(231,138,195,1)"},"xaxis":"x","yaxis":"y","frame":null},{"x":["AK","AR","CO","DE","HI","IL","MA","MD","ME","MI","MN","MO","NC","NE","NJ","NY","OH","OK","OR","PA","RI","SC","SD","UT","VT","WA","WI","WV","WY","YC"],"y":[105,128,118,114,102,112,85,118,126,104,123,120,123,105,106,104,126,128,74,111,122,119,114,116,130,93,103,136,123,85],"type":"bar","name":"21-40/day","marker":{"color":"rgba(166,216,84,1)","line":{"color":"rgba(166,216,84,1)"}},"textfont":{"color":"rgba(166,216,84,1)"},"error_y":{"color":"rgba(166,216,84,1)"},"error_x":{"color":"rgba(166,216,84,1)"},"xaxis":"x","yaxis":"y","frame":null},{"x":["AK","AR","CO","DE","HI","IL","MA","MD","ME","MI","MN","MO","NC","NE","NJ","NY","OH","OK","OR","PA","RI","SC","SD","UT","VT","WA","WI","WV","WY","YC"],"y":[75,106,78,31,70,40,85,75,122,108,64,111,112,100,103,42,91,100,48,93,76,77,93,94,110,83,88,130,99,117],"type":"bar","name":"41+/day","marker":{"color":"rgba(255,217,47,1)","line":{"color":"rgba(255,217,47,1)"}},"textfont":{"color":"rgba(255,217,47,1)"},"error_y":{"color":"rgba(255,217,47,1)"},"error_x":{"color":"rgba(255,217,47,1)"},"xaxis":"x","yaxis":"y","frame":null},{"x":["AK","AR","CO","DE","HI","IL","MA","MD","ME","MI","MN","MO","NC","NE","NJ","NY","OH","OK","OR","PA","RI","SC","SD","UT","VT","WA","WI","WV","WY","YC"],"y":[136,134,137,135,135,134,132,131,137,136,137,135,135,138,135,137,135,135,137,136,137,131,133,135,137,136,138,138,138,130],"type":"bar","name":"6-10/day","marker":{"color":"rgba(229,196,148,1)","line":{"color":"rgba(229,196,148,1)"}},"textfont":{"color":"rgba(229,196,148,1)"},"error_y":{"color":"rgba(229,196,148,1)"},"error_x":{"color":"rgba(229,196,148,1)"},"xaxis":"x","yaxis":"y","frame":null},{"x":["AK","AR","CO","DE","HI","IL","MA","MD","ME","MI","MN","MO","NC","NE","NJ","NY","OH","OK","OR","PA","RI","SC","SD","UT","VT","WA","WI","WV","WY","YC"],"y":[230,229,230,228,230,228,229,230,228,229,229,229,229,230,228,228,228,229,229,229,229,229,228,229,230,228,229,229,230,229],"type":"bar","name":"YES","marker":{"color":"rgba(179,179,179,1)","line":{"color":"rgba(179,179,179,1)"}},"textfont":{"color":"rgba(179,179,179,1)"},"error_y":{"color":"rgba(179,179,179,1)"},"error_x":{"color":"rgba(179,179,179,1)"},"xaxis":"x","yaxis":"y","frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.20000000000000001,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
+<div class="plotly html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-c28235f1714b877399c5" style="width:672px;height:480px;"></div>
+<script type="application/json" data-for="htmlwidget-c28235f1714b877399c5">{"x":{"visdat":{"106e34cd396b0":["function () ","plotlyVisDat"]},"cur_data":"106e34cd396b0","attrs":{"106e34cd396b0":{"x":{},"y":{},"color":{},"split":{},"alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"bar"}},"layout":{"margin":{"b":40,"l":60,"t":25,"r":10},"title":" Tobacco Use by State","xaxis":{"domain":[0,1],"automargin":true,"title":"Question","type":"category","categoryorder":"array","categoryarray":["AK","AR","CO","DE","HI","IL","MA","MD","ME","MI","MN","MO","NC","NE","NJ","NY","OH","OK","OR","PA","RI","SC","SD","UT","VT","WA","WI","WV","WY","YC"]},"yaxis":{"domain":[0,1],"automargin":true,"title":"Response"},"barmode":"stack","hovermode":"closest","showlegend":true},"source":"A","config":{"modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false},"data":[{"x":["AK","AR","CO","DE","HI","IL","MA","MD","ME","MI","MN","MO","NC","NE","NJ","NY","OH","OK","OR","PA","RI","SC","SD","UT","VT","WA","WI","WV","WY","YC"],"y":[129,131,132,118,124,129,122,131,136,124,133,134,127,132,135,126,133,133,128,94,130,128,132,127,130,132,129,134,133,126],"type":"bar","name":"#CIGS REDUCED","marker":{"color":"rgba(102,194,165,1)","line":{"color":"rgba(102,194,165,1)"}},"textfont":{"color":"rgba(102,194,165,1)"},"error_y":{"color":"rgba(102,194,165,1)"},"error_x":{"color":"rgba(102,194,165,1)"},"xaxis":"x","yaxis":"y","frame":null},{"x":["AK","AR","CO","DE","HI","IL","MA","MD","ME","MI","MN","MO","NC","NE","NJ","NY","OH","OK","OR","PA","RI","SC","SD","UT","VT","WA","WI","WV","WY","YC"],"y":[137,136,136,136,135,134,135,135,136,135,135,135,135,137,136,136,134,136,136,136,136,136,134,135,137,136,136,136,137,136],"type":"bar","name":"#CIGS SAME/MORE","marker":{"color":"rgba(252,141,98,1)","line":{"color":"rgba(252,141,98,1)"}},"textfont":{"color":"rgba(252,141,98,1)"},"error_y":{"color":"rgba(252,141,98,1)"},"error_x":{"color":"rgba(252,141,98,1)"},"xaxis":"x","yaxis":"y","frame":null},{"x":["AK","AR","CO","DE","HI","IL","MA","MD","ME","MI","MN","MO","NC","NE","NJ","NY","OH","OK","OR","PA","RI","SC","SD","UT","VT","WA","WI","WV","WY","YC"],"y":[137,138,137,137,139,137,138,137,137,133,137,138,136,139,137,137,137,137,138,138,137,138,137,134,137,137,136,138,139,136],"type":"bar","name":"1-5/day","marker":{"color":"rgba(141,160,203,1)","line":{"color":"rgba(141,160,203,1)"}},"textfont":{"color":"rgba(141,160,203,1)"},"error_y":{"color":"rgba(141,160,203,1)"},"error_x":{"color":"rgba(141,160,203,1)"},"xaxis":"x","yaxis":"y","frame":null},{"x":["AK","AR","CO","DE","HI","IL","MA","MD","ME","MI","MN","MO","NC","NE","NJ","NY","OH","OK","OR","PA","RI","SC","SD","UT","VT","WA","WI","WV","WY","YC"],"y":[132,130,135,134,129,130,130,131,136,127,133,134,129,132,133,135,132,137,131,136,132,132,127,122,137,128,134,137,136,102],"type":"bar","name":"11-20/day","marker":{"color":"rgba(231,138,195,1)","line":{"color":"rgba(231,138,195,1)"}},"textfont":{"color":"rgba(231,138,195,1)"},"error_y":{"color":"rgba(231,138,195,1)"},"error_x":{"color":"rgba(231,138,195,1)"},"xaxis":"x","yaxis":"y","frame":null},{"x":["AK","AR","CO","DE","HI","IL","MA","MD","ME","MI","MN","MO","NC","NE","NJ","NY","OH","OK","OR","PA","RI","SC","SD","UT","VT","WA","WI","WV","WY","YC"],"y":[105,128,118,114,102,112,85,118,126,104,123,120,123,105,106,104,126,128,74,111,122,119,114,116,130,93,103,136,123,85],"type":"bar","name":"21-40/day","marker":{"color":"rgba(166,216,84,1)","line":{"color":"rgba(166,216,84,1)"}},"textfont":{"color":"rgba(166,216,84,1)"},"error_y":{"color":"rgba(166,216,84,1)"},"error_x":{"color":"rgba(166,216,84,1)"},"xaxis":"x","yaxis":"y","frame":null},{"x":["AK","AR","CO","DE","HI","IL","MA","MD","ME","MI","MN","MO","NC","NE","NJ","NY","OH","OK","OR","PA","RI","SC","SD","UT","VT","WA","WI","WV","WY","YC"],"y":[75,106,78,31,70,40,85,75,122,108,64,111,112,100,103,42,91,100,48,93,76,77,93,94,110,83,88,130,99,117],"type":"bar","name":"41+/day","marker":{"color":"rgba(255,217,47,1)","line":{"color":"rgba(255,217,47,1)"}},"textfont":{"color":"rgba(255,217,47,1)"},"error_y":{"color":"rgba(255,217,47,1)"},"error_x":{"color":"rgba(255,217,47,1)"},"xaxis":"x","yaxis":"y","frame":null},{"x":["AK","AR","CO","DE","HI","IL","MA","MD","ME","MI","MN","MO","NC","NE","NJ","NY","OH","OK","OR","PA","RI","SC","SD","UT","VT","WA","WI","WV","WY","YC"],"y":[136,134,137,135,135,134,132,131,137,136,137,135,135,138,135,137,135,135,137,136,137,131,133,135,137,136,138,138,138,130],"type":"bar","name":"6-10/day","marker":{"color":"rgba(229,196,148,1)","line":{"color":"rgba(229,196,148,1)"}},"textfont":{"color":"rgba(229,196,148,1)"},"error_y":{"color":"rgba(229,196,148,1)"},"error_x":{"color":"rgba(229,196,148,1)"},"xaxis":"x","yaxis":"y","frame":null},{"x":["AK","AR","CO","DE","HI","IL","MA","MD","ME","MI","MN","MO","NC","NE","NJ","NY","OH","OK","OR","PA","RI","SC","SD","UT","VT","WA","WI","WV","WY","YC"],"y":[230,229,230,228,230,228,229,230,228,229,229,229,229,230,228,228,228,229,229,229,229,229,228,229,230,228,229,229,230,229],"type":"bar","name":"YES","marker":{"color":"rgba(179,179,179,1)","line":{"color":"rgba(179,179,179,1)"}},"textfont":{"color":"rgba(179,179,179,1)"},"error_y":{"color":"rgba(179,179,179,1)"},"error_x":{"color":"rgba(179,179,179,1)"},"xaxis":"x","yaxis":"y","frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.20000000000000001,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
 <p>The <code>maternal_tobac_plot</code> displays the questions and
 responses in terms of maternal use of tobacco. The three questions we
 focused on was cigarette use before, during and after conception. From
@@ -699,35 +714,37 @@ cigarettes a day, and about 700 smoked 41+ a day.</p>
 </div>
 <div id="discussion" class="section level1">
 <h1><strong>Discussion</strong></h1>
-<p>For this analysis, we looked at the 2007 CDC PRAMS dataset. We
+<ul>
+<li><p>For this analysis, we looked at the 2007 CDC PRAMS dataset. We
 cleaned and analyzed the data specific to maternal substance use and
-infant mortality.</p>
-<p>We examined the relationship between alcohol use among mothers 3
+infant mortality.</p></li>
+<li><p>We examined the relationship between alcohol use among mothers 3
 months before conception and the 3 months before birth. We found that
 1395 mothers consumed alcohol in the last 3 months of their
-pregnancy.</p>
-<p>We also examined the relationship between tobacco use among mothers 3
-months before conception and the three months before birth. In the last
-3 months of their pregnancy, about 1300 mothers reported smoking 41 or
-more times a day, and a little over 1300 reported smoking 1-5 times a
-day. About 1400 mothers reported smoking during the last 3 months of
-their pregnancy overall. This data shows that a significantly large
-portion of mothers regularly consumed tobacco during the last 3 months
-of their pregnancy, which may play a contributing factor to maternal and
-infant health outcomes after birth.</p>
-<p>Regarding Infant Mortality, we addressed different aspects that may
-have contributed to infant deaths. We analyzed the relationship between
-infant deaths and maternal smoking status, whether they were a medicaid
-recipient, maternal education status, and maternal age group. Regarding
-maternal age, we found that mothers who were less than 18 years old had
-less total infant death count than the higher age groups, with those 45
-years old or higher having the largest infant mortality count. Maternal
-education, medicaid recipient, and maternal intent to give birth did not
-display significant results. However, these results could have been due
-to issues of sampling error, other non-tested confounding factors such
-as stress levels, and baseline health levels. The intersectionality of
-age and race plays a huge role as social determinants of health.</p>
-<p>Additionally, upon analyzing infant mortality rate in the United
+pregnancy.</p></li>
+<li><p>We also examined the relationship between tobacco use among
+mothers 3 months before conception and the three months before birth. In
+the last 3 months of their pregnancy, about 1300 mothers reported
+smoking 41 or more times a day, and a little over 1300 reported smoking
+1-5 times a day. About 1400 mothers reported smoking during the last 3
+months of their pregnancy overall. This data shows that a significantly
+large portion of mothers regularly consumed tobacco during the last 3
+months of their pregnancy, which may play a contributing factor to
+maternal and infant health outcomes after birth.</p></li>
+<li><p>Regarding Infant Mortality, we addressed different aspects that
+may have contributed to infant deaths. We analyzed the relationship
+between infant deaths and maternal smoking status, whether they were a
+medicaid recipient, maternal education status, and maternal age group.
+Regarding maternal age, we found that mothers who were less than 18
+years old had less total infant death count than the higher age groups,
+with those 45 years old or higher having the largest infant mortality
+count. Maternal education, medicaid recipient, and maternal intent to
+give birth did not display significant results. However, these results
+could have been due to issues of sampling error, other non-tested
+confounding factors such as stress levels, and baseline health levels.
+The intersectionality of age and race plays a huge role as social
+determinants of health.</p></li>
+<li><p>Additionally, upon analyzing infant mortality rate in the United
 States, it was found that most states had infant death rates ranging
 between 40 and 48. However, there were a few outliers, such as
 Pennsylvania that had 3 total infant deaths. Colorado, Illinois, New
@@ -739,22 +756,30 @@ total of 94 deaths, providing evidence that highly urban areas may
 experience higher infant death rates. However since the dataframe does
 not provide city-specific data from other states, we cannot draw any
 conclusions about urban populations and its relationship to infant
-mortality rates.</p>
+mortality rates.</p></li>
+</ul>
 <div id="limitations" class="section level2">
 <h2><strong>Limitations</strong></h2>
-<p>There are some limitations to interpreting the 2007 PRAMS dataset.
-Upon conducting a more in depth observational analysis, we found that
-the sample was not representative of the United States as a whole. There
-were only 31 states surveyed out of the 50, which skews the results of
-our analysis. Our variables of interest looked at income levels,
-race/ethnicity, which had several gaps. For example, the race/ethnicity
-category only included hispanic, white-non-hispanic and
+<div
+id="there-are-some-limitations-to-interpreting-the-2007-prams-dataset."
+class="section level5">
+<h5>There are some limitations to interpreting the 2007 PRAMS
+dataset.</h5>
+<ul>
+<li><p>Upon conducting a more in depth observational analysis, we found
+that the sample was not representative of the United States as a whole.
+There were only 31 states surveyed out of the 50, which skews the
+results of our analysis. Our variables of interest looked at income
+levels, race/ethnicity, which had several gaps. For example, the
+race/ethnicity category only included hispanic, white-non-hispanic and
 black-non-hispanic, which is not representative of the United States
 population. Additionally, the income levels were too broad which skews
 the data for the participants who have an income between different
-categories.</p>
-<p>Overall, this study gives good insight about the status of maternal
-health and infant mortality in 2007.</p>
+categories.</p></li>
+<li><p>Overall, this study gives good insight about the status of
+maternal health and infant mortality in 2007.</p></li>
+</ul>
+</div>
 </div>
 </div>
 

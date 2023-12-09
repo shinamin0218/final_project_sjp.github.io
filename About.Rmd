@@ -6,7 +6,7 @@ output:
     toc_float: true
 ---
 
-### Group Members: Shina, Pavithra and Jenna
+### **Group Members: Shina, Pavithra and Jenna**
 
 <img src="images/grouppic.jpeg" style="width:60%">
 

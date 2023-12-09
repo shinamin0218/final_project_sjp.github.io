@@ -6,7 +6,11 @@ output:
     toc_float: true
 ---
 
+-----------------------------------------------------------------------------------
+
 ### **Group Members: Shina, Pavithra and Jenna**
+
+-----------------------------------------------------------------------------------
 
 <img src="images/grouppic.jpeg" style="width:60%">
 
@@ -14,6 +18,8 @@ output:
 Hi, we are Shina, Pavithra and Jenna from p8015 Fall 2023!
 
 Thank you for viewing our website :) Feel free to learn more about us by our socials linked below:
+
+-----------------------------------------------------------------------------------
 
 ### [Shina Min](https://shinamin0218.github.io/)
 
@@ -23,6 +29,8 @@ Fun Fact: My favorite movie is La La Land!
 
 [Linkedin](https://www.linkedin.com/in/shina-min-3b7b58113/) | [Email](sm5567@cumc.columbia.edu)
 
+-----------------------------------------------------------------------------------
+
 ### [Jenna Mohammed](Jenna-Mohammed.github.io)
 
 Hi! My name is Jenna Mohammed, and I am a first year MS student studying Epidemiology at the Mailman School of Public Health. I have a strong interest in Psychiatric and Neurological Epidemiology :) I hope to increase research within underrepresented communities and promote health equity!
@@ -31,6 +39,7 @@ Fun Fact: I play cello!!
 
 [Linkedin](https://www.linkedin.com/in/jenna-mohammed-03601a1aa/) | [Email](jam2530@cumc.columbia.edu)
 
+-----------------------------------------------------------------------------------
 
 ### [Pavithra Srinivasan](https://github.com/psrinivasan96)
 

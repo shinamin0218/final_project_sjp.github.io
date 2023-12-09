@@ -139,6 +139,8 @@ gg_plot <- cleaned_alc_2007 %>%
     title = "Questions vs Response of Alcohol Consumption"
   )
 
+print(gg_plot)
+
 ```
 
 ```{r}

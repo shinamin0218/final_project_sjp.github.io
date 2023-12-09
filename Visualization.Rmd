@@ -270,6 +270,7 @@ knitr::kable(infant_deaths)
 
 The table provides a summary of total infant deaths by state, with each row representing a specific location. The `location_desc` column denotes the state, and the `total_infant_deaths` column indicates the corresponding number of infant deaths in each location. The data suggests variability in infant mortality rates across different regions, with some areas reporting higher or lower rates than others. For instance, states like Pennsylvania have a notably lower count of infant deaths, while others, such as Alaska and Arkansas, have higher counts. However, most of the data seemed to stay within the 35 to 50 range. This summary provides an overview of the distribution of infant deaths across various geographical locations. 
 
+-----------------------------------------------------------------------------------
 
 ### **Exploring Infant Mortality: Insights into Rates Across Race, Income, Age, Education, and Intent**
 
@@ -294,6 +295,8 @@ This table shows in depth information about infant mortality rate by race-ethnic
 
 ### **Maternal Demographics and Infant Mortality Plots**
 
+-----------------------------------------------------------------------------------
+
 #### **Plot showing the effect of Race/Ethnicity on Infant Mortality**
 
 ```{r}
@@ -316,6 +319,7 @@ print(ggplotly(box_ggplot))
 
 The boxplot `box_ggplot` above shows a plot of infant deaths categorized by whether they were Hispanic or not. The graph shows that those who were not Hispanic had a higher infant death count than those who were Hispanic. The interquartile range (IQR) for the non-Hispanic category is significantly larger than that of the Hispanic category. Additionally, the median of the non-Hispanic category notably exceeds the median of the Hispanic category.
 
+-----------------------------------------------------------------------------------
 
 #### **Plot of Infant Mortality and Maternal Income**
 
@@ -346,6 +350,7 @@ print(ggplotly(density_ggplot_subset))
 
 This plot `density_ggplot_subset` shows the density of infant deaths according to maternal income levels.  From the density graph, those in the income bracket of $25,000-$49,000 had a higher infant mortality rate and those who made more than $50,000 had the lowest. This was an interesting observation, as those who made less that $10,000 a year would be expected to have the highest infant mortality as low income levels is a social determinant of infant health outcomes. 
 
+-----------------------------------------------------------------------------------
 
 #### **Plot of Infant Mortality and Maternal Age**
 
@@ -384,6 +389,7 @@ print(ggplotly(ggp_age_plot))
 
 This boxplot shows the distribution of infant mortality by maternal age. Interestingly, maternal populations below the age of 18 have the lowest infant mortality rates. Women aged 30-44 exhibit higher infant mortality rates, while those aged 18-24 and 30-44 share a similar IQR range. Intriguingly, women in the 18-24, 25-29, and 30-44 age groups display a median range of 6.0 to 6.5. No samples were found for women in the 45+ age category. The outliers for the 18-24 age category noticeably exceed the data range, and the reason for this phenomenon is currently unknown.
 
+-----------------------------------------------------------------------------------
 
 #### **Plot of Maternal Education and Infant Death**
 
@@ -414,6 +420,8 @@ print(ggplotly(plot_mortality_educ))
 
 This `violin plot` shows the relationship between maternal education and infant mortality rates. This is an interesting finding that shows those with greater than 12 years of education had higher infant mortality rates compared to those with less than 12 years of education. This could be because factors like race could have been a confounding variable. Additionally, it can also be assumed that people who were in school longer were also older, so that could also be an additional factor. 
 
+-----------------------------------------------------------------------------------
+
 #### **Plot of Maternal Medicaid Recipient and Infant Death**
 
 ```{r}
@@ -438,6 +446,7 @@ print(plot_mortality_medi)
 
 This `ridged density plot` compares the distribution of infant mortality to mothers who were or were not recipients of medicaid. This density graph shows that there is no significant statistical difference. 
 
+-----------------------------------------------------------------------------------
 
 #### **Plot of Maternal Intent and Infant Death**
 

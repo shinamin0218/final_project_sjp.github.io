@@ -61,7 +61,7 @@ cleaned_tobac_2007 <- tobacco_data_2007 |>
 view(cleaned_tobac_2007)
 ```
 
-#### Alcohol
+#### Variables
 
 - `year`  refers to the year data was recorded
 - `class` refers to ....

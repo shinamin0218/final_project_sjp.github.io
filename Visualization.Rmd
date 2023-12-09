@@ -202,7 +202,7 @@ leaflet() |>
                    lat = ~latitude,   # Adjust column name if needed
                    label = ~location_abbr,   # Assuming 'Group.1' is a column in your data
                    radius = ~data_value * 0.12,
-                   color = "turquoise",
+                   color = "yellow",
                    stroke = TRUE,
                    fillOpacity = 0.75,
                    popup = ~paste("Response:", response)) 
@@ -222,7 +222,7 @@ leaflet() %>%
                    lat = ~latitude,   
                    label = ~location_abbr,   
                    radius = ~data_value * 0.12,
-                   color = "yellow",
+                   color = "turquoise",
                    stroke = TRUE,
                    fillOpacity = 0.75,
                    popup = ~paste("Response:", response),

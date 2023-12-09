@@ -142,7 +142,7 @@ We aim to see the patterns of infant mortality among maternal populations based 
 
 ### **Plots of Maternal Alcohol Consumption**
 
-```{r}
+```{r, message=FALSE, warning=FALSE}
 # Extract data directly from the original data frame
 plot_data <- cleaned_alc_2007 %>%
   group_by(question, response) %>%
@@ -165,7 +165,7 @@ Plot 1 shows the number of individuals who consumed alcohol, resumed drinking al
 
 ### **Plots of Maternal Tobacco Use**
 
-```{r}
+```{r, message=FALSE, warning=FALSE}
 library(ggplot2)
 library(plotly)
 library(dplyr)
@@ -394,7 +394,7 @@ This boxplot shows the distribution of infant mortality by maternal age. Interes
 
 #### **Plot of Maternal Education and Infant Death**
 
-```{r}
+```{r, message=FALSE, warning=FALSE}
 filtered_mortality_educ <- cleaned_infant_mortality %>%
   filter(break_out_category == "Maternal Education" &
          (break_out %in% c("<12 yrs", "12 yrs", ">12 yrs")) &
@@ -425,7 +425,7 @@ This `violin plot` shows the relationship between maternal education and infant 
 
 #### **Plot of Maternal Medicaid Recipient and Infant Death**
 
-```{r}
+```{r, message=FALSE, warning=FALSE}
 filtered_mortality_medi <- cleaned_infant_mortality %>%
   filter(break_out_category == "Medicaid Recipient" &
          (break_out %in% c("Non-Medicaid", "Medicaid")) &
@@ -447,11 +447,11 @@ print(plot_mortality_medi)
 
 This `ridged density plot` compares the distribution of infant mortality to mothers who were or were not recipients of medicaid. This density graph shows that there is no significant statistical difference. 
 
------------------------------------------------------------------------------------
+--------------------------------------------------------------------
 
 #### **Plot of Maternal Intent and Infant Death**
 
-```{r}
+```{r, message=FALSE, warning=FALSE}
 filtered_mortality_intent <- cleaned_infant_mortality %>%
   filter(break_out_category == "Pregnancy Intendedness" &
          (break_out %in% c("Unintended", "Intended")) &
@@ -469,6 +469,7 @@ plot_mortality_intent =
        y = "Total Infant Deaths")
 
 ggplotly(plot_mortality_intent)
+
 print(ggplotly(plot_mortality_intent))
 
 

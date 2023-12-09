@@ -178,7 +178,7 @@ The presented table summarizes total infant deaths by state, where each row repr
 
 ### Maternal Alcohol Use
 
-```{r}
+```{r,message=FALSE, warning=FALSE}
 # Plot of question and responses for alcohol
 
 plot_data <- cleaned_alc_2007 %>%
@@ -199,7 +199,7 @@ the `Maternal_alc_use` plot shows the responses to the questions asked. From thi
 
 ### Maternal Tobacco Use 
 
-```{r}
+```{r, message=FALSE, warning=FALSE}
 gg_plot <- cleaned_tobac_2007 %>%
   ggplot(aes(x = location_abbr, fill = response)) +
   geom_bar(position = "dodge") +

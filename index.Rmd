@@ -2,6 +2,7 @@
 title: "Data Science Final Project"
 output: 
   html_document:
+    code_folding: hide
     toc: true
     toc_float: true
 ---
@@ -31,5 +32,14 @@ We are interested in looking the prevalence of alcohol consumption, tobacco cons
  
 
 
-Here's a brief overview of our site! (Instert Screencast Here)
+Here's a brief overview of our site!
+
+```{r, include = FALSE}
+library(vembedr)
+```
+
+```{r}
+vembedr::embed_url("https://youtu.be/VBJzVNF2pEY")
+```
+
 

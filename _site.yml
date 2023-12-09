@@ -14,7 +14,7 @@ navbar:
     - text: "About"
       href: About.html
     - icon: fa-envelope fa-lg
-      href: mailto:<you@youremail.com>
+      href: mailto:<sm5567@cumc.columbia.edu>
     - icon: fa-github fa-lg
       href: https://github.com/shinamin0218/final_project_sjp.github.io.git
 output:

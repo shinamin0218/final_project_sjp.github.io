@@ -314,7 +314,7 @@ ggplotly(box_ggplot) %>%
 print(ggplotly(box_ggplot))
 ```
 
-The boxplot `box_ggplot` above shows a plot of infant deaths categorized by whether they were Hispanic or not. The graph shows that those who were not Hispanic had a higher infant death count than those who were Hispanic.
+The boxplot `box_ggplot` above shows a plot of infant deaths categorized by whether they were Hispanic or not. The graph shows that those who were not Hispanic had a higher infant death count than those who were Hispanic. The interquartile range (IQR) for the non-Hispanic category is significantly larger than that of the Hispanic category. Additionally, the median of the non-Hispanic category notably exceeds the median of the Hispanic category.
 
 
 #### **Plot of Infant Mortality and Maternal Income**
@@ -382,7 +382,7 @@ print(ggplotly(ggp_age_plot))
 ```
 
 
-This boxplot shows the distribution of infant mortality by maternal age. Interestingly, maternal populations below the age of 18 have the lowest infant mortality rates. Comparatively, women in the 45+ age category have a higher infant mortality rate. Women in the 18-24, 25-29 and 30-44 all have approximately the same levels of infant mortality rates. 
+This boxplot shows the distribution of infant mortality by maternal age. Interestingly, maternal populations below the age of 18 have the lowest infant mortality rates. Women aged 30-44 exhibit higher infant mortality rates, while those aged 18-24 and 30-44 share a similar IQR range. Intriguingly, women in the 18-24, 25-29, and 30-44 age groups display a median range of 6.0 to 6.5. No samples were found for women in the 45+ age category. The outliers for the 18-24 age category noticeably exceed the data range, and the reason for this phenomenon is currently unknown.
 
 
 #### **Plot of Maternal Education and Infant Death**
@@ -412,7 +412,7 @@ print(ggplotly(plot_mortality_educ))
 
 ```
 
-This density plot shows the relationship between maternal education and infant mortality rates. This is an interesting finding that shows those with greater than 12 years of education had higher infant mortality rates compared to those with less than 12 years of education. This could be because factors like race could have been a confounding variable. Additionally, it can also be assumed that people who were in school longer were also older, so that could also be an additional factor. 
+This `violin plot` shows the relationship between maternal education and infant mortality rates. This is an interesting finding that shows those with greater than 12 years of education had higher infant mortality rates compared to those with less than 12 years of education. This could be because factors like race could have been a confounding variable. Additionally, it can also be assumed that people who were in school longer were also older, so that could also be an additional factor. 
 
 #### **Plot of Maternal Medicaid Recipient and Infant Death**
 
@@ -436,7 +436,7 @@ print(plot_mortality_medi)
 
 ```
 
-This graph compares the distribution of infant mortality to mothers who were or were not recipients of medicaid. This density graph shows that there is no significant statistical difference. 
+This `ridged density plot` compares the distribution of infant mortality to mothers who were or were not recipients of medicaid. This density graph shows that there is no significant statistical difference. 
 
 
 #### **Plot of Maternal Intent and Infant Death**
@@ -465,4 +465,4 @@ print(ggplotly(plot_mortality_intent))
 
 ```
 
-This plot shows the relationship between maternal intent to have children with infant mortality rate. Those who intended to have a child, actually had a higher rate of infant mortality rate. There could be several confounding factors that could contribute to this, such as age and stress factors. 
+This `scatter plot` shows the relationship between maternal intent to have children with infant mortality rate. Those who intended to have a child, actually had a higher rate of infant mortality rate. There could be several confounding factors that could contribute to this, such as age and stress factors. 

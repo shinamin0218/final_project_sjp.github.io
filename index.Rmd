@@ -14,11 +14,11 @@ output:
 
 
 
-## Our Project Interest 
+## **Our Project Interest**
 
 We are interested in looking the prevalence of alcohol consumption, tobacco consumption and contraception use in the United States, in comparison to those who do not substance abuse and practice safe sexual behaviors.  The demographics, social dynamics, and healthcare system in the U.S provide a unique perspective on the outcomes of maternal and infant health. We are interested in unpacking this 2007 CDC PRAMS data and understanding different relationships between substance abuse and infant mortality. 
 
-## What You'll Find on Our Site 
+## **What You'll Find on Our Site**
 
  **Data**: Explanation of the data used in the analysis
 

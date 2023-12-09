@@ -270,7 +270,7 @@ knitr::kable(infant_deaths)
 The table provides a summary of total infant deaths by state, with each row representing a specific location. The `location_desc` column denotes the state, and the `total_infant_deaths` column indicates the corresponding number of infant deaths in each location. The data suggests variability in infant mortality rates across different regions, with some areas reporting higher or lower rates than others. For instance, states like Pennsylvania have a notably lower count of infant deaths, while others, such as Alaska and Arkansas, have higher counts. However, most of the data seemed to stay within the 35 to 50 range. This summary provides an overview of the distribution of infant deaths across various geographical locations. 
 
 
-### **Looking at infant mortality rates by race, income levels, age,  education levels and intent**
+### **Exploring Infant Mortality: Insights into Rates Across Race, Income, Age, Education, and Intent**
 
 
 #### Table showing Infant Mortality by Race/Ethnicity
@@ -291,7 +291,7 @@ This table shows in depth information about infant mortality rate by race-ethnic
 
 -----------------------------------------------------------------------------------
 
-### Maternal Demographics and Infant Mortality Plots
+### **Maternal Demographics and Infant Mortality Plots**
 
 #### **Plot showing the effect of Race/Ethnicity on Infant Mortality**
 
